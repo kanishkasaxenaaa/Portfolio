@@ -850,12 +850,16 @@ label, button { font-weight: 500; }
   overflow: hidden;
   background: var(--surface-1);
   border: 1px solid var(--border-color);
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  display: block;
+  text-decoration: none;
 }
 
 .visual-item:hover {
   border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .visual-item img {
