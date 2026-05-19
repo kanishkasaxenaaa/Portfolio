@@ -1,91 +1,1289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Splitwise Redesign Case Study by Kanishka Saxena">
-    <title>Splitwise Case Study | Kanishka Saxena</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Splitwise Redesign — Kanishka Saxena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F2ED;
+      --bg-2: #EDEAE3;
+      --ink: #1A1916;
+      --ink-2: #3D3B35;
+      --ink-3: rgba(26,25,22,0.45);
+      --ink-4: rgba(26,25,22,0.2);
+      --green: #1DB87A;
+      --green-dim: rgba(29,184,122,0.12);
+      --green-mid: rgba(29,184,122,0.25);
+      --red: #E05C45;
+      --red-dim: rgba(224,92,69,0.1);
+      --orange: #E8820C;
+      --surface: #FFFFFF;
+      --border: rgba(26,25,22,0.1);
+      --border-strong: rgba(26,25,22,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Geist', -apple-system, sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────── */
+    .serif { font-family: 'Instrument Serif', Georgia, serif; }
+    .mono { font-family: 'Geist Mono', monospace; }
+
+    h1, h2, h3 { font-weight: 400; line-height: 1.1; }
+
+    .display {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .headline {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .subhead {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.4rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .label {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      font-weight: 400;
+    }
+
+    .body-lg {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      line-height: 1.75;
+      color: var(--ink-2);
+      font-weight: 300;
+    }
+
+    .body-sm {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--ink-3);
+    }
+
+    /* ─── LAYOUT ──────────────────────────────────── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
+    .container-narrow { max-width: 780px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
+
+    section { padding: clamp(5rem, 10vw, 9rem) 0; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ─── NAV ──────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      padding: 1.25rem clamp(1.5rem, 5vw, 5rem);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 300ms, border-color 300ms;
+    }
+    nav.scrolled {
+      background: rgba(245,242,237,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-back {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--ink-3);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 200ms;
+    }
+    .nav-back:hover { color: var(--ink); }
+    .nav-tag {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      background: var(--bg-2);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ─── HERO ────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding-top: 8rem;
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-noise {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; opacity: 0.6;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    .hero-title-row {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 3rem; flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    .hero-meta {
+      display: grid; grid-template-columns: repeat(3, auto);
+      gap: 0 3rem;
+      padding-bottom: 0.5rem;
+      flex-shrink: 0;
+    }
+    .hero-meta dt { font-size: 0.62rem; font-family: 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin-bottom: 0.35rem; }
+    .hero-meta dd { font-size: 0.82rem; color: var(--ink-2); font-weight: 300; line-height: 1.5; }
+
+    .hero-divider {
+      height: 1px; background: var(--border-strong);
+      margin-bottom: 3rem;
+    }
+
+    .hero-summary {
+      display: grid; grid-template-columns: 1fr 1.5fr;
+      gap: 3rem; align-items: start;
+    }
+    @media (max-width: 700px) { .hero-summary { grid-template-columns: 1fr; } }
+
+    /* ─── SECTION LABELS ───────────────────────────── */
+    .section-marker {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .section-marker .num {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--ink-3);
+      letter-spacing: 0.06em;
+    }
+    .section-marker .line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+    .section-marker .tag {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    /* ─── CARDS ────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      transition: border-color 250ms, box-shadow 250ms;
+    }
+    .card:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 8px 32px rgba(26,25,22,0.08);
+    }
+
+    .card-green { background: var(--green-dim); border-color: var(--green-mid); }
+    .card-red { background: var(--red-dim); border-color: rgba(224,92,69,0.2); }
+    .card-cream { background: var(--bg-2); border-color: var(--border); }
+
+    /* ─── PULL QUOTE ──────────────────────────────── */
+    .pull-quote {
+      border-left: 2px solid var(--ink);
+      padding-left: 2rem;
+      margin: 3rem 0;
+    }
+    .pull-quote blockquote {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      line-height: 1.5;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+    .pull-quote cite { font-size: 0.75rem; font-family: 'Geist Mono', monospace; color: var(--ink-3); letter-spacing: 0.06em; font-style: normal; }
+
+    /* ─── STAT ────────────────────────────────────── */
+    .stat-num {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    /* ─── TAG PILL ─────────────────────────────────── */
+    .pill {
+      display: inline-flex; align-items: center;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-family: 'Geist Mono', monospace;
+      letter-spacing: 0.05em;
+      border: 1px solid;
+    }
+    .pill-green { background: var(--green-dim); border-color: var(--green-mid); color: #0A7A4A; }
+    .pill-red { background: var(--red-dim); border-color: rgba(224,92,69,0.25); color: #A03525; }
+    .pill-neutral { background: var(--bg-2); border-color: var(--border); color: var(--ink-3); }
+    .pill-orange { background: rgba(232,130,12,0.1); border-color: rgba(232,130,12,0.25); color: #8B4D05; }
+
+    /* ─── HORIZONTAL RULE ─────────────────────────── */
+    .hr { height: 1px; background: var(--border); margin: 4rem 0; }
+
+    /* ─── INSIGHT ROW ─────────────────────────────── */
+    .insight-row {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .insight-row:first-child { border-top: 1px solid var(--border); }
+    .insight-num {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--ink-3);
+      min-width: 2rem;
+      padding-top: 0.25rem;
+    }
+    .insight-content h4 { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.35rem; }
+    .insight-content p { font-size: 0.85rem; color: var(--ink-3); line-height: 1.6; }
+
+    /* ─── BEFORE/AFTER ─────────────────────────────── */
+    .ba-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 700px) { .ba-grid { grid-template-columns: 1fr; } }
+    .ba-col { }
+    .ba-label {
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .ba-label span { font-size: 0.7rem; font-family: 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); }
+    .ba-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .ba-item {
+      display: flex; gap: 0.75rem; align-items: flex-start;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .ba-item.before { background: var(--red-dim); color: var(--ink-2); }
+    .ba-item.after { background: var(--green-dim); color: var(--ink-2); }
+    .ba-item .icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+    /* ─── TABLE ────────────────────────────────────── */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .comp-table th {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-strong);
+    }
+    .comp-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink-2);
+      vertical-align: top;
+    }
+    .comp-table tr:hover td { background: var(--bg-2); }
+    .comp-table .check { color: var(--green); }
+    .comp-table .miss { color: var(--ink-4); }
+
+    /* ─── FLOW STEP ────────────────────────────────── */
+    .flow-steps {
+      display: flex; gap: 0; position: relative;
+      overflow-x: auto; padding-bottom: 0.5rem;
+    }
+    .flow-step {
+      flex: 1; min-width: 120px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    .flow-step::after {
+      content: '→';
+      position: absolute; right: -0.5rem; top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem; color: var(--ink-4);
+      pointer-events: none; z-index: 1;
+    }
+    .flow-step:last-child::after { display: none; }
+    .flow-step-num {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.6rem; color: var(--ink-3);
+      margin-bottom: 0.5rem; letter-spacing: 0.06em;
+    }
+    .flow-step-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+
+    /* ─── SCREEN FRAME ─────────────────────────────── */
+    .screen-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .screen-frame img { width: 100%; display: block; }
+
+    /* ─── MOCKUP DEVICE ────────────────────────────── */
+    .device-wrap {
+      background: #1A1916;
+      border-radius: 2.5rem;
+      padding: 0.6rem;
+      display: inline-block;
+      box-shadow: 0 32px 80px rgba(26,25,22,0.25);
+    }
+    .device-screen {
+      border-radius: 2rem;
+      overflow: hidden;
+      background: #0D0D0C;
+    }
+
+    /* ─── BUTTON ───────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 100px;
+      font-size: 0.85rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 200ms;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--ink); color: var(--bg);
+    }
+    .btn-primary:hover { background: var(--ink-2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--border-strong);
+    }
+    .btn-outline:hover { background: var(--bg-2); }
+
+    /* ─── HIGHLIGHT BOX ───────────────────────────── */
+    .highlight {
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: 1.5rem;
+      padding: clamp(2rem, 4vw, 3.5rem);
+    }
+    .highlight .headline { color: var(--bg); }
+    .highlight .body-lg { color: rgba(245,242,237,0.75); }
+    .highlight .label { color: rgba(245,242,237,0.4); }
+
+    /* ─── PROBLEM VISUAL ──────────────────────────── */
+    .problem-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+    @media (max-width: 700px) { .problem-split { grid-template-columns: 1fr; } }
+    .problem-col {
+      padding: 2.5rem;
+    }
+    .problem-col:first-child {
+      border-right: 1px solid var(--border);
+    }
+    @media (max-width: 700px) {
+      .problem-col:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+    .problem-col ul { list-style: none; }
+    .problem-col li {
+      display: flex; gap: 0.75rem;
+      padding: 0.6rem 0;
+      font-size: 0.88rem;
+      color: var(--ink-2);
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .problem-col li:last-child { border-bottom: none; }
+    .problem-col li .marker { flex-shrink: 0; margin-top: 0.15rem; }
+
+    /* ─── PAIN POINT ──────────────────────────────── */
+    .pain-item {
+      padding: 1.75rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: all 250ms;
+    }
+    .pain-item:hover { border-color: var(--border-strong); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(26,25,22,0.07); }
+    .pain-item .pain-num { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--ink-3); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .pain-item h4 { font-size: 0.95rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.35; }
+    .pain-item p { font-size: 0.82rem; color: var(--ink-3); line-height: 1.6; }
+
+    /* ─── ITERATION ───────────────────────────────── */
+    .iteration-item {
+      display: grid; grid-template-columns: 1fr 2rem 1fr;
+      gap: 1rem; align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 600px) {
+      .iteration-item { grid-template-columns: 1fr; }
+      .iteration-arrow { display: none; }
+    }
+    .iteration-before, .iteration-after {
+      padding: 1.25rem;
+      border-radius: 0.875rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .iteration-before { background: var(--red-dim); border: 1px solid rgba(224,92,69,0.15); color: var(--ink-2); }
+    .iteration-after { background: var(--green-dim); border: 1px solid var(--green-mid); color: var(--ink-2); }
+    .iteration-arrow { text-align: center; color: var(--ink-4); font-size: 1.1rem; }
+    .iteration-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .iteration-label.b { color: #A03525; }
+    .iteration-label.a { color: #0A7A4A; }
+
+    /* ─── FINAL SCREENS ───────────────────────────── */
+    .screens-showcase {
+      background: var(--ink);
+      border-radius: 2rem;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .screens-showcase::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(29,184,122,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(232,130,12,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* ─── REFLECTION ──────────────────────────────── */
+    .learning-item {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .learning-item:first-child { border-top: 1px solid var(--border); }
+    .learning-num { font-family: 'Geist Mono', monospace; font-size: 0.62rem; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+    .learning-item h3 { font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.35; }
+    .learning-item p { font-size: 0.9rem; color: var(--ink-3); line-height: 1.7; max-width: 600px; }
+
+    /* ─── ANIMATIONS ──────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.25s; }
+    .d3 { animation-delay: 0.4s; }
+    .d4 { animation-delay: 0.55s; }
+    .d5 { animation-delay: 0.7s; }
+
+    /* ─── MOCKUP SCREENS ──────────────────────────── */
+    .phone-mockup {
+      background: #1C1C1E;
+      border-radius: 2.5rem;
+      padding: 0.5rem;
+      box-shadow: 0 40px 100px rgba(26,25,22,0.3);
+      display: inline-block;
+    }
+    .phone-screen {
+      background: #000;
+      border-radius: 2.1rem;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    /* ─── FEATURE ROW ─────────────────────────────── */
+    .feature-table { width: 100%; }
+    .feature-row {
+      display: grid; grid-template-columns: 2fr 3fr 1fr;
+      gap: 1rem; align-items: center;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-row:first-child { border-top: 1px solid var(--border); }
+    @media (max-width: 700px) { .feature-row { grid-template-columns: 1fr; } }
+    .feature-name { font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+    .feature-desc { font-size: 0.82rem; color: var(--ink-3); line-height: 1.5; }
+
+    /* ─── FOOTER ──────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--ink-3); font-family: 'Geist Mono', monospace; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--ink-3); text-decoration: none; font-family: 'Geist Mono', monospace; transition: color 200ms; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ─── SEPARATOR ────────────────────────────────── */
+    .sep { height: 1px; background: var(--border); }
+
+    /* ─── DETAIL LINK ──────────────────────────────── */
+    .detail-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-family: 'Geist Mono', monospace;
+      color: var(--ink-3); text-decoration: none; letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.1rem;
+      transition: color 200ms, border-color 200ms;
+    }
+    .detail-link:hover { color: var(--ink); border-color: var(--border-strong); }
+  </style>
 </head>
 <body>
-    <nav id="navigation" class="nav scrolled">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">← Kanishka Saxena</a>
-        </div>
-    </nav>
 
-    <section class="hero" style="min-height: auto; padding-top: 10rem; padding-bottom: 4rem;">
-        <div class="hero-bg">
-            <div class="orb" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(200, 89, 58, 0.15) 0%, transparent 70%); top: -10%; left: 20%; filter: blur(100px); opacity: 0.6; animation: float-slow 10s ease-in-out 1.3s infinite;"></div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-back">← Kanishka Saxena</a>
+  <span class="nav-tag">Product Redesign</span>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="container" style="position:relative;z-index:1;">
+
+    <div class="hero-eyebrow fade-up d1">
+      <div class="dot"></div>
+      <span class="label">Case Study · 2025</span>
+    </div>
+
+    <div class="hero-title-row">
+      <h1 class="display fade-up d2">Splitwise<br><em>Redesign</em></h1>
+      <dl class="hero-meta fade-up d3">
+        <div>
+          <dt>Role</dt>
+          <dd>UX Research<br>Product Design<br>Interaction Design</dd>
         </div>
-        <div class="hero-content" style="max-width: 1152px;">
-            <div style="width: 100%;">
-                <div class="hero-tag fade-in-up delay-1" style="opacity: 1;">
-                    <div class="divider" style="background: rgba(200, 89, 58, 0.3);"></div>
-                    <span style="color: #E8A87C; font-weight: 500;">Case Study</span>
+        <div>
+          <dt>Scope</dt>
+          <dd>Mobile · Desktop<br>Tablet</dd>
+        </div>
+        <div>
+          <dt>Focus</dt>
+          <dd>Dashboard<br>Settlements<br>Guest Mode</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-divider fade-up d4"></div>
+
+    <div class="hero-summary fade-up d5">
+      <div>
+        <p class="label" style="margin-bottom:1rem;">The Question</p>
+        <p class="subhead serif">Why do people keep using WhatsApp to settle what Splitwise already tracks?</p>
+      </div>
+      <div>
+        <p class="body-lg">Splitwise has the data. It knows who owes what. But users still screenshot the app, paste it into a chat, and pay separately — because the app never closes the loop. This redesign explores what happens when you fix that.</p>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <span class="pill pill-green">Settlement Integration</span>
+          <span class="pill pill-neutral">Guest Mode</span>
+          <span class="pill pill-neutral">Smart Dashboard</span>
+          <span class="pill pill-orange">Behavioral Design</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROBLEM ─────────────────────────────────────────────── -->
+<section style="padding-top:0;">
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">01</span>
+      <div class="line"></div>
+      <span class="tag">Problem</span>
+    </div>
+
+    <div style="max-width:860px;margin-bottom:3.5rem;">
+      <h2 class="headline serif" style="margin-bottom:1.75rem;">
+        The app optimizes tracking.<br>Users need <em>closure</em>.
+      </h2>
+      <p class="body-lg">Users aren't frustrated because Splitwise is hard to use. They're frustrated because the moment they need it most — settling up — it falls apart. The gap isn't UX. It's product.</p>
+    </div>
+
+    <div class="problem-split" style="margin-bottom:3rem;">
+      <div class="problem-col">
+        <p class="label" style="margin-bottom:1.25rem;">What Splitwise does well</p>
+        <ul>
+          <li><span class="marker" style="color:var(--green);">✓</span> Tracks group expenses</li>
+          <li><span class="marker" style="color:var(--green);">✓</span> Calculates debt simplification</li>
+          <li><span class="marker" style="color:var(--green);">✓</span> Shows who owes whom</li>
+          <li><span class="marker" style="color:var(--green);">✓</span> Manages multiple groups</li>
+        </ul>
+      </div>
+      <div class="problem-col">
+        <p class="label" style="margin-bottom:1.25rem;">Where users hit walls</p>
+        <ul>
+          <li><span class="marker" style="color:var(--red);">✗</span> "Settle Up" sends you out of the app</li>
+          <li><span class="marker" style="color:var(--red);">✗</span> Non-users can't participate at all</li>
+          <li><span class="marker" style="color:var(--red);">✗</span> Groups buried alphabetically, not by recency</li>
+          <li><span class="marker" style="color:var(--red);">✗</span> Free plan limits block basic daily use</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Root cause -->
+    <div class="highlight" style="margin-bottom:3rem;">
+      <p class="label" style="color:rgba(245,242,237,0.4);margin-bottom:1.25rem;">Root Cause</p>
+      <h3 class="subhead serif" style="color:var(--bg);margin-bottom:1rem;">Splitwise overemphasizes expense logging while neglecting settlement clarity, inclusive participation, and navigation that matches how people actually use groups.</h3>
+      <p style="font-size:0.88rem;color:rgba(245,242,237,0.6);line-height:1.7;">The 5 Whys analysis traced every major user pain point back to one decision: the product was designed for tracking, not for resolution.</p>
+    </div>
+
+    <!-- Real user quotes -->
+    <div class="grid-2" style="margin-bottom:2rem;">
+      <div class="pull-quote">
+        <blockquote>"Splitwise should make my life easier, not harder. I need it to manage all my group expenses in one place without pushing me to pay for basics."</blockquote>
+        <cite>— Pragya, 28, Marketing Associate · Survey Participant</cite>
+      </div>
+      <div class="pull-quote">
+        <blockquote>"I just want the app to handle the math, include friends who don't use it, and give me a dashboard I can trust without having to pay for every little thing."</blockquote>
+        <cite>— Vasu, 27, Engineer · 1:1 Interview</cite>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── INSIGHTS ─────────────────────────────────────────────── -->
+<section style="background:var(--bg-2);">
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">02</span>
+      <div class="line"></div>
+      <span class="tag">Research · Insights</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;margin-bottom:4rem;">
+      <div>
+        <h2 class="headline serif">What<br>30+ users<br>revealed</h2>
+      </div>
+      <div>
+        <p class="body-lg" style="margin-bottom:2rem;">A Google Form survey, questionnaire follow-ups, contextual inquiry, and 1:1 interviews with students and young professionals surfaced a consistent pattern: the friction isn't about features — it's about flow.</p>
+        <a href="https://drive.google.com/file/d/168AGsazA5uv6NIUGUocLyCpI6AUUnDSQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="detail-link">
+          View full research documentation ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid-4" style="margin-bottom:4rem;">
+      <div class="card">
+        <div class="stat-num">8+</div>
+        <p class="label" style="margin-top:0.5rem;margin-bottom:0.25rem;">Complained about</p>
+        <p class="body-sm">Non-user inclusion — forced manual tracking for anyone not on the app</p>
+      </div>
+      <div class="card">
+        <div class="stat-num">7+</div>
+        <p class="label" style="margin-top:0.5rem;margin-bottom:0.25rem;">Hit by</p>
+        <p class="body-sm">Daily entry limits on the free plan during normal group activity</p>
+      </div>
+      <div class="card">
+        <div class="stat-num">6+</div>
+        <p class="label" style="margin-top:0.5rem;margin-bottom:0.25rem;">Requested</p>
+        <p class="body-sm">Direct UPI/PayPal integration so "Settle Up" actually settles</p>
+      </div>
+      <div class="card">
+        <div class="stat-num">5+</div>
+        <p class="label" style="margin-top:0.5rem;margin-bottom:0.25rem;">Flagged</p>
+        <p class="body-sm">Opaque paywalls that appear mid-task with no warning or flexibility</p>
+      </div>
+    </div>
+
+    <!-- Insight list -->
+    <div style="max-width:860px;">
+      <p class="label" style="margin-bottom:0.5rem;">Key Behavioral Patterns</p>
+      <div class="insight-row">
+        <span class="insight-num">01</span>
+        <div class="insight-content">
+          <h4>Settlement is the most painful moment — and it's broken</h4>
+          <p>Users feel settlement is incomplete because money still moves outside the app. They want a seamless pay-and-close loop, not a redirect to another app.</p>
+        </div>
+      </div>
+      <div class="insight-row">
+        <span class="insight-num">02</span>
+        <div class="insight-content">
+          <h4>Non-users are a dealbreaker, not an edge case</h4>
+          <p>Most friend groups include at least one person without the app — a landlord, a parent, a new acquaintance. Forcing app registration kills the whole group's workflow.</p>
+        </div>
+      </div>
+      <div class="insight-row">
+        <span class="insight-num">03</span>
+        <div class="insight-content">
+          <h4>Group discovery is backwards</h4>
+          <p>Groups sorted A–Z means the most active trip or flatmate group is buried. Users scan top-to-bottom, not alphabetically — the nav fights their mental model.</p>
+        </div>
+      </div>
+      <div class="insight-row">
+        <span class="insight-num">04</span>
+        <div class="insight-content">
+          <h4>The free plan erodes trust, not just utility</h4>
+          <p>A 3-entry daily cap doesn't just inconvenience — it signals "we don't trust you." Users compare to fully-free competitors and feel cheated, not upsold.</p>
+        </div>
+      </div>
+      <div class="insight-row">
+        <span class="insight-num">05</span>
+        <div class="insight-content">
+          <h4>Users want insight, not just numbers</h4>
+          <p>84% of surveyed users wanted visual dashboards and analytics. They're not asking for spreadsheets — they want to understand their patterns at a glance.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PRODUCT DIRECTION ──────────────────────────────────── -->
+<section>
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">03</span>
+      <div class="line"></div>
+      <span class="tag">Product Direction</span>
+    </div>
+
+    <div style="max-width:860px;margin-bottom:3.5rem;">
+      <h2 class="headline serif" style="margin-bottom:1.75rem;">What this redesign intentionally avoided</h2>
+      <p class="body-lg">The competitive landscape is full of apps that added features without fixing the core. Tricount is free but rough. YNAB is thorough but not social. The opportunity isn't to build more — it's to close the loop Splitwise already opened.</p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:4rem;">
+      <div class="card card-red">
+        <p class="label" style="color:#A03525;margin-bottom:1rem;">Avoided</p>
+        <h3 class="subhead" style="font-size:1.1rem;margin-bottom:0.75rem;">More tracking features</h3>
+        <p class="body-sm">Splitwise already tracks well. Adding receipt scanning or budget categories wasn't the gap — completing the settlement flow was.</p>
+      </div>
+      <div class="card card-red">
+        <p class="label" style="color:#A03525;margin-bottom:1rem;">Avoided</p>
+        <h3 class="subhead" style="font-size:1.1rem;margin-bottom:0.75rem;">Gamification overlays</h3>
+        <p class="body-sm">Streaks and rewards improve engagement metrics but not trust. Financial tools need reliability, not cheerleading.</p>
+      </div>
+      <div class="card card-red">
+        <p class="label" style="color:#A03525;margin-bottom:1rem;">Avoided</p>
+        <h3 class="subhead" style="font-size:1.1rem;margin-bottom:0.75rem;">Aggressive upselling</h3>
+        <p class="body-sm">Mid-task paywalls are the single biggest trust destroyer. The redesign moves Pro features to genuine power-user territory, not basic function walls.</p>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <div class="card card-green">
+        <p class="label" style="color:#0A7A4A;margin-bottom:1rem;">Focused On</p>
+        <h3 class="subhead" style="font-size:1.1rem;margin-bottom:0.75rem;">One-tap UPI settlement</h3>
+        <p class="body-sm">Pay directly from the app. Auto-log the transaction. Mark as settled. No app-switching, no manual notes.</p>
+      </div>
+      <div class="card card-green">
+        <p class="label" style="color:#0A7A4A;margin-bottom:1rem;">Focused On</p>
+        <h3 class="subhead" style="font-size:1.1rem;margin-bottom:0.75rem;">Guest & placeholder mode</h3>
+        <p class="body-sm">Non-users get a link via SMS or WhatsApp. They see their share, pay via UPI, and the transaction syncs back — no account required.</p>
+      </div>
+      <div class="card card-green">
+        <p class="label" style="color:#0A7A4A;margin-bottom:1rem;">Focused On</p>
+        <h3 class="subhead" style="font-size:1.1rem;margin-bottom:0.75rem;">Activity-first navigation</h3>
+        <p class="body-sm">Groups sorted by recency and activity, not alphabet. Pin the ones that matter. Surface pending balances instantly on open.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CORE FLOWS ──────────────────────────────────────────── -->
+<section style="background:var(--bg-2);">
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">04</span>
+      <div class="line"></div>
+      <span class="tag">Core Flows</span>
+    </div>
+
+    <div style="margin-bottom:4rem;">
+      <h2 class="headline serif" style="margin-bottom:1rem;">Three flows that fix the product</h2>
+      <p class="body-lg" style="max-width:680px;">Each flow was designed around a specific breakdown moment — the situations where users either abandoned the app or worked around it entirely.</p>
+    </div>
+
+    <!-- Flow 1 -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap;">
+        <div>
+          <p class="label" style="margin-bottom:0.5rem;">Flow 01 · Smart Dashboard</p>
+          <h3 style="font-size:1.15rem;font-weight:500;color:var(--ink);">Open the app. Know everything. Act in one tap.</h3>
+        </div>
+        <span class="pill pill-neutral">Primary Flow</span>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">01</div>
+          <div class="flow-step-name">Open App</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">02</div>
+          <div class="flow-step-name">Dashboard Loads</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">03</div>
+          <div class="flow-step-name">Wallet Mood Visible</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">04</div>
+          <div class="flow-step-name">Quick Actions</div>
+        </div>
+        <div class="flow-step" style="background:var(--green-dim);border-radius:0.75rem;border:1px solid var(--green-mid);">
+          <div class="flow-step-num">05</div>
+          <div class="flow-step-name">Add / Pay / View</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 2 -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap;">
+        <div>
+          <p class="label" style="margin-bottom:0.5rem;">Flow 02 · Pay via UPI</p>
+          <h3 style="font-size:1.15rem;font-weight:500;color:var(--ink);">Settle directly. No app-switching. Auto-logged.</h3>
+        </div>
+        <span class="pill pill-green">Critical Fix</span>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">01</div>
+          <div class="flow-step-name">Tap Pay via UPI</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">02</div>
+          <div class="flow-step-name">System fetches owed list</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">03</div>
+          <div class="flow-step-name">Confirm amount + person</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">04</div>
+          <div class="flow-step-name">Choose GPay / PhonePe</div>
+        </div>
+        <div class="flow-step" style="background:var(--green-dim);border-radius:0.75rem;border:1px solid var(--green-mid);">
+          <div class="flow-step-num">05</div>
+          <div class="flow-step-name">Auto-synced · Settled</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow 3 -->
+    <div class="card">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap;">
+        <div>
+          <p class="label" style="margin-bottom:0.5rem;">Flow 03 · Guest Mode</p>
+          <h3 style="font-size:1.15rem;font-weight:500;color:var(--ink);">Friend without the app? They still get a link, see their share, and pay.</h3>
+        </div>
+        <span class="pill pill-orange">Inclusion Flow</span>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">01</div>
+          <div class="flow-step-name">SMS / WhatsApp link</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">02</div>
+          <div class="flow-step-name">Browser → Guest Mode</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">03</div>
+          <div class="flow-step-name">See share breakdown</div>
+        </div>
+        <div class="flow-step" style="background:var(--bg-2);border-radius:0.75rem;">
+          <div class="flow-step-num">04</div>
+          <div class="flow-step-name">Pay via UPI / BHIM</div>
+        </div>
+        <div class="flow-step" style="background:var(--green-dim);border-radius:0.75rem;border:1px solid var(--green-mid);">
+          <div class="flow-step-num">05</div>
+          <div class="flow-step-name">Synced · No app needed</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── USABILITY + ITERATION ─────────────────────────────────── -->
+<section>
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">05</span>
+      <div class="line"></div>
+      <span class="tag">Usability Testing · Iteration</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;margin-bottom:4rem;">
+      <div>
+        <h2 class="headline serif">What broke in testing</h2>
+      </div>
+      <div>
+        <p class="body-lg">Two rounds of usability evaluation — heuristic review and task-based testing with 3 participants using the Think-Aloud method — surfaced friction before it became permanent. Each observation directly shaped an iteration.</p>
+      </div>
+    </div>
+
+    <!-- Observed issues + fixes -->
+    <div style="margin-bottom:3rem;">
+      <p class="label" style="margin-bottom:2rem;">Observed Friction → Design Response</p>
+
+      <div class="iteration-item">
+        <div class="iteration-before">
+          <div class="iteration-label b">Before</div>
+          Terms like "Commitment", "Limit", and "App Lock" confused users. They didn't know what committing meant in a financial context.
+        </div>
+        <div class="iteration-arrow">→</div>
+        <div class="iteration-after">
+          <div class="iteration-label a">After</div>
+          Renamed to plain-language equivalents: "Spending Goal", "Category Cap", "Focus Mode". Each action includes a one-line description of what it does.
+        </div>
+      </div>
+
+      <div class="iteration-item">
+        <div class="iteration-before">
+          <div class="iteration-label b">Before</div>
+          Users couldn't find the chatbot / AI guidance trigger. It blended into the interface with no clear entry point.
+        </div>
+        <div class="iteration-arrow">→</div>
+        <div class="iteration-after">
+          <div class="iteration-label a">After</div>
+          AI guidance surfaced as a persistent "Quick Actions" card on the dashboard with a distinct visual treatment and clear label.
+        </div>
+      </div>
+
+      <div class="iteration-item">
+        <div class="iteration-before">
+          <div class="iteration-label b">Before</div>
+          Transaction list was dense and hard to scan — users said it "felt like a spreadsheet" and avoided it.
+        </div>
+        <div class="iteration-arrow">→</div>
+        <div class="iteration-after">
+          <div class="iteration-label a">After</div>
+          Grouped by date with category icons, color-coded debt direction (owed/owing), and collapsible sections for older activity.
+        </div>
+      </div>
+
+      <div class="iteration-item">
+        <div class="iteration-before">
+          <div class="iteration-label b">Before</div>
+          Users confused rewards with savings features — the reward system felt unrelated to financial management.
+        </div>
+        <div class="iteration-arrow">→</div>
+        <div class="iteration-after">
+          <div class="iteration-label a">After</div>
+          "Top Splitters" leaderboard repositioned as a social/fun layer, clearly separated from financial data. Optional to show.
+        </div>
+      </div>
+
+      <div class="iteration-item">
+        <div class="iteration-before">
+          <div class="iteration-label b">Before</div>
+          Desktop sidebar was long and cluttered — users had to hunt for their most-used groups among alphabetically sorted lists.
+        </div>
+        <div class="iteration-arrow">→</div>
+        <div class="iteration-after">
+          <div class="iteration-label a">After</div>
+          Sidebar replaced with activity-sorted group list. Pinned groups appear at top. Recent activity timestamp replaces group name as primary visual hierarchy.
+        </div>
+      </div>
+    </div>
+
+    <!-- Heuristic callout -->
+    <div class="card card-cream" style="padding:2rem 2.5rem;display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;">
+      <div style="flex-shrink:0;">
+        <p class="label" style="margin-bottom:0.5rem;">Heuristic Evaluation</p>
+        <div class="stat-num" style="font-size:3rem;">5</div>
+        <p class="body-sm">critical issues</p>
+      </div>
+      <div class="sep" style="width:1px;height:auto;margin:0;background:var(--border);"></div>
+      <div style="flex:1;min-width:200px;">
+        <p class="body-sm" style="margin-bottom:0.5rem;">Most violations were in <strong>Recognition over recall</strong> (unclear icons, unlabeled actions) and <strong>Error prevention</strong> (no undo for destructive actions like marking settled).</p>
+        <p class="body-sm">Each was addressed in the second iteration. The third pass focused purely on visual hierarchy and reading flow.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FINAL SOLUTION ───────────────────────────────────────── -->
+<section style="background:var(--bg-2);">
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">06</span>
+      <div class="line"></div>
+      <span class="tag">Final Solution</span>
+    </div>
+
+    <div style="margin-bottom:3.5rem;">
+      <h2 class="headline serif" style="margin-bottom:1rem;">Two design directions. One product story.</h2>
+      <p class="body-lg" style="max-width:680px;">Two visual concepts were developed — a warm, gamified light mode and a trust-forward dark mode — to validate whether emotional tone affected perceived reliability in financial tools.</p>
+    </div>
+
+    <!-- Concept 1 -->
+    <div class="card" style="margin-bottom:2rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <p class="label">Concept 01 — Light, Social</p>
+        <span class="pill pill-green">Warmer · Higher Engagement</span>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:500;margin-bottom:0.75rem;">What it does</h3>
+          <p class="body-sm" style="margin-bottom:1.25rem;">Leads with "Wallet Mood" — a friendly framing of net balance that reduces the anxiety of seeing a number. Quick Actions strip (Add Friend, Pay via UPI, Analytics) puts the three most common tasks one tap from anywhere. "Your Week in Review" uses behavioral nudges without moralizing.</p>
+          <ul style="list-style:none;">
+            <li class="ba-item after" style="margin-bottom:0.5rem;"><span class="icon">✦</span> Green / white palette reduces financial anxiety</li>
+            <li class="ba-item after" style="margin-bottom:0.5rem;"><span class="icon">✦</span> Spending Trends chart surfaced on home screen</li>
+            <li class="ba-item after"><span class="icon">✦</span> Top Splitters as opt-in social layer</li>
+          </ul>
+        </div>
+        <div>
+          <div style="background:#E8F5F0;border-radius:1.25rem;padding:1.5rem;text-align:center;">
+            <div style="background:#fff;border-radius:1rem;padding:1.5rem;border:1px solid rgba(29,184,122,0.2);max-width:300px;margin:0 auto;">
+              <div style="background:linear-gradient(135deg,#1DB87A,#0A9960);border-radius:0.75rem;padding:1.25rem;color:#fff;margin-bottom:1rem;text-align:left;">
+                <div style="font-size:0.7rem;opacity:0.8;margin-bottom:0.25rem;font-family:'Geist Mono',monospace;letter-spacing:0.06em;">YOUR WALLET MOOD</div>
+                <div style="font-family:'Instrument Serif',serif;font-size:1.75rem;margin-bottom:0.5rem;">₹200.80</div>
+                <div style="display:flex;gap:0.75rem;">
+                  <div style="background:rgba(255,255,255,0.2);border-radius:0.5rem;padding:0.5rem 0.75rem;font-size:0.75rem;">
+                    <div style="opacity:0.8;margin-bottom:0.15rem;">You're owed</div>
+                    <div style="font-weight:500;">₹118.90</div>
+                  </div>
+                  <div style="background:rgba(255,255,255,0.15);border-radius:0.5rem;padding:0.5rem 0.75rem;font-size:0.75rem;">
+                    <div style="opacity:0.8;margin-bottom:0.15rem;">You owe</div>
+                    <div style="font-weight:500;">₹95.00</div>
+                  </div>
                 </div>
-                <h1 class="hero-title fade-in-up delay-2" style="opacity: 1; font-size: clamp(3rem, 7vw, 6.5rem); margin-bottom: 2rem;">Splitwise</h1>
-                <p class="hero-description fade-in-up delay-3" style="opacity: 1; font-size: 1.25rem; color: rgba(242, 239, 232, 0.85); max-width: 56rem; margin-bottom: 2rem;">
-                    Redesigning group expense management with focus on clarity, trust, and emotional comfort.
-                </p>
-                <p class="hero-description fade-in-up delay-4" style="opacity: 1; max-width: 48rem; margin-bottom: 3rem;">
-                    A product redesign that addresses the social dynamics of shared finances, making it easier to track expenses without awkward conversations.
-                </p>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;">
+                <div style="background:#1DB87A;border-radius:0.625rem;padding:0.75rem 0.5rem;text-align:center;color:#fff;">
+                  <div style="font-size:1.25rem;margin-bottom:0.25rem;">👤</div>
+                  <div style="font-size:0.62rem;font-family:'Geist Mono',monospace;letter-spacing:0.04em;">ADD FRIEND</div>
+                </div>
+                <div style="background:#7B5EA7;border-radius:0.625rem;padding:0.75rem 0.5rem;text-align:center;color:#fff;">
+                  <div style="font-size:1.25rem;margin-bottom:0.25rem;">💸</div>
+                  <div style="font-size:0.62rem;font-family:'Geist Mono',monospace;letter-spacing:0.04em;">PAY VIA UPI</div>
+                </div>
+                <div style="background:#E8820C;border-radius:0.625rem;padding:0.75rem 0.5rem;text-align:center;color:#fff;">
+                  <div style="font-size:1.25rem;margin-bottom:0.25rem;">📊</div>
+                  <div style="font-size:0.62rem;font-family:'Geist Mono',monospace;letter-spacing:0.04em;">ANALYTICS</div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">Overview</h2>
-            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
-                Splitwise helps people track shared expenses, but users reported feeling uncomfortable about money conversations with friends. The redesign focused on making financial transparency feel natural rather than transactional.
-            </p>
+    <!-- Concept 2 -->
+    <div class="card" style="background:var(--ink);border-color:rgba(255,255,255,0.08);margin-bottom:2rem;">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <p class="label" style="color:rgba(245,242,237,0.4);">Concept 02 — Dark, Trust-Forward</p>
+        <span style="display:inline-flex;align-items:center;padding:0.3rem 0.75rem;border-radius:100px;font-size:0.72rem;font-family:'Geist Mono',monospace;background:rgba(29,184,122,0.15);border:1px solid rgba(29,184,122,0.3);color:#1DB87A;">Professional · Data-Dense</span>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:500;margin-bottom:0.75rem;color:rgba(245,242,237,0.9);">What it does differently</h3>
+          <p style="font-size:0.88rem;line-height:1.7;color:rgba(245,242,237,0.55);margin-bottom:1.25rem;">Optimized for the user who checks Splitwise multiple times a day. Higher information density, live activity feed, and a Guest Mode analytics dashboard that shows non-users a compelling reason to upgrade.</p>
+          <ul style="list-style:none;">
+            <li style="display:flex;gap:0.75rem;padding:0.6rem;background:rgba(29,184,122,0.1);border-radius:0.5rem;font-size:0.82rem;color:rgba(245,242,237,0.7);margin-bottom:0.5rem;"><span>✦</span>Balance Trend chart with 4-week history</li>
+            <li style="display:flex;gap:0.75rem;padding:0.6rem;background:rgba(29,184,122,0.1);border-radius:0.5rem;font-size:0.82rem;color:rgba(245,242,237,0.7);margin-bottom:0.5rem;"><span>✦</span>Live Activity feed — real-time sync</li>
+            <li style="display:flex;gap:0.75rem;padding:0.6rem;background:rgba(29,184,122,0.1);border-radius:0.5rem;font-size:0.82rem;color:rgba(245,242,237,0.7);"><span>✦</span>Guest Mode limited dashboard — upgrade path built-in</li>
+          </ul>
         </div>
-    </section>
-
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">Research Insights</h2>
-            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
-                Through user interviews, we discovered that 85% of users delay settling expenses to avoid "looking cheap" even when they're owed money. The interface needed to normalize financial conversations and reduce social friction.
-            </p>
-        </div>
-    </section>
-
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">Design Solutions</h2>
-            <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem;">
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #E8A87C; margin-bottom: 0.75rem;">Contextual Reminders</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">Smart, friendly reminders that feel helpful rather than demanding, reducing the awkwardness of asking for money.</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #E8A87C; margin-bottom: 0.75rem;">Visual Trust Indicators</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">Clear visualization of who paid what and when, building transparency without judgment.</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #E8A87C; margin-bottom: 0.75rem;">Group Dynamics</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">Features that acknowledge different payment behaviors and comfort levels within friend groups.</p>
-                </div>
+        <div>
+          <div style="background:#13131A;border-radius:1.25rem;padding:1.5rem;border:1px solid rgba(255,255,255,0.06);">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;">
+              <div>
+                <div style="font-size:0.6rem;font-family:'Geist Mono',monospace;letter-spacing:0.1em;color:rgba(255,255,255,0.4);margin-bottom:0.35rem;">NET BALANCE</div>
+                <div style="font-family:'Instrument Serif',serif;font-size:2rem;color:#fff;line-height:1;">+₹6,470</div>
+                <div style="font-size:0.72rem;color:#1DB87A;margin-top:0.25rem;">↑ +12.5%</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:0.6rem;font-family:'Geist Mono',monospace;letter-spacing:0.1em;color:rgba(255,255,255,0.4);margin-bottom:0.35rem;">YOU OWE</div>
+                <div style="font-family:'Instrument Serif',serif;font-size:1.5rem;color:#E05C45;">-₹2,450</div>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <footer class="footer section-border">
-        <div class="footer-content">
-            <p class="footer-copy">© 2024 Kanishka Saxena. Designed with intention.</p>
-            <div class="footer-links">
-                <a href="index.html">Back to Home</a>
-                <a href="mailto:Kanishkaasaksena@gmail.com">Email ↗</a>
+            <div style="background:rgba(255,255,255,0.04);border-radius:0.75rem;padding:1rem;">
+              <div style="font-size:0.6rem;font-family:'Geist Mono',monospace;letter-spacing:0.08em;color:rgba(255,255,255,0.3);margin-bottom:0.75rem;">LIVE ACTIVITY · CONNECTED</div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);">You received ₹67.80 from David <span style="color:rgba(255,255,255,0.3);margin-left:0.5rem;">5h ago</span></div>
+              <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);padding:0.5rem 0;">Priya paid ₹890 to group <span style="color:rgba(255,255,255,0.3);margin-left:0.5rem;">1d ago</span></div>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
 
-    <script src="main.js"></script>
+    <!-- Feature summary table -->
+    <div class="card">
+      <p class="label" style="margin-bottom:1.5rem;">Core Features — Both Concepts</p>
+      <div class="feature-table">
+        <div class="feature-row">
+          <div class="feature-name">Smart Dashboard</div>
+          <div class="feature-desc">Unified home screen showing active groups, recent expenses, and pending settlements. Active-first group sort replaces alphabetical.</div>
+          <span class="pill pill-green">Ship</span>
+        </div>
+        <div class="feature-row">
+          <div class="feature-name">Pay via UPI</div>
+          <div class="feature-desc">One-tap settlement integrated with Google Pay, PhonePe, Paytm. Auto-logs transaction and marks as settled in Splitwise.</div>
+          <span class="pill pill-green">Critical</span>
+        </div>
+        <div class="feature-row">
+          <div class="feature-name">Guest Mode</div>
+          <div class="feature-desc">Non-users receive SMS/WhatsApp link, access limited web dashboard, view their share, and pay via UPI without installing the app.</div>
+          <span class="pill pill-green">Critical</span>
+        </div>
+        <div class="feature-row">
+          <div class="feature-name">Analytics Overview</div>
+          <div class="feature-desc">Category breakdown, spending trends, group health score. Basic charts free; advanced export in Pro.</div>
+          <span class="pill pill-neutral">Iteration 2</span>
+        </div>
+        <div class="feature-row">
+          <div class="feature-name">Flexible Monetization</div>
+          <div class="feature-desc">Trip Pass (₹100 / 7 days unlimited), Group Pass, and standard Pro. No mid-task paywalls for basic daily flows.</div>
+          <span class="pill pill-orange">Product</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── REFLECTION ──────────────────────────────────────────── -->
+<section>
+  <div class="container">
+
+    <div class="section-marker">
+      <span class="num">07</span>
+      <div class="line"></div>
+      <span class="tag">Reflection</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;margin-bottom:4rem;">
+      <div>
+        <h2 class="headline serif">What actually shifted</h2>
+      </div>
+      <div>
+        <p class="body-lg">This project started as a dashboard redesign. It ended as a product strategy exercise. The hardest decisions weren't visual — they were about what not to build.</p>
+      </div>
+    </div>
+
+    <div style="max-width:860px;">
+      <div class="learning-item">
+        <p class="learning-num">01 · Product Thinking</p>
+        <h3>The problem was never the UI</h3>
+        <p>Every usability complaint traced back to a product decision: a paywall, a missing integration, an assumption that everyone in a group has the app. Redesigning the interface without addressing these would have been cosmetic.</p>
+      </div>
+      <div class="learning-item">
+        <p class="learning-num">02 · Research Translation</p>
+        <h3>Survey data doesn't design solutions — it points at them</h3>
+        <p>84% of users wanting "visual dashboards" doesn't mean build more charts. It means users feel out of control and want clarity. The design response was simpler navigation and a clear net-balance state — not more data.</p>
+      </div>
+      <div class="learning-item">
+        <p class="learning-num">03 · Iteration Discipline</p>
+        <h3>The best testing insight was about terminology, not layout</h3>
+        <p>Users understood the intent of features but failed on language. "Commitment" meant nothing. "Spending Goal" worked immediately. This shifted how I write interface copy — label the action, not the concept.</p>
+      </div>
+      <div class="learning-item">
+        <p class="learning-num">04 · Future Direction</p>
+        <h3>What I'd test next</h3>
+        <p>Cross-group settlement consolidation (same person in 3 groups → one payment), notification behavior during active trips, and whether the Guest Mode conversion rate justifies the engineering investment. Also: does the dark mode actually build more trust, or is that a hypothesis?</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="margin-top:5rem;padding:3.5rem;background:var(--bg-2);border-radius:1.5rem;border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+      <div>
+        <p class="label" style="margin-bottom:0.75rem;">Want the full documentation?</p>
+        <h3 class="subhead serif" style="font-size:1.4rem;">Affinity maps, user flows, competitive analysis, and all wireframes.</h3>
+      </div>
+      <a href="https://drive.google.com/file/d/168AGsazA5uv6NIUGUocLyCpI6AUUnDSQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        View Full Research ↗
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ──────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-copy">© 2024 Kanishka Saxena</p>
+      <nav class="footer-links">
+        <a href="index.html">← All Projects</a>
+        <a href="https://www.linkedin.com/in/kanishka-saxena-designer/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="mailto:Kanishkaasaksena@gmail.com">Email ↗</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+</script>
+
 </body>
 </html>
+
