@@ -1,104 +1,1419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Designing for Invisible Pain Case Study by Kanishka Saxena">
-    <title>Designing for Invisible Pain | Kanishka Saxena</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pause — Designing for Invisible Pain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAFAF7;
+    --ink: #1A1714;
+    --ink-muted: #3D3830;
+    --ink-faint: #7A756C;
+    --blush: #E8C4BE;
+    --dusty-rose: #C4897E;
+    --mauve: #9B6E6A;
+    --deep-wine: #5C2D2D;
+    --lavender-mist: #D4CCE0;
+    --soft-iris: #A899C0;
+    --accent: #C87B6E;
+    --gold: #C9A96E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(250,250,247,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(26,23,20,0.06);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 300;
+    letter-spacing: 0.15em; color: var(--ink-faint);
+    text-decoration: none; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 12px; font-weight: 300; letter-spacing: 0.08em;
+    color: var(--ink-faint); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 120px 64px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.2em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300; line-height: 1.02;
+    color: var(--ink); margin-bottom: 32px;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--dusty-rose);
+  }
+  .hero-summary {
+    font-size: 15px; font-weight: 300;
+    line-height: 1.75; color: var(--ink-muted);
+    max-width: 420px; margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: flex; gap: 48px;
+  }
+  .hero-meta-item { }
+  .hero-meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: var(--ink-faint); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .hero-meta-value {
+    font-size: 13px; font-weight: 400; color: var(--ink-muted);
+  }
+  .hero-right {
+    background: var(--ink);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-visual-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(200,123,110,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(168,153,192,0.2) 0%, transparent 50%);
+  }
+  .hero-phone-mockup {
+    position: relative; z-index: 2;
+    width: 240px;
+    background: #1E1B18;
+    border-radius: 36px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .phone-screen {
+    background: #F5F0E8;
+    border-radius: 28px;
+    height: 460px;
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-header {
+    background: var(--ink);
+    padding: 20px 18px 16px;
+    color: var(--cream);
+  }
+  .phone-greeting {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em;
+    color: rgba(245,240,232,0.5); margin-bottom: 4px;
+  }
+  .phone-title { font-size: 14px; font-weight: 500; }
+  .phone-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px; color: var(--accent); margin-top: 2px;
+    letter-spacing: 0.05em;
+  }
+  .phone-body { padding: 14px; }
+  .phone-insight {
+    background: rgba(200,123,110,0.1);
+    border: 1px solid rgba(200,123,110,0.2);
+    border-radius: 10px; padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+  .phone-insight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 7px; letter-spacing: 0.1em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 4px;
+  }
+  .phone-insight-text { font-size: 9px; color: var(--ink-muted); line-height: 1.4; }
+  .phone-heatmap-label {
+    font-size: 8px; color: var(--ink-faint);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .phone-heatmap {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 3px; margin-bottom: 12px;
+  }
+  .hm-day {
+    height: 22px; border-radius: 4px;
+  }
+  .hm-low { background: rgba(212,204,224,0.4); }
+  .hm-med { background: rgba(168,153,192,0.6); }
+  .hm-high { background: rgba(200,123,110,0.7); }
+  .hm-today { background: var(--accent); }
+  .phone-sos-btn {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 10px; padding: 10px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 8px;
+  }
+  .phone-sos-text { font-size: 10px; font-weight: 500; }
+  .phone-sos-sub { font-size: 8px; color: rgba(245,240,232,0.5); margin-top: 1px; }
+  .phone-relief-btn {
+    background: rgba(200,123,110,0.15);
+    border: 1px solid rgba(200,123,110,0.3);
+    border-radius: 10px; padding: 10px 14px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .phone-relief-text { font-size: 10px; font-weight: 500; color: var(--accent); }
+
+  .scroll-indicator {
+    position: absolute; bottom: 40px; left: 64px;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: var(--ink-faint); text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 40px; height: 1px; background: var(--ink-faint);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+  @keyframes scroll-pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ── SECTIONS ── */
+  section { padding: 120px 0; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  .container-narrow { max-width: 740px; margin: 0 auto; padding: 0 48px; }
+
+  /* Section labels */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.25em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--accent);
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem-section { background: var(--ink); color: var(--cream); }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .problem-left .section-label { color: var(--blush); }
+  .problem-left .section-label::before { background: var(--blush); }
+  .problem-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 28px; color: var(--cream);
+  }
+  .problem-heading em { font-style: italic; color: var(--blush); }
+  .problem-body {
+    font-size: 15px; font-weight: 300;
+    line-height: 1.8; color: rgba(245,240,232,0.65);
+    margin-bottom: 40px;
+  }
+  .tension-cards { display: flex; flex-direction: column; gap: 12px; }
+  .tension-card {
+    border: 1px solid rgba(245,240,232,0.1);
+    border-radius: 12px; padding: 18px 22px;
+    display: flex; gap: 16px; align-items: flex-start;
+    background: rgba(245,240,232,0.03);
+    transition: background 0.2s;
+  }
+  .tension-card:hover { background: rgba(245,240,232,0.06); }
+  .tension-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--accent);
+    padding-top: 2px; flex-shrink: 0;
+  }
+  .tension-text { font-size: 13px; font-weight: 300; line-height: 1.6; color: rgba(245,240,232,0.7); }
+  .tension-text strong { color: var(--cream); font-weight: 500; }
+
+  .stat-block {
+    border: 1px solid rgba(245,240,232,0.08);
+    border-radius: 16px; padding: 40px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; font-weight: 300;
+    color: var(--blush); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-desc {
+    font-size: 13px; font-weight: 300;
+    color: rgba(245,240,232,0.5); line-height: 1.6;
+    max-width: 200px; margin: 0 auto;
+  }
+  .stat-divider {
+    width: 1px; height: 60px;
+    background: rgba(245,240,232,0.08);
+    margin: 24px auto;
+  }
+
+  /* ── INSIGHTS SECTION ── */
+  .insights-section { background: var(--warm-white); }
+  .insights-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .insights-heading em { font-style: italic; color: var(--dusty-rose); }
+  .insights-sub {
+    font-size: 15px; font-weight: 300;
+    color: var(--ink-faint); margin-bottom: 64px;
+    max-width: 540px;
+  }
+  .insights-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .insight-card {
+    background: var(--cream);
+    padding: 36px 32px;
+    position: relative; overflow: hidden;
+    transition: background 0.25s;
+  }
+  .insight-card:hover { background: #EDE8DF; }
+  .insight-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.3s;
+  }
+  .insight-card:hover::before { transform: scaleX(1); }
+  .insight-index {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: var(--accent);
+    letter-spacing: 0.1em; margin-bottom: 16px;
+  }
+  .insight-title {
+    font-size: 15px; font-weight: 500;
+    color: var(--ink); margin-bottom: 12px;
+    line-height: 1.35;
+  }
+  .insight-body {
+    font-size: 13px; font-weight: 300;
+    color: var(--ink-faint); line-height: 1.7;
+  }
+  .insight-card.dark {
+    background: var(--ink);
+  }
+  .insight-card.dark:hover { background: #2A2522; }
+  .insight-card.dark .insight-title { color: var(--cream); }
+  .insight-card.dark .insight-body { color: rgba(245,240,232,0.5); }
+
+  /* Quote block */
+  .quote-block {
+    margin: 64px 0;
+    padding: 48px 0;
+    border-top: 1px solid rgba(26,23,20,0.08);
+    border-bottom: 1px solid rgba(26,23,20,0.08);
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 300; font-style: italic;
+    line-height: 1.5; color: var(--ink-muted);
+    max-width: 680px;
+  }
+  .quote-source {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: var(--ink-faint); text-transform: uppercase;
+    margin-top: 20px;
+  }
+
+  /* ── DIRECTION SECTION ── */
+  .direction-section { background: #1A1714; color: var(--cream); }
+  .direction-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 64px; color: var(--cream);
+  }
+  .direction-heading em { font-style: italic; color: var(--blush); }
+  .direction-cols {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(245,240,232,0.06);
+  }
+  .direction-col {
+    padding: 48px 40px;
+    background: #1A1714;
+  }
+  .direction-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .direction-col.avoided .direction-col-label { color: rgba(245,240,232,0.3); }
+  .direction-col.chosen .direction-col-label { color: var(--accent); }
+  .direction-items { display: flex; flex-direction: column; gap: 0; }
+  .direction-item {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .direction-item:last-child { border-bottom: none; }
+  .di-mark {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; flex-shrink: 0; padding-top: 1px;
+  }
+  .avoided .di-mark { color: rgba(245,240,232,0.2); }
+  .chosen .di-mark { color: var(--accent); }
+  .di-text { font-size: 14px; font-weight: 300; line-height: 1.5; }
+  .avoided .di-text { color: rgba(245,240,232,0.4); }
+  .chosen .di-text { color: rgba(245,240,232,0.8); }
+  .di-reason {
+    font-size: 11px; color: rgba(245,240,232,0.3);
+    margin-top: 4px; line-height: 1.5;
+  }
+  .chosen .di-reason { color: rgba(245,240,232,0.35); }
+
+  /* ── FLOW SECTION ── */
+  .flow-section { background: var(--warm-white); }
+  .flow-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .flow-heading em { font-style: italic; color: var(--dusty-rose); }
+  .flow-sub {
+    font-size: 15px; font-weight: 300;
+    color: var(--ink-faint); margin-bottom: 64px;
+  }
+
+  .flow-tasks { display: flex; flex-direction: column; gap: 80px; }
+  .flow-task { }
+  .flow-task-header {
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-bottom: 32px;
+  }
+  .flow-task-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--accent);
+    letter-spacing: 0.1em; padding-top: 4px;
+    flex-shrink: 0;
+  }
+  .flow-task-info { }
+  .flow-task-title {
+    font-size: 18px; font-weight: 500;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .flow-task-desc {
+    font-size: 13px; font-weight: 300;
+    color: var(--ink-faint); line-height: 1.6;
+    max-width: 500px;
+  }
+
+  .flow-screens {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .flow-screen-card {
+    background: var(--cream);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(26,23,20,0.06);
+  }
+  .flow-screen-top {
+    background: var(--ink);
+    height: 180px;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .fst-inner {
+    background: #252118;
+    border-radius: 12px;
+    width: 100px; height: 150px;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 10px;
+    position: relative;
+  }
+  .fst-bar { height: 6px; border-radius: 3px; margin-bottom: 6px; }
+  .fst-bar.w80 { width: 80%; background: rgba(200,123,110,0.5); }
+  .fst-bar.w60 { width: 60%; background: rgba(245,240,232,0.15); }
+  .fst-bar.w90 { width: 90%; background: rgba(245,240,232,0.1); }
+  .fst-bar.w40 { width: 40%; background: rgba(168,153,192,0.4); }
+  .fst-dots {
+    display: flex; gap: 4px; margin-bottom: 8px; margin-top: 4px;
+  }
+  .fst-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .fst-dot.active { background: var(--accent); }
+  .fst-dot.inactive { background: rgba(245,240,232,0.15); }
+  .fst-btn {
+    background: var(--accent); border-radius: 6px;
+    height: 18px; width: 80%; margin-top: 8px;
+    position: absolute; bottom: 10px; left: 10px;
+  }
+  .fst-btn.outline {
+    background: transparent;
+    border: 1px solid rgba(200,123,110,0.4);
+    margin-top: 4px; bottom: auto; position: relative;
+    width: 100%;
+  }
+  .flow-screen-bottom { padding: 14px 16px; }
+  .flow-screen-label {
+    font-size: 11px; font-weight: 500; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .flow-screen-note {
+    font-size: 10px; color: var(--ink-faint); line-height: 1.5;
+  }
+
+  /* Dark flow screen */
+  .flow-screen-top.blush {
+    background: linear-gradient(135deg, #3D2020 0%, #2A1A1A 100%);
+  }
+  .flow-screen-top.lavender {
+    background: linear-gradient(135deg, #221E2D 0%, #1A1714 100%);
+  }
+
+  /* ── ITERATION SECTION ── */
+  .iteration-section { background: var(--cream); }
+  .iteration-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300; line-height: 1.15; margin-bottom: 16px;
+  }
+  .iteration-heading em { font-style: italic; color: var(--dusty-rose); }
+  .iteration-sub {
+    font-size: 15px; font-weight: 300;
+    color: var(--ink-faint); margin-bottom: 64px;
+    max-width: 540px;
+  }
+  .iteration-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-bottom: 24px;
+  }
+  .iteration-card {
+    background: var(--warm-white);
+    border-radius: 16px; padding: 32px;
+    border: 1px solid rgba(26,23,20,0.06);
+  }
+  .iteration-card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 14px;
+    display: inline-block; padding: 4px 10px; border-radius: 4px;
+  }
+  .tag-before { background: rgba(26,23,20,0.06); color: var(--ink-faint); }
+  .tag-after { background: rgba(200,123,110,0.1); color: var(--accent); }
+  .iteration-friction {
+    font-size: 13px; font-weight: 300;
+    color: var(--ink-faint); line-height: 1.6; margin-bottom: 16px;
+    font-style: italic;
+  }
+  .iteration-change {
+    font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px;
+  }
+  .iteration-why {
+    font-size: 12px; font-weight: 300;
+    color: var(--ink-faint); line-height: 1.6;
+  }
+
+  /* ── FINAL SECTION ── */
+  .final-section { background: var(--ink); color: var(--cream); }
+  .final-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 300; line-height: 1.1; margin-bottom: 24px;
+    color: var(--cream);
+  }
+  .final-heading em { font-style: italic; color: var(--blush); }
+  .final-sub {
+    font-size: 15px; font-weight: 300;
+    color: rgba(245,240,232,0.5); margin-bottom: 64px;
+    max-width: 500px;
+  }
+  .final-features {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; margin-bottom: 64px;
+    background: rgba(245,240,232,0.04);
+  }
+  .final-feature {
+    background: var(--ink);
+    padding: 32px 24px;
+    border-top: 2px solid rgba(245,240,232,0.06);
+    transition: border-color 0.2s;
+  }
+  .final-feature:hover { border-color: var(--accent); }
+  .ff-icon {
+    font-size: 20px; margin-bottom: 14px;
+  }
+  .ff-name {
+    font-size: 13px; font-weight: 500;
+    color: var(--cream); margin-bottom: 8px; line-height: 1.3;
+  }
+  .ff-desc {
+    font-size: 11px; font-weight: 300;
+    color: rgba(245,240,232,0.4); line-height: 1.6;
+  }
+
+  .final-prototype-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 16px 28px;
+    border: 1px solid rgba(245,240,232,0.2);
+    border-radius: 50px; color: var(--cream);
+    text-decoration: none; font-size: 13px; font-weight: 400;
+    transition: all 0.2s;
+  }
+  .final-prototype-cta:hover {
+    background: rgba(245,240,232,0.06);
+    border-color: rgba(245,240,232,0.4);
+  }
+  .cta-arrow { transition: transform 0.2s; }
+  .final-prototype-cta:hover .cta-arrow { transform: translateX(4px); }
+
+  /* ── REFLECTION SECTION ── */
+  .reflection-section { background: var(--warm-white); }
+  .reflection-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .reflection-left { }
+  .reflection-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 300; line-height: 1.2; margin-bottom: 24px;
+  }
+  .reflection-heading em { font-style: italic; color: var(--dusty-rose); }
+  .reflection-body {
+    font-size: 15px; font-weight: 300;
+    color: var(--ink-muted); line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .reflection-right { display: flex; flex-direction: column; gap: 0; }
+  .reflection-point {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(26,23,20,0.07);
+  }
+  .reflection-point:last-child { border-bottom: none; }
+  .rp-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .rp-text {
+    font-size: 14px; font-weight: 300;
+    color: var(--ink-muted); line-height: 1.65;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 300; font-style: italic;
+    color: var(--cream);
+  }
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.3); text-transform: uppercase;
+  }
+
+  /* ── SURVEY VISUAL ── */
+  .survey-bar-group { margin-bottom: 12px; }
+  .survey-bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; color: rgba(245,240,232,0.5);
+    letter-spacing: 0.08em; margin-bottom: 6px;
+    display: flex; justify-content: space-between;
+  }
+  .survey-bar-track {
+    height: 6px; background: rgba(245,240,232,0.08); border-radius: 3px;
+    overflow: hidden;
+  }
+  .survey-bar-fill {
+    height: 100%; border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--blush));
+  }
+
+  /* Animations */
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fade-up 0.8s ease both;
+  }
+  .hero-tag { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.25s; }
+  .hero-summary { animation-delay: 0.4s; }
+  .hero-meta { animation-delay: 0.55s; }
+  .hero-right { animation: fade-up 1s ease 0.3s both; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 100px 24px 60px; }
+    .hero-right { height: 400px; }
+    .container, .container-narrow { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .problem-grid, .reflection-grid, .direction-cols { grid-template-columns: 1fr; gap: 40px; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .flow-screens { grid-template-columns: 1fr 1fr; }
+    .final-features { grid-template-columns: 1fr 1fr; }
+    .iteration-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
 </head>
 <body>
-    <nav id="navigation" class="nav scrolled">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">← Kanishka Saxena</a>
-        </div>
-    </nav>
 
-    <section class="hero" style="min-height: auto; padding-top: 10rem; padding-bottom: 4rem;">
-        <div class="hero-bg">
-            <div class="orb" style="width: 400px; height: 400px; background: radial-gradient(circle, rgba(122, 92, 122, 0.2) 0%, transparent 70%); top: -10%; right: 15%; filter: blur(100px); opacity: 0.5; animation: float-slow 10s ease-in-out 1.3s infinite;"></div>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Kanishka Saxena — Portfolio</a>
+  <div class="nav-links">
+    <a href="#problem">Problem</a>
+    <a href="#insights">Insights</a>
+    <a href="#flow">Flow</a>
+    <a href="#reflection">Reflection</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">UX / Interaction Design · 2026</div>
+    <h1 class="hero-title">Pause<br><em>Invisible</em><br>Pain</h1>
+    <p class="hero-summary">
+      A discreet, real-time support system for menstruators navigating dysmenorrhea in public spaces — designed from the margins inward, for the 79% who push through alone.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Role</div>
+        <div class="hero-meta-value">Research & UX Design</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Duration</div>
+        <div class="hero-meta-value">2 Months · 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Research</div>
+        <div class="hero-meta-value">78 surveys, 4 interviews</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual-bg"></div>
+    <div class="hero-phone-mockup">
+      <div class="phone-screen">
+        <div class="phone-header">
+          <div class="phone-greeting">CYCLE DAY 18 · 7 DAYS TO PERIOD</div>
+          <div class="phone-title">Good morning, Radhika ✦</div>
+          <div class="phone-subtitle">This cycle may be harder than usual</div>
         </div>
-        <div class="hero-content" style="max-width: 1152px;">
-            <div style="width: 100%;">
-                <div class="hero-tag fade-in-up delay-1" style="opacity: 1;">
-                    <div class="divider" style="background: rgba(122, 92, 122, 0.3);"></div>
-                    <span style="color: #B497B4; font-weight: 500;">Case Study</span>
-                </div>
-                <h1 class="hero-title fade-in-up delay-2" style="opacity: 1; font-size: clamp(2.5rem, 6vw, 5.5rem); margin-bottom: 2rem;">Designing for Invisible Pain</h1>
-                <p class="hero-description fade-in-up delay-3" style="opacity: 1; font-size: 1.25rem; color: rgba(242, 239, 232, 0.85); max-width: 56rem; margin-bottom: 2rem;">
-                    Inclusive systems design for dysmenorrhea support.
-                </p>
-                <p class="hero-description fade-in-up delay-4" style="opacity: 1; max-width: 48rem; margin-bottom: 3rem;">
-                    Reimagining real-time support systems for dysmenorrhea through inclusive, accessibility-first, and emotionally aware design that acknowledges invisible chronic pain.
-                </p>
+        <div class="phone-body">
+          <div class="phone-insight">
+            <div class="phone-insight-label">Pattern Insight</div>
+            <div class="phone-insight-text">Stress + sleep below 6h for 4 days. Your pain tends to peak on day 3.</div>
+          </div>
+          <div class="phone-heatmap-label">Capacity Heatmap — This Cycle</div>
+          <div class="phone-heatmap">
+            <div class="hm-day hm-low"></div><div class="hm-day hm-low"></div><div class="hm-day hm-low"></div>
+            <div class="hm-day hm-med"></div><div class="hm-day hm-med"></div><div class="hm-day hm-med"></div>
+            <div class="hm-day hm-low"></div><div class="hm-day hm-low"></div><div class="hm-day hm-med"></div>
+            <div class="hm-day hm-high"></div><div class="hm-day hm-high"></div><div class="hm-day hm-high"></div>
+            <div class="hm-day hm-med"></div><div class="hm-day hm-today"></div>
+          </div>
+          <div class="phone-sos-btn">
+            <div>
+              <div class="phone-sos-text">🌿 Pain Mode</div>
+              <div class="phone-sos-sub">Guided relief tools</div>
             </div>
-        </div>
-    </section>
-
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">The Challenge</h2>
-            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
-                Dysmenorrhea affects millions but remains stigmatized and poorly supported by existing health systems. Those experiencing chronic menstrual pain often face disbelief, inadequate medical support, and a lack of accessible tools for managing daily life during episodes.
-            </p>
-        </div>
-    </section>
-
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">Inclusive Design Approach</h2>
-            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
-                This project centered on voices typically excluded from health tech design. Through participatory research with individuals experiencing dysmenorrhea, we identified key gaps in existing solutions and designed with accessibility as a foundation, not an afterthought.
-            </p>
-        </div>
-    </section>
-
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">Key Principles</h2>
-            <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem;">
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #B497B4; margin-bottom: 0.75rem;">Validation Over Judgment</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">Design that acknowledges pain as real and valid, countering common dismissal in medical contexts.</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #B497B4; margin-bottom: 0.75rem;">Accessibility First</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">High contrast, voice control, simplified interfaces for use during pain episodes when fine motor control is difficult.</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #B497B4; margin-bottom: 0.75rem;">Privacy & Agency</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">User control over data sharing and the ability to communicate needs without detailed explanations.</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 1.125rem; font-weight: 500; color: #B497B4; margin-bottom: 0.75rem;">Systems Thinking</h3>
-                    <p style="font-size: 0.875rem; line-height: 1.6; color: var(--text-muted);">Integration with workplace, educational, and healthcare systems to reduce burden on individuals.</p>
-                </div>
+            <div style="font-size:11px;color:rgba(245,240,232,0.3)">→</div>
+          </div>
+          <div style="height:8px"></div>
+          <div class="phone-relief-btn">
+            <div>
+              <div class="phone-relief-text">✦ Silent SOS</div>
             </div>
+            <div style="font-size:11px;color:rgba(200,123,110,0.4)">→</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
 
-    <section class="section-border">
-        <div style="max-width: 48rem; margin: 0 auto;">
-            <h2 style="font-family: 'Fraunces', serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 300; margin-bottom: 1.5rem;">Impact</h2>
-            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
-                The inclusive approach resulted in a support system that users described as "finally being understood." Accessibility features designed for pain episodes became valuable for all users in various contexts, demonstrating the universal benefit of inclusive design.
-            </p>
+<!-- PROBLEM -->
+<section class="problem-section" id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-left">
+        <div class="section-label">The Real Tension</div>
+        <h2 class="problem-heading">
+          Not the pain.<br>The <em>silence</em> around it.
+        </h2>
+        <p class="problem-body">
+          Dysmenorrhea affects up to 95% of menstruators globally — and 80% go untreated. Not because solutions don't exist, but because the culture of silence, inaccessible infrastructure, and tracking-first apps leave people to push through alone.
+        </p>
+        <div class="tension-cards">
+          <div class="tension-card">
+            <div class="tension-number">01</div>
+            <div class="tension-text"><strong>Apps track, don't support.</strong> 64% of period apps log symptoms. Only 10% include any pain relief. Data without action.</div>
+          </div>
+          <div class="tension-card">
+            <div class="tension-number">02</div>
+            <div class="tension-text"><strong>54% push through silently.</strong> Social stigma and fear of judgment prevent people from seeking help — even when pain scores 8/10.</div>
+          </div>
+          <div class="tension-card">
+            <div class="tension-number">03</div>
+            <div class="tension-text"><strong>Disability compounds everything.</strong> The wheelchair user said it most clearly: she has never found a single space that meets both needs simultaneously.</div>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="problem-right">
+        <div class="stat-block">
+          <div class="stat-number">79%</div>
+          <div class="stat-desc">of survey respondents (n=78) reported zero institutional support during pain episodes</div>
+          <div class="stat-divider"></div>
+          <div class="stat-number" style="font-size:56px;color:var(--soft-iris)">5.8</div>
+          <div class="stat-desc" style="margin-bottom:16px">average pain score out of 10 — with 44% scoring 7 or above</div>
+          <div class="stat-divider"></div>
 
-    <footer class="footer section-border">
-        <div class="footer-content">
-            <p class="footer-copy">© 2024 Kanishka Saxena. Designed with intention.</p>
-            <div class="footer-links">
-                <a href="index.html">Back to Home</a>
-                <a href="mailto:Kanishkaasaksena@gmail.com">Email ↗</a>
+          <div style="text-align:left;margin-top:8px">
+            <div class="survey-bar-group">
+              <div class="survey-bar-label"><span>Privacy</span><span>55%</span></div>
+              <div class="survey-bar-track"><div class="survey-bar-fill" style="width:55%"></div></div>
             </div>
+            <div class="survey-bar-group">
+              <div class="survey-bar-label"><span>Heat pad</span><span>51%</span></div>
+              <div class="survey-bar-track"><div class="survey-bar-fill" style="width:51%;opacity:0.8"></div></div>
+            </div>
+            <div class="survey-bar-group">
+              <div class="survey-bar-label"><span>Quiet zone</span><span>49%</span></div>
+              <div class="survey-bar-track"><div class="survey-bar-fill" style="width:49%;opacity:0.6"></div></div>
+            </div>
+            <div class="survey-bar-group">
+              <div class="survey-bar-label"><span>Medication access</span><span>44%</span></div>
+              <div class="survey-bar-track"><div class="survey-bar-fill" style="width:44%;opacity:0.4"></div></div>
+            </div>
+          </div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(245,240,232,0.25);margin-top:14px;letter-spacing:0.1em">Top features requested by users</div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="main.js"></script>
+<!-- INSIGHTS -->
+<section class="insights-section" id="insights">
+  <div class="container">
+    <div class="section-label">What research revealed</div>
+    <h2 class="insights-heading">
+      Behavioral insights from<br><em>the margins</em>
+    </h2>
+    <p class="insights-sub">
+      Four interviews, 78 surveys, and one contextual inquiry with a user navigating campus on a wheelchair during her period. These are the patterns that shaped every design decision.
+    </p>
+
+    <div class="insights-grid">
+      <div class="insight-card dark">
+        <div class="insight-index" style="color:var(--blush)">01 — Concealment</div>
+        <div class="insight-title" style="color:var(--cream)">Nobody discloses the real reason</div>
+        <div class="insight-body" style="color:rgba(245,240,232,0.5)">All 4 interviewees hid their pain. Claiming "headache" or "stomach bug" felt safer than saying period. Stigma operates through silence.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-index">02 — Infrastructure</div>
+        <div class="insight-title">Home is the only fallback</div>
+        <div class="insight-body">Every respondent eventually leaves the space. No campus, office, or public environment has ever adequately served them. The exit is the coping mechanism.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-index">03 — Communication</div>
+        <div class="insight-title">Verbal interaction is a barrier</div>
+        <div class="insight-body">For Tanya (deaf & mute), asking for help is impossible. For others, explaining "why" is humiliating. Any support system must work without words.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-index">04 — Policy gap</div>
+        <div class="insight-title">Policy alone doesn't protect</div>
+        <div class="insight-body">Mansi has 11 paid menstrual leave days and medical documentation. She still fears her manager's response. Culture must change alongside design.</div>
+      </div>
+      <div class="insight-card dark">
+        <div class="insight-index" style="color:var(--blush)">05 — Sensory</div>
+        <div class="insight-title" style="color:var(--cream)">Bright lights and noise worsen pain</div>
+        <div class="insight-body" style="color:rgba(245,240,232,0.5)">3 of 4 interviewees cited sensory overload as a pain amplifier. Dim lighting isn't a preference — it's accessibility.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-index">06 — Disability</div>
+        <div class="insight-title">Accessibility + menstrual needs never coexist</div>
+        <div class="insight-body">The wheelchair user had never found a single space that met both needs simultaneously. It's not a gap — it's a complete absence.</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-text">
+        "The problem is not menstrual pain — it is the absence of discreet, real-time, and inclusive support systems in environments that expect uninterrupted productivity."
+      </div>
+      <div class="quote-source">Core insight · Research Synthesis · 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT DIRECTION -->
+<section class="direction-section">
+  <div class="container">
+    <div class="section-label" style="color:var(--blush)">
+      <span style="display:block;width:24px;height:1px;background:var(--blush)"></span>
+      Strategic decisions
+    </div>
+    <h2 class="direction-heading">
+      What was <em>avoided.</em><br>What was chosen.
+    </h2>
+    <div class="direction-cols">
+      <div class="direction-col avoided">
+        <div class="direction-col-label">❌ Avoided</div>
+        <div class="direction-items">
+          <div class="direction-item">
+            <div class="di-mark">×</div>
+            <div>
+              <div class="di-text">Another tracking app</div>
+              <div class="di-reason">64% of apps already track. They don't help during pain.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">×</div>
+            <div>
+              <div class="di-text">Complex onboarding gates</div>
+              <div class="di-reason">When you're in pain, multi-step flows are unusable.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">×</div>
+            <div>
+              <div class="di-text">Requiring verbal/social disclosure</div>
+              <div class="di-reason">Stigma makes this a real barrier. Support must be silent.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">×</div>
+            <div>
+              <div class="di-text">Bright, high-contrast pain-mode UI</div>
+              <div class="di-reason">Sensory design is accessibility. Pain mode dims the interface.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">×</div>
+            <div>
+              <div class="di-text">Able-bodied user assumptions</div>
+              <div class="di-reason">15% of respondents had disabilities. Designing for them benefits all.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="direction-col chosen">
+        <div class="direction-col-label">✓ Chosen</div>
+        <div class="direction-items">
+          <div class="direction-item">
+            <div class="di-mark">✓</div>
+            <div>
+              <div class="di-text">Real-time intervention, not just logging</div>
+              <div class="di-reason">One long-press activates pain mode with breathing, heat guides, kit locator.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">✓</div>
+            <div>
+              <div class="di-text">Silent SOS & privacy masking</div>
+              <div class="di-reason">Send help requests without showing the app. The screen disguises itself.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">✓</div>
+            <div>
+              <div class="di-text">Predictive prep, not reactive panic</div>
+              <div class="di-reason">7-day pre-period routines reduce the severity of pain episodes.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">✓</div>
+            <div>
+              <div class="di-text">Clinical validation built-in</div>
+              <div class="di-reason">Telehealth + GA34 documentation so users can legitimately request leave.</div>
+            </div>
+          </div>
+          <div class="direction-item">
+            <div class="di-mark">✓</div>
+            <div>
+              <div class="di-text">Inclusive by default</div>
+              <div class="di-reason">Screen reader, one-tap actions, caregiver sharing, high-contrast mode.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-section" id="flow">
+  <div class="container">
+    <div class="section-label">Core flows</div>
+    <h2 class="flow-heading">Five moments that <em>matter</em></h2>
+    <p class="flow-sub">Designed around real user behavior, not idealized journeys.</p>
+
+    <div class="flow-tasks">
+
+      <!-- Task 1 -->
+      <div class="flow-task">
+        <div class="flow-task-header">
+          <div class="flow-task-num">Task 01</div>
+          <div class="flow-task-info">
+            <div class="flow-task-title">Pain Mode — Respond in crisis</div>
+            <div class="flow-task-desc">Long-press the relief button. One action. No navigation. The most critical flow in the system — designed for someone at 8/10 pain who cannot think clearly.</div>
+          </div>
+        </div>
+        <div class="flow-screens">
+          <div class="flow-screen-card">
+            <div class="flow-screen-top">
+              <div class="fst-inner">
+                <div class="fst-dots"><div class="fst-dot active"></div><div class="fst-dot inactive"></div><div class="fst-dot inactive"></div><div class="fst-dot inactive"></div></div>
+                <div class="fst-bar w80"></div>
+                <div class="fst-bar w60"></div>
+                <div class="fst-bar w90"></div>
+                <div style="height:10px"></div>
+                <div style="background:var(--accent);border-radius:20px;height:28px;width:90%;display:flex;align-items:center;justify-content:center;">
+                  <div style="font-size:8px;color:var(--cream);font-weight:500">HOLD TO ACTIVATE</div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Home — Haptic trigger</div>
+              <div class="flow-screen-note">Long-press activates. No navigation needed.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top blush">
+              <div class="fst-inner" style="background:#3D1A1A">
+                <div style="font-size:7px;color:var(--blush);font-family:'DM Mono';letter-spacing:0.1em;margin-bottom:8px">PAIN MODE ACTIVE</div>
+                <div class="fst-bar w80"></div>
+                <div style="height:6px"></div>
+                <div class="fst-bar w60" style="background:rgba(228,196,190,0.3)"></div>
+                <div class="fst-bar w40" style="background:rgba(228,196,190,0.2)"></div>
+                <div class="fst-bar w80" style="background:rgba(228,196,190,0.15)"></div>
+                <div class="fst-btn" style="background:var(--blush);"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Pain Mode — Relief options</div>
+              <div class="flow-screen-note">Heat therapy, breathing, audio, kit locator.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top blush">
+              <div class="fst-inner" style="background:#3D1A1A">
+                <div style="font-size:7px;color:rgba(245,240,232,0.5);font-family:'DM Mono';letter-spacing:0.1em;margin-bottom:6px">NEARBY · 3 FOUND</div>
+                <div style="background:rgba(200,123,110,0.15);border-radius:6px;padding:6px;margin-bottom:4px">
+                  <div style="font-size:8px;color:var(--cream);font-weight:500">Engineering Block</div>
+                  <div style="font-size:7px;color:rgba(245,240,232,0.4)">Ground Floor · 50m</div>
+                </div>
+                <div style="background:rgba(245,240,232,0.04);border-radius:6px;padding:6px;margin-bottom:4px">
+                  <div style="font-size:8px;color:var(--cream)">Library · 2nd Floor</div>
+                  <div style="font-size:7px;color:rgba(245,240,232,0.4)">5 items in stock</div>
+                </div>
+                <div class="fst-btn"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Pause Kit locator</div>
+              <div class="flow-screen-note">Maps nearby stocked washrooms & vending.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top blush">
+              <div class="fst-inner" style="background:#3D1A1A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+                <div style="width:32px;height:32px;border-radius:50%;background:rgba(200,123,110,0.2);border:1px solid rgba(200,123,110,0.4);display:flex;align-items:center;justify-content:center;font-size:14px">✓</div>
+                <div style="font-size:8px;color:var(--cream);font-weight:500;text-align:center">Payment Successful</div>
+                <div style="font-size:7px;color:rgba(245,240,232,0.4);text-align:center">Your QR is ready</div>
+                <div style="background:rgba(245,240,232,0.08);border-radius:4px;width:40px;height:40px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;padding:4px">
+                  <div style="background:var(--cream);border-radius:1px"></div><div style="background:transparent"></div><div style="background:var(--cream);border-radius:1px"></div><div style="background:var(--cream);border-radius:1px"></div><div style="background:transparent"></div>
+                  <div style="background:transparent"></div><div style="background:var(--cream);border-radius:1px"></div><div style="background:transparent"></div><div style="background:transparent"></div><div style="background:var(--cream);border-radius:1px"></div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">QR collection code</div>
+              <div class="flow-screen-note">Scan at the Pause Kit terminal to collect.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="flow-task">
+        <div class="flow-task-header">
+          <div class="flow-task-num">Task 02</div>
+          <div class="flow-task-info">
+            <div class="flow-task-title">7-Day Prep Routine — Anticipate the cycle</div>
+            <div class="flow-task-desc">Pattern-based preparation 7 days before predicted pain peak. Shifts the experience from reactive panic to proactive care.</div>
+          </div>
+        </div>
+        <div class="flow-screens">
+          <div class="flow-screen-card">
+            <div class="flow-screen-top lavender">
+              <div class="fst-inner" style="background:#1E1B2A">
+                <div style="font-size:7px;color:var(--soft-iris);font-family:'DM Mono';letter-spacing:0.1em;margin-bottom:8px">PATTERN IDENTIFIED</div>
+                <div class="fst-bar w90" style="background:rgba(168,153,192,0.4)"></div>
+                <div class="fst-bar w70" style="background:rgba(168,153,192,0.25);width:70%"></div>
+                <div class="fst-bar w50" style="background:rgba(168,153,192,0.15);width:50%"></div>
+                <div style="height:8px"></div>
+                <div class="fst-btn" style="background:var(--soft-iris)"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Insight card — Home</div>
+              <div class="flow-screen-note">AI detects pattern from past cycles.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top lavender">
+              <div class="fst-inner" style="background:#1E1B2A">
+                <div style="font-size:7px;color:rgba(245,240,232,0.4);font-family:'DM Mono';margin-bottom:6px">MAR 28 — APR 3 · 7 DAYS</div>
+                <div style="background:rgba(168,153,192,0.1);border-radius:5px;padding:6px;margin-bottom:4px">
+                  <div style="font-size:8px;color:var(--cream)">Increase water intake</div>
+                  <div style="font-size:7px;color:rgba(245,240,232,0.4)">8 glasses daily · high priority</div>
+                </div>
+                <div style="background:rgba(168,153,192,0.06);border-radius:5px;padding:6px;margin-bottom:4px">
+                  <div style="font-size:8px;color:var(--cream)">Reduce caffeine</div>
+                  <div style="font-size:7px;color:rgba(245,240,232,0.4)">1 cup max daily</div>
+                </div>
+                <div class="fst-btn" style="background:var(--soft-iris)"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Customize your plan</div>
+              <div class="flow-screen-note">Personalized prep based on logged patterns.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top lavender">
+              <div class="fst-inner" style="background:#1E1B2A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+                <div style="width:28px;height:28px;border-radius:50%;background:rgba(168,153,192,0.2);border:1px solid rgba(168,153,192,0.4);display:flex;align-items:center;justify-content:center;font-size:12px">✓</div>
+                <div style="font-size:8px;color:var(--cream);font-weight:500">You're set.</div>
+                <div style="font-size:7px;color:rgba(245,240,232,0.4);text-align:center;line-height:1.4">Smart reminders active. Plan adapts to how you feel each day.</div>
+                <div class="fst-btn" style="background:var(--ink);border:1px solid rgba(245,240,232,0.2)"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Plan confirmed</div>
+              <div class="flow-screen-note">Adaptive reminders set for the week.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top lavender">
+              <div class="fst-inner" style="background:#1E1B2A">
+                <div style="font-size:7px;color:rgba(245,240,232,0.4);font-family:'DM Mono';margin-bottom:6px">7-DAY ROUTINE</div>
+                <div style="display:flex;gap:3px;margin-bottom:8px">
+                  <div style="flex:1;height:30px;border-radius:4px;background:rgba(168,153,192,0.5);display:flex;align-items:flex-end;padding-bottom:3px;justify-content:center;font-size:6px;color:rgba(245,240,232,0.6)">1</div>
+                  <div style="flex:1;height:26px;border-radius:4px;background:rgba(168,153,192,0.4);display:flex;align-items:flex-end;padding-bottom:3px;justify-content:center;font-size:6px;color:rgba(245,240,232,0.6)">2</div>
+                  <div style="flex:1;height:34px;border-radius:4px;background:rgba(168,153,192,0.3);display:flex;align-items:flex-end;padding-bottom:3px;justify-content:center;font-size:6px;color:rgba(245,240,232,0.6)">3</div>
+                  <div style="flex:1;height:22px;border-radius:4px;background:rgba(168,153,192,0.3)"></div>
+                  <div style="flex:1;height:28px;border-radius:4px;background:rgba(168,153,192,0.2)"></div>
+                  <div style="flex:1;height:20px;border-radius:4px;background:rgba(168,153,192,0.15)"></div>
+                  <div style="flex:1;height:16px;border-radius:4px;background:rgba(168,153,192,0.1)"></div>
+                </div>
+                <div class="fst-bar w70" style="background:rgba(168,153,192,0.2);width:70%"></div>
+                <div class="fst-bar w50" style="background:rgba(168,153,192,0.15);width:50%"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Daily task view</div>
+              <div class="flow-screen-note">Micro-actions across 7 days.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task 3 -->
+      <div class="flow-task">
+        <div class="flow-task-header">
+          <div class="flow-task-num">Task 03</div>
+          <div class="flow-task-info">
+            <div class="flow-task-title">Silent SOS — Ask for help without speaking</div>
+            <div class="flow-task-desc">For Tanya who is deaf and mute. For anyone who can't explain "why." A pre-written, context-aware message to a trusted contact — sent silently, behind a privacy mask.</div>
+          </div>
+        </div>
+        <div class="flow-screens">
+          <div class="flow-screen-card">
+            <div class="flow-screen-top">
+              <div class="fst-inner">
+                <div style="font-size:8px;color:var(--cream);margin-bottom:8px;font-weight:500">Who to contact?</div>
+                <div style="background:rgba(245,240,232,0.06);border-radius:5px;padding:5px 8px;margin-bottom:4px;display:flex;align-items:center;gap:6px">
+                  <div style="width:14px;height:14px;border-radius:50%;background:rgba(200,123,110,0.3)"></div>
+                  <div style="font-size:8px;color:var(--cream)">Mom</div>
+                  <div style="font-size:7px;color:rgba(245,240,232,0.3);margin-left:auto">Caregiver</div>
+                </div>
+                <div style="background:rgba(245,240,232,0.04);border-radius:5px;padding:5px 8px;margin-bottom:4px;display:flex;align-items:center;gap:6px">
+                  <div style="width:14px;height:14px;border-radius:50%;background:rgba(168,153,192,0.3)"></div>
+                  <div style="font-size:8px;color:rgba(245,240,232,0.6)">Manager</div>
+                </div>
+                <div style="background:rgba(245,240,232,0.04);border-radius:5px;padding:5px 8px;display:flex;align-items:center;gap:6px">
+                  <div style="width:14px;height:14px;border-radius:50%;background:rgba(245,240,232,0.1)"></div>
+                  <div style="font-size:8px;color:rgba(245,240,232,0.6)">Emma</div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Select contact</div>
+              <div class="flow-screen-note">Pre-configured support circle.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top">
+              <div class="fst-inner">
+                <div style="font-size:7px;color:rgba(245,240,232,0.5);font-family:'DM Mono';margin-bottom:6px">AI DRAFTED MSG</div>
+                <div style="background:rgba(245,240,232,0.06);border-radius:5px;padding:6px;margin-bottom:6px">
+                  <div style="font-size:7.5px;color:rgba(245,240,232,0.7);line-height:1.4">"Hi, I'm experiencing health-related discomfort today and may need to take it easy. Will keep you updated."</div>
+                </div>
+                <div style="display:flex;gap:4px;margin-bottom:6px">
+                  <div style="background:rgba(200,123,110,0.15);border-radius:4px;padding:4px 6px;font-size:7px;color:var(--accent)">📎 Medical report</div>
+                </div>
+                <div class="fst-btn"></div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Message preview</div>
+              <div class="flow-screen-note">Editable, stigma-neutral, dignified.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top">
+              <div class="fst-inner">
+                <div style="font-size:8px;color:var(--cream);margin-bottom:8px;font-weight:500">Send via</div>
+                <div style="background:rgba(37,200,102,0.1);border-radius:5px;padding:5px 8px;margin-bottom:4px">
+                  <div style="font-size:8px;color:rgba(245,240,232,0.8)">WhatsApp</div>
+                </div>
+                <div style="background:rgba(245,240,232,0.04);border-radius:5px;padding:5px 8px;margin-bottom:4px">
+                  <div style="font-size:8px;color:rgba(245,240,232,0.5)">Text Message</div>
+                </div>
+                <div style="background:rgba(245,240,232,0.04);border-radius:5px;padding:5px 8px">
+                  <div style="font-size:8px;color:rgba(245,240,232,0.5)">Email</div>
+                </div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Channel selection</div>
+              <div class="flow-screen-note">No platform assumption made.</div>
+            </div>
+          </div>
+          <div class="flow-screen-card">
+            <div class="flow-screen-top">
+              <div class="fst-inner" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+                <div style="width:28px;height:28px;border-radius:50%;background:rgba(200,123,110,0.15);border:1px solid rgba(200,123,110,0.3);display:flex;align-items:center;justify-content:center;font-size:12px">✓</div>
+                <div style="font-size:9px;color:var(--cream);font-weight:500">Message Sent</div>
+                <div style="font-size:7.5px;color:rgba(245,240,232,0.4);text-align:center;line-height:1.4">Help is on the way. Take your time.</div>
+                <div style="font-size:7.5px;color:rgba(245,240,232,0.3);text-align:center;font-style:italic">"You're not alone."</div>
+              </div>
+            </div>
+            <div class="flow-screen-bottom">
+              <div class="flow-screen-label">Confirmation</div>
+              <div class="flow-screen-note">Emotional reassurance as a design choice.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ITERATION -->
+<section class="iteration-section">
+  <div class="container">
+    <div class="section-label">Usability testing & iteration</div>
+    <h2 class="iteration-heading">What changed after <em>real users</em></h2>
+    <p class="iteration-sub">Testing with 4 participants across disability profiles surfaced real friction — and forced better decisions.</p>
+
+    <div class="iteration-grid">
+      <div>
+        <div class="iteration-card">
+          <span class="iteration-card-tag tag-before">Friction observed</span>
+          <div class="iteration-friction">"I couldn't find the pain mode when I needed it — I was looking for a button but it was in a menu."</div>
+          <div class="iteration-change">→ Long-press on the heart icon, always visible in nav</div>
+          <div class="iteration-why">Removed all navigation from the critical path. In pain, you need one action.</div>
+        </div>
+      </div>
+      <div>
+        <div class="iteration-card">
+          <span class="iteration-card-tag tag-before">Friction observed</span>
+          <div class="iteration-friction">"The onboarding asked too many questions before I could just try it."</div>
+          <div class="iteration-change">→ Progressive disclosure: 3 essential questions, rest deferred</div>
+          <div class="iteration-why">Clinical profile builds over time. Trust must come before data collection.</div>
+        </div>
+      </div>
+      <div>
+        <div class="iteration-card">
+          <span class="iteration-card-tag tag-after">Design refinement</span>
+          <div class="iteration-change">Privacy masking on pain mode</div>
+          <div class="iteration-why">Users reported anxiety about colleagues seeing the app open. Pain mode now overlays a neutral "system update" screen. Toggle controlled by user.</div>
+        </div>
+      </div>
+      <div>
+        <div class="iteration-card">
+          <span class="iteration-card-tag tag-after">Accessibility refinement</span>
+          <div class="iteration-change">High-contrast + large touch targets in pain mode</div>
+          <div class="iteration-why">During pain, fine motor control degrades. Minimum 48px touch targets, increased contrast, reduced visual noise in all pain-state screens.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final-section">
+  <div class="container">
+    <div class="section-label" style="color:var(--blush)">
+      <span style="display:block;width:24px;height:1px;background:var(--blush)"></span>
+      Final solution
+    </div>
+    <h2 class="final-heading">
+      Pause —<br>A <em>closed loop</em><br>for menstrual health
+    </h2>
+    <p class="final-sub">Five integrated modules that move users from panic to preparation. Anticipate → Prepare → Respond → Validate → Learn.</p>
+
+    <div class="final-features">
+      <div class="final-feature">
+        <div class="ff-icon">🌡️</div>
+        <div class="ff-name">Pain Mode</div>
+        <div class="ff-desc">One-press access to heat guides, breathing, audio relief, and kit locator. No navigation in crisis.</div>
+      </div>
+      <div class="final-feature">
+        <div class="ff-icon">📅</div>
+        <div class="ff-name">7-Day Prep</div>
+        <div class="ff-desc">Predictive routine 7 days before predicted pain. Adaptive to real-time health data.</div>
+      </div>
+      <div class="final-feature">
+        <div class="ff-icon">🤫</div>
+        <div class="ff-name">Silent SOS</div>
+        <div class="ff-desc">Discreet, pre-written alerts to caregiver, friend, or manager. Works without speech.</div>
+      </div>
+      <div class="final-feature">
+        <div class="ff-icon">🩺</div>
+        <div class="ff-name">Clinical Hub</div>
+        <div class="ff-desc">Telehealth consultations + GA34 Medical Passport for leave documentation.</div>
+      </div>
+      <div class="final-feature">
+        <div class="ff-icon">📊</div>
+        <div class="ff-name">Correlation Engine</div>
+        <div class="ff-desc">Links lifestyle patterns to pain intensity. Passive smartwatch logging. Evidence over memory.</div>
+      </div>
+    </div>
+
+    <a href="https://drive.google.com/file/d/1PBjksRbaf7qhujvZhHl-EJYCoqtjCCar/view?usp=sharing" target="_blank" class="final-prototype-cta">
+      View interactive prototype 
+      <span class="cta-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section class="reflection-section" id="reflection">
+  <div class="container">
+    <div class="reflection-grid">
+      <div class="reflection-left">
+        <div class="section-label">What changed in thinking</div>
+        <h2 class="reflection-heading">
+          Designing from<br>the <em>extremes</em><br>toward the center
+        </h2>
+        <p class="reflection-body">
+          This project started as a health app. It became something different — a study in how public systems fail bodies that don't conform to the "uninterrupted productivity" ideal.
+        </p>
+        <p class="reflection-body">
+          The wheelchair user who has never found a single space meeting both her disability and menstrual needs — designing for her made every decision clearer and better for everyone.
+        </p>
+      </div>
+      <div class="reflection-right">
+        <div class="reflection-point">
+          <div class="rp-label">Biggest shift</div>
+          <div class="rp-text">I started designing for average pain. Research forced me to design for 8/10 pain — which meant rethinking every interaction for impaired cognition, limited motor control, and emotional distress. Every improvement for extreme users improved the base experience.</div>
+        </div>
+        <div class="reflection-point">
+          <div class="rp-label">Tradeoff made</div>
+          <div class="rp-text">Chose privacy and discretion over feature visibility. The most powerful features (SOS, clinical passport) are hidden behind low-friction paths — not highlighted. Trust before utility.</div>
+        </div>
+        <div class="reflection-point">
+          <div class="rp-label">What I'd do next</div>
+          <div class="rp-text">Prototype the physical Pause Kit dispenser UX. The digital and physical systems must feel like one product — and right now only the app exists. The hardware touchpoint needs the same design care.</div>
+        </div>
+        <div class="reflection-point">
+          <div class="rp-label">Future scope</div>
+          <div class="rp-text">Institutional integration — workplace HR portals, campus systems, and manager-facing dashboards that reduce the burden on the individual to advocate for themselves.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Kanishka Saxena</div>
+  <div class="footer-right">SID-Mdes Semester 2 · March 2026</div>
+</footer>
+
+<script>
+  // Subtle scroll-based reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.tension-card, .insight-card, .direction-item, .flow-task, .iteration-card, .final-feature, .reflection-point').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
