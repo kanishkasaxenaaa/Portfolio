@@ -30,22 +30,40 @@
             animation-delay: 1s;
         }
 
-        /* ── Splitwise: big headline, small label swap ── */
-        .project-title-splitwise {
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
-            font-family: 'Fraunces', serif;
-            font-weight: 400;
-            line-height: 1.2;
-            margin: 0 0 0.75rem;
-            color: inherit;
-        }
-        .project-subtitle-splitwise {
-            font-size: 0.78rem;
+        /* ── View Case Study pill button ── */
+        .btn-case-study {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1a1a1a;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 999px;
+            padding: 12px 22px;
             font-family: 'DM Sans', sans-serif;
+            font-size: 0.875rem;
             font-weight: 400;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            opacity: 0.65;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        .btn-case-study:hover {
+            background: #2a2a2a;
+            transform: translateY(-1px);
+        }
+        .btn-case-study svg {
+            transition: transform 0.2s ease;
+        }
+        .btn-case-study:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        /* ── Make project image wrapper a link ── */
+        a.project-image-wrapper {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -62,7 +80,9 @@
             </div>
             <button class="nav-mobile-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
             </button>
         </div>
@@ -80,13 +100,8 @@
                     <div class="divider"></div>
                     <span>UX/UI Designer · M.Des, Symbiosis Institute of Design</span>
                 </div>
-
-                <!-- ✅ HEADLINE: unchanged -->
                 <h1 class="hero-title fade-in-up delay-2">Designing<br/>for how<br/>people <em class="hero-em">feel.</em></h1>
-
-                <!-- ✅ SUBLINE: updated -->
-                <p class="hero-description fade-in-up delay-3">I started with a sketchbook. Now I design products bringing an artist's eye for emotion, narrative, and composition to every digital experience.</p>
-
+                <p class="hero-description fade-in-up delay-3">I started with a sketchbook. Now I design products — bringing an artist's eye for emotion, narrative, and composition to every digital experience.</p>
                 <div class="hero-info fade-in-up delay-4">
                     <div><label>Available for</label><span>Internship · Full-time · Freelance</span></div>
                     <div><label>Education</label><span>M.Des UX · SID Pune</span></div>
@@ -99,7 +114,6 @@
 
             <div class="hero-right fade-in-up delay-3">
                 <div class="hero-photo-container">
-                    <!-- ✅ CARDS: both float up and down with offset timing -->
                     <div class="floating-chip chip-1">
                         <div class="chip-label">Experience</div>
                         <div class="chip-value">2+ yrs</div>
@@ -142,13 +156,13 @@
 
     <section id="work" class="projects">
 
-        <!-- ✅ FINTRA: big title = "Where behavioral design meets personal finance", small = "Fintra" -->
+        <!-- FINTRA -->
         <div class="project-card">
             <div class="project-image">
-                <div class="project-image-wrapper">
+                <a href="fintra.html" class="project-image-wrapper">
                     <div class="project-image-inner"><img src="assets/images/fintra.png" alt="Fintra"></div>
                     <div class="project-overlay"></div>
-                </div>
+                </a>
                 <div class="project-hover"><span>View Case Study →</span></div>
             </div>
             <div class="project-content">
@@ -163,50 +177,50 @@
                     <span class="tag sage-tag">Behavioral Design</span>
                     <span class="tag sage-tag">Gamification</span>
                 </div>
-                <a href="fintra.html" class="project-link">View Case Study
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 8h10M8 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+                <a href="fintra.html" class="btn-case-study">View Case Study
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M2 12L12 2M12 2H5M12 2v7" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
             </div>
         </div>
 
-        <!-- ✅ SPLITWISE: big title = "Expense Sharing Reimagined", small = "Splitwise" -->
+        <!-- SPLITWISE -->
         <div class="project-card project-reversed">
             <div class="project-image">
-                <div class="project-image-wrapper">
+                <a href="splitwise.html" class="project-image-wrapper">
                     <div class="project-image-inner"><img src="assets/images/splitwise.png" alt="Splitwise"></div>
                     <div class="project-overlay"></div>
-                </div>
+                </a>
                 <div class="project-hover"><span>View Case Study →</span></div>
             </div>
             <div class="project-content">
                 <div class="project-header">
                     <div class="project-line clay"></div>
-                    <span class="project-subtitle clay-text project-subtitle-splitwise">Splitwise</span>
+                    <span class="project-subtitle clay-text">Splitwise</span>
                 </div>
-                <h3 class="project-title project-title-splitwise">Expense Sharing Reimagined</h3>
+                <h3 class="project-title">Expense Sharing Reimagined</h3>
                 <p class="project-description">Redesigning the group expense management experience with focus on clarity, trust, and emotional comfort in shared finances.</p>
                 <div class="project-tags">
                     <span class="tag clay-tag">Product Design</span>
                     <span class="tag clay-tag">User Research</span>
                     <span class="tag clay-tag">Prototyping</span>
                 </div>
-                <a href="splitwise.html" class="project-link">View Case Study
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 8h10M8 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+                <a href="splitwise.html" class="btn-case-study">View Case Study
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M2 12L12 2M12 2H5M12 2v7" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
             </div>
         </div>
 
-        <!-- DYSMENORRHEA: unchanged -->
+        <!-- DYSMENORRHEA -->
         <div class="project-card">
             <div class="project-image">
-                <div class="project-image-wrapper">
+                <a href="dysmenorrhea.html" class="project-image-wrapper">
                     <div class="project-image-inner"><img src="assets/images/dysmenorrhea.png" alt="Designing for Invisible Pain"></div>
                     <div class="project-overlay"></div>
-                </div>
+                </a>
                 <div class="project-hover"><span>View Case Study →</span></div>
             </div>
             <div class="project-content">
@@ -222,9 +236,9 @@
                     <span class="tag plum-tag">Emotional UX</span>
                     <span class="tag plum-tag">Systems Thinking</span>
                 </div>
-                <a href="dysmenorrhea.html" class="project-link">View Case Study
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 8h10M8 3l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/>
+                <a href="dysmenorrhea.html" class="btn-case-study">View Case Study
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M2 12L12 2M12 2H5M12 2v7" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
             </div>
@@ -238,10 +252,10 @@
                 <div class="section-tag"><div class="divider"></div><span>About Me</span></div>
                 <h2 class="about-title">Designing with<br/><em class="sage-text">intention</em> &<br/><em class="sage-text">empathy</em></h2>
                 <div class="about-text">
-    <p>My journey into design began with sketchbooks, painting, and a love for visual storytelling. From Applied Arts to visual communication, branding, illustration, and freelance design, I've always been drawn to creating experiences that make people feel something.</p>
-    <p>Over time, that curiosity evolved into UX design — where creativity meets problem-solving, emotion meets interaction, and storytelling meets human behavior.</p>
-    <p>Currently pursuing my Master's in User Experience Design at the Symbiosis Institute of Design, I explore how thoughtful design can create digital experiences that feel intuitive, meaningful, and human.</p>
-</div>
+                    <p>My journey into design began with sketchbooks, painting, and a love for visual storytelling. From Applied Arts to visual communication, branding, illustration, and freelance design, I've always been drawn to creating experiences that make people feel something.</p>
+                    <p>Over time, that curiosity evolved into UX design — where creativity meets problem-solving, emotion meets interaction, and storytelling meets human behavior.</p>
+                    <p>Currently pursuing my Master's in User Experience Design at the Symbiosis Institute of Design, I explore how thoughtful design can create digital experiences that feel intuitive, meaningful, and human.</p>
+                </div>
             </div>
             <div class="about-right">
                 <div class="skills-section">
