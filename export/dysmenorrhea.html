@@ -21,18 +21,18 @@
     --text-mid: #4A3F5C;
     --text-light: #8A7A95;
   }
- 
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--warm-white);
     color: var(--text-dark);
     overflow-x: hidden;
   }
- 
+
   /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
@@ -43,7 +43,7 @@
     overflow: hidden;
     padding: 80px 40px;
   }
- 
+
   .hero::before {
     content: '';
     position: absolute;
@@ -53,7 +53,7 @@
       radial-gradient(ellipse 50% 60% at 80% 70%, rgba(139,126,200,0.2) 0%, transparent 60%),
       radial-gradient(ellipse 40% 40% at 50% 10%, rgba(232,187,202,0.15) 0%, transparent 50%);
   }
- 
+
   .hero-content {
     position: relative;
     z-index: 1;
@@ -61,7 +61,7 @@
     width: 100%;
     text-align: center;
   }
- 
+
   .hero-label {
     display: inline-block;
     font-size: 11px;
@@ -75,7 +75,7 @@
     margin-bottom: 40px;
     backdrop-filter: blur(10px);
   }
- 
+
   .hero-title {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(52px, 8vw, 100px);
@@ -84,12 +84,12 @@
     margin-bottom: 20px;
     letter-spacing: -2px;
   }
- 
+
   .hero-title em {
     font-style: italic;
     color: var(--petal);
   }
- 
+
   .hero-subtitle {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(18px, 2.5vw, 26px);
@@ -98,7 +98,7 @@
     margin-bottom: 48px;
     line-height: 1.4;
   }
- 
+
   .hero-meta {
     display: flex;
     gap: 40px;
@@ -106,11 +106,11 @@
     flex-wrap: wrap;
     margin-bottom: 60px;
   }
- 
+
   .hero-meta-item {
     text-align: center;
   }
- 
+
   .hero-meta-item .num {
     font-family: 'DM Serif Display', serif;
     font-size: 36px;
@@ -118,7 +118,7 @@
     display: block;
     line-height: 1;
   }
- 
+
   .hero-meta-item .lbl {
     font-size: 11px;
     color: var(--soft-iris);
@@ -127,14 +127,14 @@
     margin-top: 4px;
     display: block;
   }
- 
+
   .hero-cta-group {
     display: flex;
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
   }
- 
+
   .btn-primary {
     background: var(--petal);
     color: var(--navy);
@@ -149,13 +149,13 @@
     align-items: center;
     gap: 8px;
   }
- 
+
   .btn-primary:hover {
     background: var(--warm-white);
     transform: translateY(-2px);
     box-shadow: 0 12px 40px rgba(232,187,202,0.3);
   }
- 
+
   .btn-outline {
     border: 1px solid rgba(255,255,255,0.2);
     color: var(--warm-white);
@@ -170,12 +170,12 @@
     align-items: center;
     gap: 8px;
   }
- 
+
   .btn-outline:hover {
     background: rgba(255,255,255,0.1);
     transform: translateY(-2px);
   }
- 
+
   .scroll-hint {
     position: absolute;
     bottom: 40px;
@@ -190,19 +190,19 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
- 
+
   .scroll-line {
     width: 1px;
     height: 40px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
     animation: scrollPulse 2s ease-in-out infinite;
   }
- 
+
   @keyframes scrollPulse {
     0%, 100% { opacity: 0.3; transform: scaleY(1); }
     50% { opacity: 1; transform: scaleY(0.7); }
   }
- 
+
   /* ─── NAVIGATION ─── */
   nav {
     position: fixed;
@@ -219,7 +219,7 @@
     border-bottom: 1px solid rgba(255,255,255,0.05);
     gap: 24px;
   }
- 
+
   .nav-logo {
     font-family: 'DM Serif Display', serif;
     font-size: 22px;
@@ -227,17 +227,17 @@
     text-decoration: none;
     letter-spacing: -0.5px;
   }
- 
+
   .nav-logo span {
     color: var(--petal);
   }
- 
+
   .nav-links {
     display: flex;
     gap: 32px;
     list-style: none;
   }
- 
+
   .nav-links a {
     color: rgba(255,255,255,0.5);
     text-decoration: none;
@@ -246,9 +246,9 @@
     letter-spacing: 0.5px;
     transition: color 0.2s;
   }
- 
+
   .nav-links a:hover { color: var(--petal); }
- 
+
   .nav-back {
     display: inline-flex;
     align-items: center;
@@ -271,20 +271,20 @@
   }
   .nav-back:hover { color: var(--petal); }
   .nav-back:hover::before { transform: translateX(-3px); }
- 
+
   /* ─── SECTIONS ─── */
   section {
     padding: 100px 40px;
     max-width: 1100px;
     margin: 0 auto;
   }
- 
+
   .full-width {
     max-width: 100%;
     padding-left: 0;
     padding-right: 0;
   }
- 
+
   .section-label {
     font-size: 11px;
     font-weight: 600;
@@ -296,7 +296,7 @@
     align-items: center;
     gap: 12px;
   }
- 
+
   .section-label::before {
     content: '';
     display: block;
@@ -304,7 +304,7 @@
     height: 1px;
     background: var(--mauve);
   }
- 
+
   .section-title {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(36px, 5vw, 58px);
@@ -313,12 +313,12 @@
     letter-spacing: -1.5px;
     margin-bottom: 24px;
   }
- 
+
   .section-title em {
     font-style: italic;
     color: var(--mauve);
   }
- 
+
   .lead-text {
     font-size: 18px;
     line-height: 1.7;
@@ -326,18 +326,18 @@
     font-weight: 300;
     max-width: 640px;
   }
- 
+
   /* ─── PROBLEM BAND ─── */
   .problem-band {
     background: var(--navy);
     padding: 80px 40px;
   }
- 
+
   .problem-band-inner {
     max-width: 1100px;
     margin: 0 auto;
   }
- 
+
   .problem-quote {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(28px, 4vw, 52px);
@@ -345,17 +345,17 @@
     color: var(--warm-white);
     letter-spacing: -1px;
   }
- 
+
   .problem-quote em {
     color: var(--petal);
     font-style: italic;
   }
- 
+
   .problem-quote .underline {
     border-bottom: 2px solid var(--mauve);
     padding-bottom: 2px;
   }
- 
+
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -365,7 +365,7 @@
     border-radius: 16px;
     overflow: hidden;
   }
- 
+
   .stat-card {
     background: rgba(255,255,255,0.03);
     padding: 40px 32px;
@@ -373,10 +373,10 @@
     border-right: 1px solid rgba(255,255,255,0.05);
     transition: background 0.3s;
   }
- 
+
   .stat-card:last-child { border-right: none; }
   .stat-card:hover { background: rgba(196,137,158,0.08); }
- 
+
   .stat-card .big {
     font-family: 'DM Serif Display', serif;
     font-size: 52px;
@@ -384,7 +384,7 @@
     line-height: 1;
     display: block;
   }
- 
+
   .stat-card .small {
     font-size: 13px;
     color: rgba(255,255,255,0.45);
@@ -392,7 +392,7 @@
     line-height: 1.5;
     display: block;
   }
- 
+
   /* ─── RESEARCH SECTION ─── */
   .research-grid {
     display: grid;
@@ -400,7 +400,7 @@
     gap: 24px;
     margin-top: 48px;
   }
- 
+
   .research-card {
     border: 1px solid rgba(196,137,158,0.2);
     border-radius: 20px;
@@ -409,7 +409,7 @@
     overflow: hidden;
     transition: all 0.3s ease;
   }
- 
+
   .research-card::before {
     content: '';
     position: absolute;
@@ -422,10 +422,10 @@
     transform-origin: left;
     transition: transform 0.4s ease;
   }
- 
+
   .research-card:hover::before { transform: scaleX(1); }
   .research-card:hover { border-color: rgba(196,137,158,0.4); transform: translateY(-4px); }
- 
+
   .research-num {
     font-family: 'DM Serif Display', serif;
     font-size: 72px;
@@ -433,38 +433,38 @@
     line-height: 1;
     margin-bottom: -8px;
   }
- 
+
   .research-title {
     font-size: 16px;
     font-weight: 600;
     color: var(--navy);
     margin-bottom: 12px;
   }
- 
+
   .research-desc {
     font-size: 14px;
     line-height: 1.65;
     color: var(--text-mid);
   }
- 
+
   /* ─── INSIGHT PILLARS ─── */
   .pillars-band {
     background: var(--blush);
     padding: 100px 40px;
   }
- 
+
   .pillars-inner {
     max-width: 1100px;
     margin: 0 auto;
   }
- 
+
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
     margin-top: 48px;
   }
- 
+
   .pillar {
     background: var(--warm-white);
     border-radius: 16px;
@@ -473,30 +473,30 @@
     box-shadow: 0 4px 20px rgba(122,31,61,0.06);
     transition: transform 0.3s, box-shadow 0.3s;
   }
- 
+
   .pillar:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px rgba(122,31,61,0.12);
   }
- 
+
   .pillar-icon {
     font-size: 28px;
     margin-bottom: 12px;
   }
- 
+
   .pillar-title {
     font-size: 13px;
     font-weight: 600;
     color: var(--wine);
     margin-bottom: 8px;
   }
- 
+
   .pillar-desc {
     font-size: 12px;
     color: var(--text-mid);
     line-height: 1.5;
   }
- 
+
   /* ─── PERSONAS ─── */
   .personas-grid {
     display: grid;
@@ -504,13 +504,13 @@
     gap: 32px;
     margin-top: 48px;
   }
- 
+
   .persona-card {
     border-radius: 24px;
     overflow: hidden;
     border: 1px solid rgba(196,137,158,0.15);
   }
- 
+
   .persona-header {
     background: var(--navy);
     padding: 32px;
@@ -518,7 +518,7 @@
     align-items: center;
     gap: 20px;
   }
- 
+
   .persona-avatar {
     width: 56px;
     height: 56px;
@@ -532,19 +532,19 @@
     color: white;
     flex-shrink: 0;
   }
- 
+
   .persona-info h3 {
     font-family: 'DM Serif Display', serif;
     font-size: 22px;
     color: var(--warm-white);
     margin-bottom: 4px;
   }
- 
+
   .persona-info p {
     font-size: 13px;
     color: var(--soft-iris);
   }
- 
+
   .persona-body {
     padding: 28px 32px;
     background: white;
@@ -552,7 +552,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
- 
+
   .persona-section h4 {
     font-size: 11px;
     font-weight: 600;
@@ -561,14 +561,14 @@
     color: var(--mauve);
     margin-bottom: 10px;
   }
- 
+
   .persona-section ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
- 
+
   .persona-section li {
     font-size: 13px;
     color: var(--text-mid);
@@ -576,7 +576,7 @@
     position: relative;
     line-height: 1.4;
   }
- 
+
   .persona-section li::before {
     content: '→';
     position: absolute;
@@ -585,7 +585,7 @@
     font-size: 11px;
     top: 1px;
   }
- 
+
   /* ─── SOLUTION SECTION ─── */
   .solution-band {
     background: linear-gradient(135deg, var(--navy) 0%, #2D1B4E 100%);
@@ -593,7 +593,7 @@
     position: relative;
     overflow: hidden;
   }
- 
+
   .solution-band::before {
     content: 'PAUSE';
     position: absolute;
@@ -607,29 +607,29 @@
     pointer-events: none;
     letter-spacing: -10px;
   }
- 
+
   .solution-inner {
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
   }
- 
+
   .solution-inner .section-title {
     color: var(--warm-white);
   }
- 
+
   .solution-inner .lead-text {
     color: rgba(255,255,255,0.6);
     margin-bottom: 60px;
   }
- 
+
   .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
- 
+
   .feature-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
@@ -638,13 +638,13 @@
     backdrop-filter: blur(10px);
     transition: all 0.3s;
   }
- 
+
   .feature-card:hover {
     background: rgba(196,137,158,0.1);
     border-color: rgba(196,137,158,0.3);
     transform: translateY(-4px);
   }
- 
+
   .feature-phase {
     font-size: 10px;
     font-weight: 700;
@@ -656,7 +656,7 @@
     align-items: center;
     gap: 8px;
   }
- 
+
   .feature-phase::before {
     content: '';
     display: block;
@@ -664,27 +664,27 @@
     height: 1px;
     background: var(--petal);
   }
- 
+
   .feature-card h3 {
     font-family: 'DM Serif Display', serif;
     font-size: 22px;
     color: var(--warm-white);
     margin-bottom: 12px;
   }
- 
+
   .feature-card p {
     font-size: 13px;
     color: rgba(255,255,255,0.5);
     line-height: 1.65;
   }
- 
+
   .feature-card .feature-sub {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 20px;
   }
- 
+
   .feature-tag {
     font-size: 11px;
     background: rgba(255,255,255,0.06);
@@ -693,20 +693,20 @@
     border-radius: 100px;
     border: 1px solid rgba(255,255,255,0.1);
   }
- 
+
   /* ─── SCREENS GALLERY ─── */
   .gallery-band {
     padding: 80px 0;
     overflow: hidden;
     background: var(--cream);
   }
- 
+
   .gallery-header {
     max-width: 1100px;
     margin: 0 auto 48px;
     padding: 0 40px;
   }
- 
+
   .screens-scroll {
     display: flex;
     gap: 24px;
@@ -715,11 +715,11 @@
     scrollbar-width: thin;
     scrollbar-color: var(--petal) transparent;
   }
- 
+
   .screens-scroll::-webkit-scrollbar { height: 4px; }
   .screens-scroll::-webkit-scrollbar-track { background: transparent; }
   .screens-scroll::-webkit-scrollbar-thumb { background: var(--petal); border-radius: 2px; }
- 
+
   .screen-item {
     flex-shrink: 0;
     width: 220px;
@@ -730,14 +730,14 @@
     background: var(--navy);
     transition: transform 0.3s;
   }
- 
+
   .screen-item:hover { transform: translateY(-8px) scale(1.02); }
- 
+
   .screen-item img {
     width: 100%;
     display: block;
   }
- 
+
   .screen-placeholder {
     aspect-ratio: 9/19;
     display: flex;
@@ -748,7 +748,7 @@
     text-align: center;
     background: var(--blush);
   }
- 
+
   .screen-placeholder .sp-icon { font-size: 32px; margin-bottom: 8px; }
   .screen-placeholder .sp-label {
     font-size: 11px;
@@ -756,7 +756,7 @@
     font-weight: 500;
     line-height: 1.4;
   }
- 
+
   /* Screen mockup visuals */
   .screen-visual {
     aspect-ratio: 9/19;
@@ -764,12 +764,12 @@
     background: var(--warm-white);
     overflow: hidden;
   }
- 
+
   /* ─── FLOW SECTION ─── */
   .flow-section {
     background: var(--warm-white);
   }
- 
+
   .flow-steps {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -777,7 +777,7 @@
     margin-top: 48px;
     position: relative;
   }
- 
+
   .flow-steps::before {
     content: '';
     position: absolute;
@@ -788,14 +788,14 @@
     background: linear-gradient(90deg, var(--petal), var(--periwinkle), var(--petal));
     z-index: 0;
   }
- 
+
   .flow-step {
     text-align: center;
     padding: 0 16px;
     position: relative;
     z-index: 1;
   }
- 
+
   .flow-dot {
     width: 56px;
     height: 56px;
@@ -810,48 +810,48 @@
     box-shadow: 0 4px 20px rgba(196,137,158,0.2);
     transition: all 0.3s;
   }
- 
+
   .flow-step:hover .flow-dot {
     background: var(--wine);
     border-color: var(--wine);
     transform: scale(1.1);
   }
- 
+
   .flow-step h4 {
     font-size: 13px;
     font-weight: 600;
     color: var(--navy);
     margin-bottom: 6px;
   }
- 
+
   .flow-step p {
     font-size: 11px;
     color: var(--text-light);
     line-height: 1.5;
   }
- 
+
   /* ─── DESIGN LANGUAGE ─── */
   .design-band {
     background: var(--navy);
     padding: 100px 40px;
   }
- 
+
   .design-inner {
     max-width: 1100px;
     margin: 0 auto;
   }
- 
+
   .design-inner .section-label { color: var(--soft-iris); }
   .design-inner .section-label::before { background: var(--soft-iris); }
   .design-inner .section-title { color: var(--warm-white); }
- 
+
   .color-palette {
     display: flex;
     gap: 12px;
     margin-top: 40px;
     flex-wrap: wrap;
   }
- 
+
   .color-swatch {
     border-radius: 16px;
     padding: 20px 24px;
@@ -859,28 +859,28 @@
     min-width: 120px;
     transition: transform 0.2s;
   }
- 
+
   .color-swatch:hover { transform: scale(1.05); }
- 
+
   .color-name {
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 4px;
   }
- 
+
   .color-hex {
     font-size: 11px;
     opacity: 0.7;
     font-family: monospace;
   }
- 
+
   .design-vocab {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-top: 40px;
   }
- 
+
   .vocab-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.07);
@@ -888,7 +888,7 @@
     padding: 28px 24px;
     text-align: center;
   }
- 
+
   .vocab-word {
     font-family: 'DM Serif Display', serif;
     font-size: 24px;
@@ -896,14 +896,14 @@
     font-style: italic;
     margin-bottom: 4px;
   }
- 
+
   .vocab-sub {
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: rgba(255,255,255,0.3);
   }
- 
+
   /* ─── IMPACT / OUTCOME ─── */
   .outcome-grid {
     display: grid;
@@ -911,7 +911,7 @@
     gap: 24px;
     margin-top: 48px;
   }
- 
+
   .outcome-card {
     border-radius: 20px;
     padding: 40px 32px;
@@ -919,12 +919,12 @@
     border: 1px solid rgba(196,137,158,0.15);
     transition: all 0.3s;
   }
- 
+
   .outcome-card:hover {
     background: var(--petal);
     transform: translateY(-4px);
   }
- 
+
   .outcome-card .big-stat {
     font-family: 'DM Serif Display', serif;
     font-size: 56px;
@@ -932,20 +932,20 @@
     line-height: 1;
     margin-bottom: 8px;
   }
- 
+
   .outcome-card h4 {
     font-size: 15px;
     font-weight: 600;
     color: var(--navy);
     margin-bottom: 8px;
   }
- 
+
   .outcome-card p {
     font-size: 13px;
     color: var(--text-mid);
     line-height: 1.6;
   }
- 
+
   /* ─── CLOSING ─── */
   .closing {
     background: var(--navy);
@@ -954,16 +954,16 @@
     position: relative;
     overflow: hidden;
   }
- 
+
   .closing::before {
     content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(196,137,158,0.15) 0%, transparent 70%);
   }
- 
+
   .closing-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
- 
+
   .closing-title {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(40px, 6vw, 72px);
@@ -972,23 +972,23 @@
     line-height: 1.05;
     margin-bottom: 24px;
   }
- 
+
   .closing-title em { color: var(--petal); font-style: italic; }
- 
+
   .closing-body {
     font-size: 16px;
     line-height: 1.75;
     color: rgba(255,255,255,0.5);
     margin-bottom: 48px;
   }
- 
+
   .links-row {
     display: flex;
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
   }
- 
+
   .link-btn {
     display: inline-flex;
     align-items: center;
@@ -1002,24 +1002,24 @@
     border: 1px solid rgba(255,255,255,0.15);
     color: var(--warm-white);
   }
- 
+
   .link-btn:hover {
     background: rgba(255,255,255,0.1);
     transform: translateY(-2px);
     border-color: rgba(255,255,255,0.3);
   }
- 
+
   .link-btn.filled {
     background: var(--petal);
     color: var(--navy);
     border-color: var(--petal);
   }
- 
+
   .link-btn.filled:hover {
     background: var(--warm-white);
     box-shadow: 0 12px 40px rgba(232,187,202,0.3);
   }
- 
+
   /* ─── QUOTE BLOCK ─── */
   .quote-block {
     background: var(--lavender);
@@ -1028,7 +1028,7 @@
     margin: 60px 0;
     position: relative;
   }
- 
+
   .quote-block::before {
     content: '"';
     font-family: 'DM Serif Display', serif;
@@ -1040,7 +1040,7 @@
     line-height: 1;
     opacity: 0.5;
   }
- 
+
   .quote-text {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(20px, 2.5vw, 28px);
@@ -1050,7 +1050,7 @@
     position: relative;
     z-index: 1;
   }
- 
+
   .quote-attr {
     margin-top: 20px;
     font-size: 13px;
@@ -1059,7 +1059,7 @@
     position: relative;
     z-index: 1;
   }
- 
+
   /* ─── DIVIDER ─── */
   .divider {
     width: 100%;
@@ -1067,7 +1067,7 @@
     background: linear-gradient(90deg, transparent, var(--petal), transparent);
     margin: 0;
   }
- 
+
   /* ─── HMW ─── */
   .hmw-grid {
     display: grid;
@@ -1075,7 +1075,7 @@
     gap: 16px;
     margin-top: 40px;
   }
- 
+
   .hmw-card {
     background: var(--warm-white);
     border: 1px solid rgba(196,137,158,0.2);
@@ -1085,12 +1085,12 @@
     overflow: hidden;
     transition: all 0.3s;
   }
- 
+
   .hmw-card:hover {
     background: var(--blush);
     border-color: var(--petal);
   }
- 
+
   .hmw-card::before {
     content: 'HMW';
     font-family: 'DM Serif Display', serif;
@@ -1101,7 +1101,7 @@
     right: 12px;
     line-height: 1;
   }
- 
+
   .hmw-card p {
     font-size: 15px;
     line-height: 1.6;
@@ -1110,7 +1110,7 @@
     position: relative;
     z-index: 1;
   }
- 
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
@@ -1127,19 +1127,19 @@
     .flow-steps { grid-template-columns: 1fr 1fr; }
     .flow-steps::before { display: none; }
   }
- 
+
   /* ─── FADE IN ─── */
   .fade-in {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
- 
+
   .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
   }
- 
+
   /* ─── TAG PILL ─── */
   .tag {
     display: inline-block;
@@ -1152,18 +1152,265 @@
     margin-right: 8px;
     margin-bottom: 8px;
   }
- 
+
   .tag-pink { background: var(--blush); color: var(--wine); }
   .tag-purple { background: var(--lavender); color: var(--periwinkle); }
   .tag-dark { background: var(--navy); color: var(--petal); }
- 
+
   /* Inline highlight */
   .hl { color: var(--wine); font-weight: 600; }
   .hl-purple { color: var(--periwinkle); font-weight: 500; }
+
+  /* ─── FLOW PREVIEW BAND ─── */
+  .flow-preview-band {
+    background: #0D1030;
+    padding: 80px 40px 100px;
+  }
+
+  .flow-preview-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .fp-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .fp-rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    max-width: 160px;
+  }
+
+  .fp-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 600;
+  }
+
+  .fp-sub {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  /* Tabs */
+  .fp-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 52px;
+    flex-wrap: wrap;
+  }
+
+  .fp-tab {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.4);
+    padding: 9px 22px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    letter-spacing: 0.3px;
+  }
+
+  .fp-tab:hover {
+    color: rgba(255,255,255,0.7);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .fp-tab.active {
+    background: var(--petal);
+    border-color: var(--petal);
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* Body layout */
+  .fp-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Phone */
+  .fp-phone-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .fp-phone {
+    width: 240px;
+    background: #111;
+    border-radius: 36px;
+    padding: 12px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.08),
+      0 40px 100px rgba(0,0,0,0.6),
+      0 0 60px rgba(196,137,158,0.08);
+    position: relative;
+  }
+
+  .fp-phone-notch {
+    width: 80px;
+    height: 22px;
+    background: #111;
+    border-radius: 0 0 14px 14px;
+    margin: 0 auto 4px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .fp-phone-notch::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #1a1a2e;
+    border-radius: 50%;
+    border: 2px solid #333;
+  }
+
+  .fp-screen {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #1A1F4B;
+    height: 460px;
+    position: relative;
+  }
+
+  .fp-phone-bar {
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  /* Flows */
+  .fp-flow {
+    display: none;
+    height: 100%;
+  }
+
+  .fp-flow-active {
+    display: block;
+  }
+
+  .fps-onboard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Description panel */
+  .fp-desc-panel {
+    position: relative;
+  }
+
+  .fp-desc {
+    display: none;
+    animation: descFade 0.4s ease;
+  }
+
+  .fp-desc-active {
+    display: block;
+  }
+
+  @keyframes descFade {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fp-desc-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 80px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    margin-bottom: -20px;
+    letter-spacing: -3px;
+  }
+
+  .fp-desc-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    color: var(--warm-white);
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+    line-height: 1.15;
+  }
+
+  .fp-desc-body {
+    font-size: 14px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .fp-desc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fp-desc-tags span {
+    font-size: 11px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.4);
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.09);
+    letter-spacing: 0.3px;
+  }
+
+  /* Proto link */
+  .fp-proto-link {
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .fp-proto-link a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .fp-proto-link a:hover {
+    color: var(--petal);
+    border-color: var(--petal);
+  }
+
+  @media (max-width: 768px) {
+    .fp-body { grid-template-columns: 1fr; gap: 40px; }
+    .fp-phone-wrap { order: -1; }
+    .fp-phone { width: 200px; }
+    .fp-screen { height: 380px; }
+  }
+
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <a href="https://kanishkasaxenaaa.github.io/Portfolio/index.html" class="nav-back" target="_blank">Kanishka Saxena</a>
@@ -1177,7 +1424,7 @@
     <li><a href="#outcome">Outcome</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero full-width" style="padding:0">
   <div class="hero-content">
@@ -1203,7 +1450,7 @@
       </div>
     </div>
     <div class="hero-cta-group">
-      <a href="https://www.figma.com/board/JaK7Anf9MuXPF5mwqxdSao/UXresearch_Affinity-Mapping?node-id=0-1&p=f&t=WYpbr7wPrfnUtD1g-0" target="_blank" class="btn-primary">View Affinity Map ↗</a>
+      <a href="https://www.figma.com/proto/BKJSCrQGvJ61NtV7dNseL0/Pause---assign-3-4---25080141009--kanishka-saxena?node-id=2026-1439&t=agfoVE0AVKNrPdpM-1&scaling=min-zoom&content-scaling=fixed&page-id=2026%3A1403&starting-point-node-id=2026%3A1439&show-proto-sidebar=1" target="_blank" class="btn-primary">View Prototype ↗</a>
       <a href="#solution" class="btn-outline">See the Solution</a>
     </div>
   </div>
@@ -1212,9 +1459,270 @@
     scroll
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
+<!-- FLOW PREVIEW -->
+<div class="flow-preview-band full-width">
+  <div class="flow-preview-inner">
+
+    <div class="fp-header">
+      <div class="fp-rule"></div>
+      <span class="fp-label">FLOW PREVIEW</span>
+      <div class="fp-rule"></div>
+    </div>
+    <p class="fp-sub">Follow the user journey from pain onset to relief — five core flows.</p>
+
+    <!-- Flow tabs -->
+    <div class="fp-tabs" id="fpTabs">
+      <button class="fp-tab active" data-flow="0">Onboarding</button>
+      <button class="fp-tab" data-flow="1">7-Day Prep</button>
+      <button class="fp-tab" data-flow="2">Pain Mode</button>
+      <button class="fp-tab" data-flow="3">Support Mode</button>
+      <button class="fp-tab" data-flow="4">Clinical Hub</button>
+    </div>
+
+    <!-- Main content: mockup + description -->
+    <div class="fp-body">
+
+      <!-- Phone mockup -->
+      <div class="fp-phone-wrap">
+        <div class="fp-phone">
+          <div class="fp-phone-notch"></div>
+          <div class="fp-screen" id="fpScreen">
+
+            <!-- Flow 0: Onboarding -->
+            <div class="fp-flow fp-flow-active" data-flow="0">
+              <div class="fps-onboard">
+                <div class="fps-top" style="background:#1A1F4B;padding:20px 16px 14px;text-align:center">
+                  <div style="width:36px;height:36px;background:rgba(139,126,200,0.25);border-radius:10px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center">
+                    <div style="width:12px;height:18px;background:#E8BBCA;border-radius:2px"></div>
+                  </div>
+                  <div style="font-family:'DM Serif Display',serif;font-size:16px;color:white">Hi, I'm Pause.</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:3px">A private space for every body.</div>
+                </div>
+                <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:#F7E8EA;flex:1">
+                  <div style="font-size:9px;letter-spacing:1px;color:#7A1F3D;font-weight:700;text-transform:uppercase">Why are you here?</div>
+                  <div style="background:white;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1.5px solid #C4899E">
+                    <div style="font-size:13px">🩸</div>
+                    <div style="font-size:10px;color:#1A1F4B;font-weight:600">Managing period pain</div>
+                    <div style="margin-left:auto;width:14px;height:14px;border-radius:50%;background:#C4899E;display:flex;align-items:center;justify-content:center;font-size:8px;color:white">✓</div>
+                  </div>
+                  <div style="background:white;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1.5px solid #C4899E">
+                    <div style="font-size:13px">📅</div>
+                    <div style="font-size:10px;color:#1A1F4B;font-weight:600">Tracking my cycle</div>
+                    <div style="margin-left:auto;width:14px;height:14px;border-radius:50%;background:#C4899E;display:flex;align-items:center;justify-content:center;font-size:8px;color:white">✓</div>
+                  </div>
+                  <div style="background:white;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1px solid rgba(196,137,158,0.2)">
+                    <div style="font-size:13px">♿</div>
+                    <div style="font-size:10px;color:#4A3F5C">Accessibility support</div>
+                    <div style="margin-left:auto;width:14px;height:14px;border-radius:50%;border:1.5px solid #ddd"></div>
+                  </div>
+                  <div style="margin-top:6px;background:#1A1F4B;border-radius:10px;padding:11px;text-align:center;font-size:10px;color:white;font-weight:600">Next →</div>
+                  <div style="display:flex;justify-content:center;gap:4px;margin-top:4px">
+                    <div style="width:16px;height:4px;border-radius:2px;background:#C4899E"></div>
+                    <div style="width:6px;height:4px;border-radius:2px;background:#ddd"></div>
+                    <div style="width:6px;height:4px;border-radius:2px;background:#ddd"></div>
+                    <div style="width:6px;height:4px;border-radius:2px;background:#ddd"></div>
+                    <div style="width:6px;height:4px;border-radius:2px;background:#ddd"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flow 1: 7-Day Prep -->
+            <div class="fp-flow" data-flow="1">
+              <div style="background:#F7E8EA;height:100%;display:flex;flex-direction:column">
+                <div style="background:#1A1F4B;padding:16px;text-align:center">
+                  <div style="font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-bottom:4px">CYCLE DAY 21 · 4 DAYS TO PERIOD</div>
+                  <div style="font-family:'DM Serif Display',serif;font-size:14px;color:white">Insights &amp; Trends</div>
+                </div>
+                <div style="padding:12px 14px;flex:1">
+                  <div style="background:#1A1F4B;border-radius:12px;padding:12px;margin-bottom:10px">
+                    <div style="font-size:8px;color:#E8BBCA;font-weight:700;letter-spacing:1px;margin-bottom:6px">↗ PATTERN IDENTIFIED</div>
+                    <div style="font-size:10px;color:white;line-height:1.4;margin-bottom:8px">Your pain peaks 4 days before cycle, correlating with high stress &amp; low sleep quality.</div>
+                    <div style="background:#C4899E;border-radius:8px;padding:8px;text-align:center;font-size:9px;font-weight:700;color:white">Create Plan</div>
+                  </div>
+                  <div style="font-size:9px;color:#4A3F5C;font-weight:600;margin-bottom:6px">Customize Your Plan</div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <div style="background:white;border-radius:8px;padding:9px 10px;display:flex;align-items:center;gap:6px">
+                      <div style="font-size:11px">💧</div>
+                      <div style="font-size:9px;color:#1A1F4B;font-weight:600">Increase water intake</div>
+                      <div style="margin-left:auto;background:#E8F5E9;color:#4CAF50;font-size:7px;padding:2px 6px;border-radius:100px;font-weight:700">high</div>
+                    </div>
+                    <div style="background:white;border-radius:8px;padding:9px 10px;display:flex;align-items:center;gap:6px">
+                      <div style="font-size:11px">☕</div>
+                      <div style="font-size:9px;color:#1A1F4B;font-weight:600">Reduce caffeine</div>
+                      <div style="margin-left:auto;background:#FFF8E1;color:#FF8F00;font-size:7px;padding:2px 6px;border-radius:100px;font-weight:700">med</div>
+                    </div>
+                    <div style="background:white;border-radius:8px;padding:9px 10px;display:flex;align-items:center;gap:6px">
+                      <div style="font-size:11px">🛌</div>
+                      <div style="font-size:9px;color:#1A1F4B;font-weight:600">Rest &amp; recovery</div>
+                      <div style="margin-left:auto;background:#E8F5E9;color:#4CAF50;font-size:7px;padding:2px 6px;border-radius:100px;font-weight:700">high</div>
+                    </div>
+                  </div>
+                  <div style="margin-top:10px;background:#1A1F4B;border-radius:10px;padding:10px;text-align:center;font-size:9px;color:white;font-weight:600">Confirm Plan</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flow 2: Pain Mode -->
+            <div class="fp-flow" data-flow="2">
+              <div style="background:#0F1235;height:100%;display:flex;flex-direction:column">
+                <div style="padding:14px 14px 10px;background:#1A1F4B">
+                  <div style="font-size:8px;color:#E8BBCA;letter-spacing:1.5px;font-weight:700">PAIN MODE ACTIVE</div>
+                  <div style="font-family:'DM Serif Display',serif;font-size:15px;color:white;margin-top:4px;line-height:1.2">What do you need<br>right now?</div>
+                </div>
+                <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1">
+                  <div style="background:rgba(196,137,158,0.15);border:1px solid rgba(196,137,158,0.35);border-radius:11px;padding:11px 12px;display:flex;align-items:center;gap:9px">
+                    <div style="width:28px;height:28px;background:rgba(196,137,158,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🔥</div>
+                    <div><div style="font-size:10px;color:white;font-weight:600">Pause Kit Nearby</div><div style="font-size:8px;color:rgba(255,255,255,0.45);margin-top:1px">Library · 1 min walk</div></div>
+                    <div style="margin-left:auto;color:#E8BBCA;font-size:10px">›</div>
+                  </div>
+                  <div style="background:rgba(139,126,200,0.12);border:1px solid rgba(139,126,200,0.25);border-radius:11px;padding:11px 12px;display:flex;align-items:center;gap:9px">
+                    <div style="width:28px;height:28px;background:rgba(139,126,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🌬️</div>
+                    <div><div style="font-size:10px;color:white;font-weight:600">Breathing Exercise</div><div style="font-size:8px;color:rgba(255,255,255,0.45);margin-top:1px">5 min guided session</div></div>
+                    <div style="margin-left:auto;color:rgba(255,255,255,0.3);font-size:10px">›</div>
+                  </div>
+                  <div style="background:rgba(139,126,200,0.12);border:1px solid rgba(139,126,200,0.25);border-radius:11px;padding:11px 12px;display:flex;align-items:center;gap:9px">
+                    <div style="width:28px;height:28px;background:rgba(139,126,200,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🎵</div>
+                    <div><div style="font-size:10px;color:white;font-weight:600">Audio Relief</div><div style="font-size:8px;color:rgba(255,255,255,0.45);margin-top:1px">Soothing soundscapes</div></div>
+                    <div style="margin-left:auto;color:rgba(255,255,255,0.3);font-size:10px">›</div>
+                  </div>
+                  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:11px;padding:11px 12px;display:flex;align-items:center;gap:9px">
+                    <div style="width:28px;height:28px;background:rgba(255,255,255,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🤖</div>
+                    <div><div style="font-size:10px;color:white;font-weight:600">Ask AI Companion</div><div style="font-size:8px;color:rgba(255,255,255,0.35);margin-top:1px">Get guided advice</div></div>
+                    <div style="margin-left:auto;color:rgba(255,255,255,0.2);font-size:10px">›</div>
+                  </div>
+                  <div style="margin-top:auto;display:flex;gap:6px">
+                    <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:10px;padding:9px;text-align:center;font-size:9px;color:rgba(255,255,255,0.4)">Support Mode</div>
+                    <div style="flex:1;background:#C4899E;border-radius:10px;padding:9px;text-align:center;font-size:9px;font-weight:700;color:white">Find Space</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flow 3: Support Mode -->
+            <div class="fp-flow" data-flow="3">
+              <div style="background:#F0EBF8;height:100%;display:flex;flex-direction:column">
+                <div style="padding:14px 14px 10px;background:#1A1F4B">
+                  <div style="font-size:8px;color:rgba(255,255,255,0.4)">← Relief</div>
+                  <div style="font-family:'DM Serif Display',serif;font-size:15px;color:white;margin-top:4px">Support Mode</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">Reach out when you need it</div>
+                </div>
+                <div style="padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:8px">
+                  <div style="font-size:9px;color:#4A3F5C;font-weight:600">Who would you like to contact?</div>
+                  <div style="background:white;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1px solid rgba(196,137,158,0.15)">
+                    <div style="width:26px;height:26px;background:#F7E8EA;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px">👤</div>
+                    <div><div style="font-size:10px;font-weight:600;color:#1A1F4B">Mom</div><div style="font-size:8px;color:#8A7A95">Caregiver</div></div>
+                  </div>
+                  <div style="background:#8B7EC8;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px">
+                    <div style="width:26px;height:26px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px">💼</div>
+                    <div><div style="font-size:10px;font-weight:600;color:white">Manager</div><div style="font-size:8px;color:rgba(255,255,255,0.6)">Workplace</div></div>
+                  </div>
+                  <div style="background:white;border-radius:10px;padding:10px 12px;font-size:9px;color:#4A3F5C;border:1px solid rgba(196,137,158,0.15)">
+                    <div style="font-size:8px;color:#8A7A95;margin-bottom:4px">AI-drafted message</div>
+                    "Hi, I'm experiencing health-related discomfort and may need to step away briefly."
+                  </div>
+                  <div style="display:flex;gap:6px;margin-top:auto">
+                    <div style="flex:1;border:1px solid rgba(139,126,200,0.3);border-radius:10px;padding:9px;text-align:center;font-size:9px;color:#8B7EC8">Cancel</div>
+                    <div style="flex:1;background:#1A1F4B;border-radius:10px;padding:9px;text-align:center;font-size:9px;font-weight:700;color:white">Send →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flow 4: Clinical Hub -->
+            <div class="fp-flow" data-flow="4">
+              <div style="background:white;height:100%;display:flex;flex-direction:column">
+                <div style="padding:14px;background:#1A1F4B">
+                  <div style="font-family:'DM Serif Display',serif;font-size:15px;color:white">Reports &amp; Validation</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,0.4);margin-top:2px">Medical documentation</div>
+                </div>
+                <div style="padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:8px">
+                  <div style="background:#1A1F4B;border-radius:12px;padding:12px">
+                    <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                      <div style="font-size:14px">🩺</div>
+                      <div style="font-size:10px;font-weight:600;color:white">Clinical Validation</div>
+                    </div>
+                    <div style="font-size:9px;color:rgba(255,255,255,0.5);line-height:1.4;margin-bottom:8px">Verified doctors specialising in menstrual health. Get GA34 documentation.</div>
+                    <div style="background:#E8BBCA;border-radius:8px;padding:7px;text-align:center;font-size:9px;font-weight:700;color:#1A1F4B">Browse Specialists</div>
+                  </div>
+                  <div style="background:#F7E8EA;border-radius:12px;padding:12px">
+                    <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                      <div style="font-size:14px">📄</div>
+                      <div style="font-size:10px;font-weight:600;color:#1A1F4B">Medical Validation</div>
+                    </div>
+                    <div style="font-size:9px;color:#4A3F5C;line-height:1.4;margin-bottom:8px">Generate certified reports for college leave or workplace accommodation.</div>
+                    <div style="background:#1A1F4B;border-radius:8px;padding:7px;text-align:center;font-size:9px;font-weight:700;color:white">+ Generate Report</div>
+                  </div>
+                  <div style="font-size:8px;color:#8A7A95;margin-top:2px">
+                    <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px"><span style="color:#4CAF50">✓</span> College leave applications</div>
+                    <div style="display:flex;align-items:center;gap:4px"><span style="color:#4CAF50">✓</span> Workplace medical leave</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /fp-screen -->
+          <div class="fp-phone-bar"></div>
+        </div>
+      </div><!-- /fp-phone-wrap -->
+
+      <!-- Flow descriptions -->
+      <div class="fp-desc-panel">
+        <div class="fp-desc fp-desc-active" data-flow="0">
+          <div class="fp-desc-num">01</div>
+          <h3 class="fp-desc-title">Onboarding &amp; Profile Setup</h3>
+          <p class="fp-desc-body">Pause introduces itself gently. Users select their reasons for joining, rate pain severity, mark body areas, and choose an accessibility profile — mobility, sensory, or communication. A support circle is added, and cycle history is logged to seed predictions.</p>
+          <div class="fp-desc-tags">
+            <span>Accessibility Profile</span><span>Support Circle</span><span>Cycle Baseline</span>
+          </div>
+        </div>
+        <div class="fp-desc" data-flow="1">
+          <div class="fp-desc-num">02</div>
+          <h3 class="fp-desc-title">7-Day Pre-Period Routine</h3>
+          <p class="fp-desc-body">Seven days before the predicted period, Pause surfaces a Pattern Insight card. It identifies correlations — high stress, low sleep, poor nutrition — and generates a personalised micro-plan. Users customise and confirm. Smart reminders fire at the right time.</p>
+          <div class="fp-desc-tags">
+            <span>Capacity Heatmap</span><span>Pattern Insights</span><span>Adaptive Plan</span>
+          </div>
+        </div>
+        <div class="fp-desc" data-flow="2">
+          <div class="fp-desc-num">03</div>
+          <h3 class="fp-desc-title">Pain Mode — Real-Time Relief</h3>
+          <p class="fp-desc-body">One long-press on the relief button activates Pain Mode. Cognitive load drops to zero. Users are immediately offered a Pause Kit nearby, a guided breathing session, audio relief, or an AI companion. A Pause Space can be found and booked directly from this screen.</p>
+          <div class="fp-desc-tags">
+            <span>Rapid Relief Trigger</span><span>Pause Kit Locator</span><span>AI Companion</span>
+          </div>
+        </div>
+        <div class="fp-desc" data-flow="3">
+          <div class="fp-desc-num">04</div>
+          <h3 class="fp-desc-title">Support Mode — Silent SOS</h3>
+          <p class="fp-desc-body">When users need human support, they select a contact — caregiver, manager, or trusted friend. An AI-drafted, stigma-neutral message is composed automatically. It can be edited, sent via WhatsApp, SMS, or email, and optionally includes a medical validation report.</p>
+          <div class="fp-desc-tags">
+            <span>Silent SOS</span><span>Privacy Masking</span><span>AI-Drafted Message</span>
+          </div>
+        </div>
+        <div class="fp-desc" data-flow="4">
+          <div class="fp-desc-num">05</div>
+          <h3 class="fp-desc-title">Clinical Hub &amp; GA34 Passport</h3>
+          <p class="fp-desc-body">Users connect with verified menstrual health specialists for telehealth or in-person consultations. After consultation, a doctor-verified GA34 Clinical Passport is issued — a scannable badge that can be presented at college or workplace as official documentation for leave.</p>
+          <div class="fp-desc-tags">
+            <span>Telehealth Portal</span><span>GA34 Certification</span><span>Dysmenorrhea Badge</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /fp-body -->
+
+    <div class="fp-proto-link">
+      <a href="https://www.figma.com/proto/BKJSCrQGvJ61NtV7dNseL0/Pause---assign-3-4---25080141009--kanishka-saxena?node-id=2026-1439&t=agfoVE0AVKNrPdpM-1&scaling=min-zoom&content-scaling=fixed&page-id=2026%3A1403&starting-point-node-id=2026%3A1439&show-proto-sidebar=1" target="_blank">↗ Try the interactive prototype</a>
+    </div>
+
+  </div>
+</div>
+
+
 <!-- PROBLEM -->
 <div id="problem" class="problem-band full-width">
   <div class="problem-band-inner">
@@ -1226,7 +1734,7 @@
       The issue is not <em>the pain</em> itself —<br>
       it is the <span class="underline">absence of support</span><br>in environments that demand<br>uninterrupted productivity.
     </p>
- 
+
     <div class="stats-grid">
       <div class="stat-card">
         <span class="big">70%</span>
@@ -1247,13 +1755,13 @@
     </div>
   </div>
 </div>
- 
+
 <!-- RESEARCH -->
 <section id="research" class="fade-in">
   <div class="section-label">Research</div>
   <h2 class="section-title">Multi-layered<br><em>discovery</em></h2>
   <p class="lead-text">We conducted secondary literature review, a 78-person survey, 4 in-depth interviews (including disabled users), and a contextual enquiry on a college campus — building a full picture of lived experience.</p>
- 
+
   <div class="research-grid">
     <div class="research-card">
       <div class="research-num">01</div>
@@ -1276,15 +1784,15 @@
       <p class="research-desc">Reviewed peer-reviewed journals (PMC6365059, PMC8943241, PMC9533282), government reports, and case studies. Found only 10% of 119 menstrual apps address pain directly. 25% get no relief from NSAIDs.</p>
     </div>
   </div>
- 
+
   <div class="quote-block fade-in">
     <p class="quote-text">"Resting rooms could help, but it still comes with overthinking — how will the manager respond?"</p>
     <p class="quote-attr">— Survey respondent, working professional</p>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- INSIGHTS -->
 <div id="insights" class="pillars-band full-width">
   <div class="pillars-inner fade-in">
@@ -1322,13 +1830,13 @@
     </div>
   </div>
 </div>
- 
+
 <!-- PERSONAS -->
 <section class="fade-in">
   <div class="section-label">User Personas</div>
   <h2 class="section-title">Designing for<br><em>real people</em></h2>
   <p class="lead-text">Two core personas emerged — representing the spectrum from severe pain to disabled user navigating layered barriers.</p>
- 
+
   <div class="personas-grid" style="margin-top:40px">
     <div class="persona-card">
       <div class="persona-header">
@@ -1386,14 +1894,14 @@
     </div>
   </div>
 </section>
- 
+
 <div class="divider"></div>
- 
+
 <!-- HMW -->
 <section class="fade-in">
   <div class="section-label">How Might We</div>
   <h2 class="section-title">The design<br><em>questions</em></h2>
- 
+
   <div class="hmw-grid">
     <div class="hmw-card">
       <p>How might we provide a person with <strong>severe dysmenorrhea with real-time, actionable support</strong> to manage pain episodes effectively?</p>
@@ -1409,7 +1917,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- SOLUTION -->
 <div id="solution" class="solution-band full-width">
   <div class="solution-inner fade-in">
@@ -1419,7 +1927,7 @@
     </div>
     <h2 class="section-title" style="color:var(--warm-white)">Meet <em style="color:var(--petal)">Pause.</em></h2>
     <p class="lead-text">A discreet, real-time support app that helps individuals manage dysmenorrhea through actionable guidance, accessible interaction, and context-aware support — enabling them to navigate pain with autonomy and minimal disruption.</p>
- 
+
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-phase">Phase 1 · Anticipate & Prep</div>
@@ -1478,13 +1986,13 @@
     </div>
   </div>
 </div>
- 
+
 <!-- USER FLOW -->
 <section id="flow" class="flow-section fade-in">
   <div class="section-label">User Journey</div>
   <h2 class="section-title">From pain<br><em>to relief</em></h2>
   <p class="lead-text">A closed-loop system built around the full cycle of menstrual health management.</p>
- 
+
   <div class="flow-steps">
     <div class="flow-step">
       <div class="flow-dot">📋</div>
@@ -1513,16 +2021,16 @@
     </div>
   </div>
 </section>
- 
+
 <!-- SCREENS GALLERY -->
 <div class="gallery-band full-width fade-in">
   <div class="gallery-header">
     <div class="section-label">High Fidelity Screens</div>
     <h2 class="section-title" style="margin-bottom:0">The <em>Pause</em> experience</h2>
   </div>
- 
+
   <div class="screens-scroll">
- 
+
     <!-- Screen 1: Login -->
     <div class="screen-item">
       <div class="screen-visual" style="background:#1A1F4B">
@@ -1543,7 +2051,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- Screen 2: Home -->
     <div class="screen-item">
       <div class="screen-visual" style="background:#F7E8EA">
@@ -1579,7 +2087,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- Screen 3: Pain Mode -->
     <div class="screen-item">
       <div class="screen-visual" style="background:#1A1F4B">
@@ -1611,7 +2119,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- Screen 4: Support Mode -->
     <div class="screen-item">
       <div class="screen-visual" style="background:#F7F5FF">
@@ -1641,7 +2149,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- Screen 5: Clinical Hub -->
     <div class="screen-item">
       <div class="screen-visual" style="background:white">
@@ -1672,7 +2180,7 @@
         </div>
       </div>
     </div>
- 
+
     <!-- Screen 6: Pause Space -->
     <div class="screen-item">
       <div class="screen-visual" style="background:#F0EBF8">
@@ -1702,17 +2210,17 @@
         </div>
       </div>
     </div>
- 
+
   </div>
 </div>
- 
+
 <!-- DESIGN LANGUAGE -->
 <div id="design" class="design-band full-width fade-in">
   <div class="design-inner">
     <div class="section-label">Visual Language</div>
     <h2 class="section-title">The emotional<br><em>vocabulary</em></h2>
     <p style="font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;max-width:600px;margin-bottom:40px">"The Pause Journey — from Emotional Release to Recovery." A palette and typography system designed to feel like safety, not sterility.</p>
- 
+
     <div class="color-palette">
       <div class="color-swatch" style="background:#F7E8EA">
         <div class="color-name" style="color:#7A1F3D">Blush Mist</div>
@@ -1739,7 +2247,7 @@
         <div class="color-hex" style="color:rgba(255,255,255,0.5)">#1A1F4B</div>
       </div>
     </div>
- 
+
     <div class="design-vocab">
       <div class="vocab-card">
         <div class="vocab-word">Release</div>
@@ -1760,13 +2268,13 @@
     </div>
   </div>
 </div>
- 
+
 <!-- OUTCOMES -->
 <section id="outcome" class="fade-in">
   <div class="section-label">Outcomes</div>
   <h2 class="section-title">What this<br><em>changes</em></h2>
   <p class="lead-text">By centering those most excluded — menstruators with pain, and those with disabilities — Pause creates ripple effects across dignity, productivity, and institutional culture.</p>
- 
+
   <div class="outcome-grid">
     <div class="outcome-card">
       <div class="big-stat">5</div>
@@ -1785,24 +2293,24 @@
     </div>
   </div>
 </section>
- 
+
 <!-- CLOSING -->
 <div class="closing full-width fade-in">
   <div class="closing-inner">
     <h2 class="closing-title">Pain should not be the<br>price of <em>showing up.</em></h2>
     <p class="closing-body">Pause is more than an app. It is a claim that menstrual pain is a design problem — one that public spaces, workplaces, and digital products have failed to solve. Until now.</p>
- 
+
     <div style="margin-bottom:32px">
       <span class="tag tag-dark">Kanishka Saxena</span>
       <span class="tag tag-dark">2nd Sem · 25080141009</span>
       <span class="tag tag-dark">SID M.Des Semester 2</span>
     </div>
- 
+
     <div class="links-row">
       <a href="https://www.figma.com/board/JaK7Anf9MuXPF5mwqxdSao/UXresearch_Affinity-Mapping?node-id=0-1&p=f&t=WYpbr7wPrfnUtD1g-0" target="_blank" class="link-btn filled">
         🗺 Affinity Map ↗
       </a>
-      <a href="#" class="link-btn">
+      <a href="https://www.figma.com/proto/BKJSCrQGvJ61NtV7dNseL0/Pause---assign-3-4---25080141009--kanishka-saxena?node-id=2026-1439&t=agfoVE0AVKNrPdpM-1&scaling=min-zoom&content-scaling=fixed&page-id=2026%3A1403&starting-point-node-id=2026%3A1439&show-proto-sidebar=1" target="_blank" class="link-btn filled">
         🎨 Interactive Prototype ↗
       </a>
       <a href="#" class="link-btn">
@@ -1814,7 +2322,7 @@
     </div>
   </div>
 </div>
- 
+
 <script>
   // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
@@ -1824,9 +2332,9 @@
       }
     });
   }, { threshold: 0.08 });
- 
+
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
- 
+
   // Generate heatmap
   const heatmapEl = document.getElementById('heatmap');
   if (heatmapEl) {
@@ -1839,7 +2347,7 @@
       heatmapEl.appendChild(d);
     });
   }
- 
+
   // Subtle parallax on hero
   window.addEventListener('scroll', () => {
     const hero = document.querySelector('.hero');
@@ -1848,6 +2356,31 @@
       hero.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
   });
+
+  // Flow preview tabs
+  const fpTabs = document.querySelectorAll('.fp-tab');
+  const fpFlows = document.querySelectorAll('.fp-flow');
+  const fpDescs = document.querySelectorAll('.fp-desc');
+
+  fpTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const flow = tab.dataset.flow;
+
+      fpTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      fpFlows.forEach(f => {
+        f.classList.remove('fp-flow-active');
+        if (f.dataset.flow === flow) f.classList.add('fp-flow-active');
+      });
+
+      fpDescs.forEach(d => {
+        d.classList.remove('fp-desc-active');
+        if (d.dataset.flow === flow) d.classList.add('fp-desc-active');
+      });
+    });
+  });
+
 </script>
 </body>
 </html>
