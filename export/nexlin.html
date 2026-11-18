@@ -578,6 +578,19 @@ body[data-mode="full"] .fo{animation:fiu .6s ease both}
 .lanes figcaption{margin:12px 0 0;font-size:.82rem;color:var(--muted)}
 .three-ev{grid-template-columns:repeat(3,1fr)}
 @media (max-width:640px){.lane{grid-template-columns:1fr;gap:8px}.three-ev{grid-template-columns:1fr}}
+
+.glance{padding:0 0 clamp(2rem,5vw,3.5rem)}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);border:1px dashed var(--line);border-radius:18px;background:var(--surface);overflow:hidden}
+.g4>div{padding:24px 22px;border-left:1px solid var(--line)}
+.g4>div:first-child{border-left:0}
+.g4 span,.g5 span{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.g4 p{margin:0;font-size:.95rem;line-height:1.6}
+.g4 .res{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.g4 .res span{color:var(--accent)}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:26px}
+.g5 p{margin:0;font-size:.85rem;line-height:1.55;color:var(--muted)}
+@media (max-width:980px){.g4{grid-template-columns:1fr 1fr}.g4>div:nth-child(3){border-left:0}.g4>div:nth-child(n+3){border-top:1px solid var(--line)}.g5{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.g4{grid-template-columns:1fr}.g4>div{border-left:0;border-top:1px solid var(--line)}.g4>div:first-child{border-top:0}.g5{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-mode="short">
@@ -624,6 +637,22 @@ body[data-mode="full"] .fo{animation:fiu .6s ease both}
 </header>
 
 <main>
+
+<section class="glance" id="glance"><div class="wrap">
+  <div class="g4">
+    <div><span>The problem</span><p>A linen item moves between Housekeeping, Laundry and Front Office, but its count, status and owner stay behind in registers, notebooks and WhatsApp. Nobody owns the handoff.</p></div>
+    <div><span>What I designed</span><p>Nexlin: an internal staff app with six connected flows, one shared navigation and a separate Home for each role, plus a working prototype.</p></div>
+    <div><span>My role</span><p>Solo researcher and designer. Interviews, a site visit, synthesis, service strategy, UX/UI, prototyping and usability testing.</p></div>
+    <div class="res"><span>The result</span><p>Testing with 4 people found 16 issues, 4 of them high severity, and all 4 were redesigned. The redesigns are not retested, Laundry receiving and sorting and Front Desk were not tested, and no operational impact is claimed.</p></div>
+  </div>
+  <div class="g5">
+    <div><span>Context</span><p>M.Des UX Design, Symbiosis Institute of Design, Pune</p></div>
+    <div><span>Stakeholders</span><p>Housekeeping · Laundry · Front Office · F&amp;B / Kitchen · Management</p></div>
+    <div><span>Research base</span><p>5 interviews · 1 site visit (Royal Residency) · secondary research</p></div>
+    <div><span>Constraints</span><p>Solo · one small hotel · 4 test participants · no live pilot</p></div>
+    <div><span>Not claimed</span><p>Time saved, error reduction or any measured operational gain</p></div>
+  </div>
+</div></section>
 
 <section class="ov" id="overview"><div class="wrap">
   <p class="label">The problem</p>
