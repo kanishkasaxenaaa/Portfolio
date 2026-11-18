@@ -662,6 +662,33 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 .foot a{color:var(--ink)}
 
 
+
+/* summary */
+.sum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:14px;background:var(--paper);box-shadow:inset 0 0 0 1px var(--line);outline:1.5px dashed var(--line-2);outline-offset:-8px}
+.sum>div{padding:24px 24px 26px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start;min-width:0}
+.sum>div:last-child{border-right:0;background:var(--yellow-soft);border-radius:0 14px 14px 0}
+.sum b{font-family:var(--ff-m);font-weight:400;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.sum p{font-size:var(--t-small);line-height:1.5}
+.meta{display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr 1.3fr;gap:12px 28px;margin:18px 0 0;padding:0 4px}
+.meta div{min-width:0}
+@media (max-width:1100px){.meta{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.meta dt{font-family:var(--ff-m);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:2px 0 0;font-size:14px;color:var(--ink-2)}
+@media (max-width:1100px){.sum{grid-template-columns:repeat(2,minmax(0,1fr))}.sum>div:nth-child(2){border-right:0}.sum>div:nth-child(-n+2){border-bottom:1px solid var(--line)}.sum>div:last-child{border-radius:0 0 14px 0}}
+@media (max-width:640px){.sum{grid-template-columns:minmax(0,1fr)}.sum>div{border-right:0!important;border-bottom:1px solid var(--line);padding:18px 20px}.sum>div:last-child{border-bottom:0;border-radius:0 0 14px 14px}.meta{grid-template-columns:minmax(0,1fr);gap:10px}}
+/* parts */
+.part{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,52px);padding-bottom:16px;border-bottom:1.5px solid currentColor}
+.part .pn{font-family:var(--ff-m);font-size:var(--t-label);letter-spacing:.07em;text-transform:uppercase;opacity:.72}
+.part .pt{font-family:var(--ff-d);font-weight:700;font-size:clamp(1.15rem,1rem + .5vw,1.45rem);letter-spacing:-.02em}
+.part .pc{font-size:14px;opacity:.72}
+.part .segs{display:flex;gap:4px;margin-left:auto}
+.part .segs i{width:22px;height:6px;border-radius:99px;background:currentColor;opacity:.18}
+.part .segs i.on{opacity:1;background:var(--green)}
+.band .part .segs i.on,.turn .part .segs i.on{background:var(--yellow)}
+.close .part .segs i.on{background:#16362C}
+.sheet .grp{font-family:var(--ff-m);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--coral-ink);padding:16px 4px 4px;list-style:none}
+@media (max-width:640px){.part .segs{margin-left:0;width:100%}.part .pc{display:none}}
+
 /* reading mode */
 [data-s]{display:none!important}
 .short [data-x]{display:none!important}
@@ -824,16 +851,22 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
     <h2 id="chTitle">Chapters</h2>
     <ol>
       <li><a href="#top" data-close><span>00</span><span>Overview and live prototype</span></a></li>
+      <li class="grp">Part 1 · Problem</li>
       <li><a href="#c01" data-close><span>01</span><span>The story behind the problem</span></a></li>
       <li><a href="#c02" data-close><span>02</span><span>The sustainability problem</span></a></li>
+      <li class="grp">Part 2 · Research</li>
       <li><a href="#c03" data-close><span>03</span><span>Research and discovery</span></a></li>
       <li><a href="#c04" data-close><span>04</span><span>Understanding the people</span></a></li>
+      <li class="grp">Part 3 · Insight</li>
       <li><a href="#c05" data-close><span>05</span><span>Finding the root cause</span></a></li>
       <li><a href="#c06" data-close><span>06</span><span>The design opportunity</span></a></li>
+      <li class="grp">Part 4 · Service design</li>
       <li><a href="#c07" data-close><span>07</span><span>Designing the circular service</span></a></li>
       <li><a href="#c08" data-close><span>08</span><span>Concepts and service strategy</span></a></li>
+      <li class="grp">Part 5 · Product design</li>
       <li><a href="#c09" data-close><span>09</span><span>The digital experience</span></a></li>
       <li><a href="#c10" data-close><span>10</span><span>Four journeys</span></a></li>
+      <li class="grp">Part 6 · Testing and reflection</li>
       <li><a href="#c11" data-close><span>11</span><span>Evaluation and V2</span></a></li>
       <li><a href="#c12" data-close><span>12</span><span>Impact, business model and reflection</span></a></li>
     </ol>
@@ -873,13 +906,20 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
         <div class="hnote" aria-hidden="true">same shirt,<br>next child<svg viewBox="0 0 80 40" width="70" height="34"><path d="M6 4 C 20 30, 50 36, 72 22 M64 18 l8 4 l-6 7"/></svg></div>
       </figure>
     </div>
-    <div class="overview">
-      <div><b>My role</b>Solo: research, service design, UX/UI, prototyping, usability testing</div>
-      <div><b>Duration</b>3 weeks</div>
-      <div><b>Context</b>M.Des UX Design, Symbiosis Institute of Design</div>
-      <div><b>Lens</b>SDG 12.5 · waste hierarchy · circular service</div>
-      <div><b>Stakeholders</b>Parents · school / PTA · Loop staff · local tailors</div>
+    <div class="sum">
+      <div><b>The problem</b><p>Children outgrow uniforms every year or two while they're still usable. Families are willing to pass them on, but no one owns collecting, checking, repairing and redistributing them.</p></div>
+      <div><b>What I designed</b><p>Vidyalaya Loop: a school-linked circular service where one tag follows each uniform and an external Loop team owns every step, plus a working prototype for parents, Loop staff, tailors and the school.</p></div>
+      <div><b>My role</b><p>Solo, 3 weeks. Stakeholder interviews, synthesis, service model, UX/UI, prototyping and evaluation.</p></div>
+      <div><b>The result</b><p>Testing with 4 participants found 8 usability issues, and only 1 of 8 circular criteria was fully met. 9 V2 fixes are built in the prototype. None is retested yet, and no impact is claimed before a pilot.</p></div>
     </div>
+    <dl class="meta">
+      <div><dt>Context</dt><dd>M.Des UX Design, Symbiosis Institute of Design</dd></div>
+      <div><dt>Lens</dt><dd>SDG 12.5 · waste hierarchy · circular service</dd></div>
+      <div><dt>Stakeholders</dt><dd>Parents · school / PTA · Loop staff · local tailors</dd></div>
+      <div><dt>Constraints</dt><dd>3 weeks · solo · 4 exploratory interviews · usability testing with 4 participants · no live pilot</dd></div>
+      <div><dt>Deferred on purpose</dt><dd>Demand forecasting, an impact dashboard, and bags, shoes and books until after a pilot</dd></div>
+    </dl>
+  </div>
   </div>
   <div class="chapter" id="prototype" style="padding-block:clamp(64px,8vw,104px) 0">
     <div class="wrap dock">
@@ -912,8 +952,9 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 <div class="wrap" aria-hidden="true" style="padding-block:clamp(56px,7vw,96px) 0"><div class="divider"><svg viewBox="0 0 1240 28" preserveAspectRatio="none"><path d="M0 14 H596" stroke="var(--line-2)" stroke-width="2" stroke-dasharray="7 6"/><path d="M644 14 H1240" stroke="var(--line-2)" stroke-width="2" stroke-dasharray="7 6"/></svg></div></div>
 
 <!-- 01 -->
-<section class="chapter" id="c01" data-ch="01" data-name="The story behind the problem">
+<section class="chapter" id="c01" data-ch="01" data-part="Part 1" data-name="The story behind the problem">
   <div class="wrap">
+    <div class="part"><span class="pn">Part 1 of 6</span><span class="pt">Problem</span><span class="pc">Why usable uniforms get thrown away</span><span class="segs" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
     <div class="story">
       <figure class="portrait rv">
         <img class="zoom" src="vidyalaya/portrait-ananya.webp" alt="Ananya, working parent persona: “I'm happy to pass on a uniform, but I need to know it's clean, fits my child, and meets school rules.”" width="290" height="560" loading="lazy">
@@ -939,7 +980,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 02 -->
-<section class="chapter sand" id="c02" data-ch="02" data-name="The sustainability problem">
+<section class="chapter sand" id="c02" data-ch="02" data-part="Part 1" data-name="The sustainability problem">
   <div class="wrap">
     <div class="opener">
       <div><span class="tag">Chapter 02 · The sustainability problem</span><h2>The scale is large. <span class="mk">The loop is missing.</span></h2></div>
@@ -998,8 +1039,9 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 03 -->
-<section class="chapter" id="c03" data-ch="03" data-name="Research and discovery">
+<section class="chapter" id="c03" data-ch="03" data-part="Part 2" data-name="Research and discovery">
   <div class="wrap">
+    <div class="part"><span class="pn">Part 2 of 6</span><span class="pt">Research</span><span class="pc">Who keeps a uniform alive, and what they need</span><span class="segs" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div>
     <div class="opener">
       <div><span class="tag">Chapter 03 · Research and discovery</span><h2>Everyone wanted reuse, <span class="mk">on their own terms.</span></h2></div>
       <p class="lede">Four exploratory, semi-structured interviews with the people who keep a uniform alive, framed by a literature review and a competitor scan.</p>
@@ -1007,10 +1049,10 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
     <div class="line">
       <svg class="rope" viewBox="0 0 1240 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 8 Q620 46 1240 8"/></svg>
       <div class="hang">
-        <div class="htag rv"><span class="mono">P1</span><h4>Parent</h4><p>Private CBSE school</p><p class="topics" data-x>Cost, fit, hygiene, trust</p></div>
-        <div class="htag rv"><span class="mono">P2</span><h4>Parent</h4><p>Semi-urban public school</p><p class="topics" data-x>Budget, hand-me-downs, access</p></div>
-        <div class="htag rv"><span class="mono">P3</span><h4>Vice-principal</h4><p>K–12 school, 1,500 students</p><p class="topics" data-x>Rules, liability, staff workload</p></div>
-        <div class="htag rv"><span class="mono">P4</span><h4>Tailor</h4><p>Neighbourhood, 22 years</p><p class="topics" data-x>Repair types, cost, batches</p></div>
+        <div class="htag rv"><span class="mono">Interview 1</span><h4>Parent</h4><p>Private CBSE school</p><p class="topics" data-x>Cost, fit, hygiene, trust</p></div>
+        <div class="htag rv"><span class="mono">Interview 2</span><h4>Parent</h4><p>Semi-urban public school</p><p class="topics" data-x>Budget, hand-me-downs, access</p></div>
+        <div class="htag rv"><span class="mono">Interview 3</span><h4>Vice-principal</h4><p>K–12 school, 1,500 students</p><p class="topics" data-x>Rules, liability, staff workload</p></div>
+        <div class="htag rv"><span class="mono">Interview 4</span><h4>Tailor</h4><p>Neighbourhood, 22 years</p><p class="topics" data-x>Repair types, cost, batches</p></div>
       </div>
     </div>
 
@@ -1052,7 +1094,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 04 -->
-<section class="chapter sand" id="c04" data-ch="04" data-name="Understanding the people">
+<section class="chapter sand" id="c04" data-ch="04" data-part="Part 2" data-name="Understanding the people">
   <div class="wrap">
     <div class="opener">
       <div><span class="tag">Chapter 04 · Understanding the people</span><h2>Trust has to exist <span class="mk">at both ends</span> of the loop.</h2></div>
@@ -1083,7 +1125,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
       <div><b>Parent priority</b><p>Affordable, clean, properly sized and trustworthy uniforms.</p></div>
       <div><b>School priority</b><p>Compliance, clear responsibility and minimal additional workload.</p></div>
     </div>
-    <p class="cap" style="max-width:80ch">Illustrative persona images. Ananya is 38 on her persona card; the evaluation persona table (Chapter 11) lists her as 36. In the prototype, the name Meera Nair is used for the Loop staff coordinator after the V2 role change.</p>
+    <p class="cap" style="max-width:80ch">Illustrative persona images. Ananya and Meera are personas built from the research interviews; they are not the people who took part in usability testing (Chapter 11). In the prototype, the name Meera Nair is used for the Loop staff coordinator after the V2 role change.</p>
     <details class="more" data-x>
       <summary><span>Full persona cards<small>As designed in the research phase</small></span></summary>
       <div class="inner"><div class="cards2"><img class="zoom" src="vidyalaya/persona-ananya.webp" alt="Ananya persona card with goals, frustrations, needs, tools and key insight" width="1100" height="619" loading="lazy"><img class="zoom" src="vidyalaya/persona-meera.webp" alt="Meera Nair persona card with goals, frustrations, needs, tools and key insight" width="1100" height="619" loading="lazy"></div></div>
@@ -1092,10 +1134,11 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 05 -->
-<section class="chapter band twill" id="c05" data-ch="05" data-name="Finding the root cause">
+<section class="chapter band twill" id="c05" data-ch="05" data-part="Part 3" data-name="Finding the root cause">
   <div class="wrap">
+    <div class="part"><span class="pn">Part 3 of 6</span><span class="pt">Insight</span><span class="pc">The root cause and the design opportunity</span><span class="segs" aria-hidden="true"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></div>
     <span class="tag">Chapter 05 · Finding the root cause</span>
-    <p style="font-size:var(--t-lede);color:var(--f-muted);margin-top:22px;max-width:56ch">One sticky, one observation. The interview notes clustered into six themes.</p>
+    <p data-x style="font-size:var(--t-lede);color:var(--f-muted);margin-top:22px;max-width:56ch">One sticky, one observation. The interview notes clustered into six themes.</p>
     <div data-x class="clusters">
       <div class="hang">
         <div class="htag"><span class="mono">01</span><h4>Cost and vendor constraints</h4></div>
@@ -1136,7 +1179,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 06 -->
-<section class="chapter" id="c06" data-ch="06" data-name="The design opportunity">
+<section class="chapter" id="c06" data-ch="06" data-part="Part 3" data-name="The design opportunity">
   <div class="wrap">
     <span class="tag">Chapter 06 · Define the design opportunity</span>
     <h2 class="hmw"><small>How might we</small>enable an affordable, trustworthy and <span class="mk">low-burden</span> school-linked circular service that helps usable uniforms reach the right families?</h2>
@@ -1168,8 +1211,9 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 07 -->
-<section class="chapter sand" id="c07" data-ch="07" data-name="Designing the circular service">
+<section class="chapter sand" id="c07" data-ch="07" data-part="Part 4" data-name="Designing the circular service">
   <div class="wrap">
+    <div class="part"><span class="pn">Part 4 of 6</span><span class="pt">Service design</span><span class="pc">The loop, its owners and the operating model</span><span class="segs" aria-hidden="true"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></div>
     <div class="opener">
       <div><span class="tag">Chapter 07 · Designing the circular service</span><h2>One uniform. One tag. <span class="mk">A complete</span> circular journey.</h2></div>
       <p class="lede">Reuse first, repair second, recovery last. The school hosts drop-off and pickup; Loop staff own intake, grading, cleaning, stock and handover.</p>
@@ -1218,7 +1262,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 08 -->
-<section class="chapter" id="c08" data-ch="08" data-name="Concepts and service strategy">
+<section class="chapter" id="c08" data-ch="08" data-part="Part 4" data-name="Concepts and service strategy">
   <div class="wrap">
     <div class="opener">
       <div><span class="tag">Chapter 08 · Concept exploration and service strategy</span><h2>Three operating models. <span class="mk">One hybrid</span> service.</h2></div>
@@ -1264,8 +1308,9 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 09 -->
-<section class="chapter sand" id="c09" data-ch="09" data-name="The digital experience">
+<section class="chapter sand" id="c09" data-ch="09" data-part="Part 5" data-name="The digital experience">
   <div class="wrap">
+    <div class="part"><span class="pn">Part 5 of 6</span><span class="pt">Product design</span><span class="pc">The digital experience and four journeys</span><span class="segs" aria-hidden="true"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></div>
     <div class="opener">
       <div><span class="tag">Chapter 09 · Designing the digital experience</span><h2>Reuse has to feel <span class="mk">as safe and easy</span> as buying new.</h2></div>
       <p class="lede">Every key feature removes one barrier the research found. The strategy names the behaviour change; the feature is how the prototype does it.</p>
@@ -1315,7 +1360,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 10 -->
-<section class="chapter" id="c10" data-ch="10" data-name="Four journeys">
+<section class="chapter" id="c10" data-ch="10" data-part="Part 5" data-name="Four journeys">
   <div class="wrap">
     <div class="opener">
       <div><span class="tag">Chapter 10 · The final prototype</span><h2>Four journeys. <span class="mk">One</span> connected circular service.</h2></div>
@@ -1344,12 +1389,14 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 11 -->
-<section class="chapter turn" id="c11" data-ch="11" data-name="Evaluation and V2">
+<section class="chapter turn" id="c11" data-ch="11" data-part="Part 6" data-name="Evaluation and V2">
   <div class="wrap">
+    <div class="part"><span class="pn">Part 6 of 6</span><span class="pt">Testing and reflection</span><span class="pc">What testing found, V2, impact and lessons</span><span class="segs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></div>
     <span class="tag">Chapter 11 · Usability evaluation and V2 redesign</span>
     <h2>A usable interface <span class="t">doesn't automatically mean</span> a working circular service.</h2>
-    <p class="lede">Four role-played personas worked through eight task scenarios across all four loop stages, scored pass / fail and rated by heuristic severity (0–4). This was a persona-based scenario evaluation, not a live-user pilot. Then the same prototype was judged against eight circular criteria.</p>
-    <div class="evs" style="margin-top:20px"><span class="ev res">Persona-based evaluation</span><span class="ev int">Not statistically representative</span></div>
+    <p class="lede">Four participants took part in usability testing: two parents, a student and a tailor. They worked through eight task scenarios covering all four stages of the circular service. Each task was evaluated using pass / fail task completion and heuristic severity ratings (0–4). Then the same prototype was judged against eight circular criteria.</p>
+    <p class="lede" style="margin-top:12px;font-size:var(--t-small)">Scenario-based usability evaluation with 4 participants. The findings are qualitative and exploratory, not statistically representative.</p>
+    
 
     <div class="lenses">
       <div class="lens rv">
@@ -1388,23 +1435,23 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
     </div>
 
     <div class="voices">
-      <div class="vq rv" data-x><blockquote>“Where's ‘change’? I don't want to cancel and lose the shirt.”</blockquote><footer><span>P1 · working parent</span><i>F5</i></footer></div>
-      <div class="vq rv"><blockquote>“‘Free’ on one and fee on another. Is free for poor people? I don't want her friends to know.”</blockquote><footer><span>P2 · low-literacy parent</span><i>F3</i></footer></div>
-      <div class="vq rv" data-x><blockquote>“There is only View details and Accept. I will call Meera on WhatsApp.”</blockquote><footer><span>P4 · tailor</span><i>F6</i></footer></div>
-      <div class="vq rv" data-x><blockquote>“‘Unable to accept, damaged fabric.’ But what happens to it? Is it thrown away?”</blockquote><footer><span>P1 · working parent</span></footer></div>
-      <div class="vq rv" data-x><blockquote>“‘Every item finds a second chance.’ Not if it's rejected. Show me actual numbers.”</blockquote><footer><span>P3 · student</span></footer></div>
+      <div class="vq rv" data-x><blockquote>“Where's ‘change’? I don't want to cancel and lose the shirt.”</blockquote><footer><span>P1 · Parent · 36</span><i>F5</i></footer></div>
+      <div class="vq rv"><blockquote>“‘Free’ on one and fee on another. Is free for poor people? I don't want her friends to know.”</blockquote><footer><span>P2 · Parent · 45</span><i>F3</i></footer></div>
+      <div class="vq rv" data-x><blockquote>“There is only View details and Accept. I will call Meera on WhatsApp.”</blockquote><footer><span>P4 · Tailor · 38</span><i>F6</i></footer></div>
+      <div class="vq rv" data-x><blockquote>“‘Unable to accept, damaged fabric.’ But what happens to it? Is it thrown away?”</blockquote><footer><span>P1 · Parent · 36</span></footer></div>
+      <div class="vq rv" data-x><blockquote>“‘Every item finds a second chance.’ Not if it's rejected. Show me actual numbers.”</blockquote><footer><span>P3 · Student · 20</span></footer></div>
       <div class="vq sharp rv"><p>The sharpest finding wasn't about usability. Mixed price labels made a parent feel marked as poor: a dignity failure.</p></div>
     </div>
-    <p class="cap" data-x style="color:var(--f-muted)">Quotes from role-played personas during the scenario evaluation.</p>
+    <p class="cap" data-x style="color:var(--f-muted)">Quotes from usability-test participants during the task scenarios.</p>
 
     <details class="more" data-x>
-      <summary><span>Method: personas and tasks<small>Four role-played personas · eight task scenarios</small></span></summary>
+      <summary><span>Method: participants and tasks<small>Four participants · eight task scenarios</small></span></summary>
       <div class="inner">
-        <div class="tscroll"><table class="t" style="min-width:560px"><thead><tr><th>ID</th><th>Persona</th><th>Digital comfort</th><th>Tasks</th></tr></thead><tbody>
-          <tr><td>P1</td><td>Ananya, 36 · working parent</td><td>High</td><td>T1–T6</td></tr>
-          <tr><td>P2</td><td>Pooja, 45 · parent, low digital literacy</td><td>Low</td><td>T1, T3</td></tr>
-          <tr><td>P3</td><td>Rohan, 20 · student</td><td>Very high</td><td>T1–T3</td></tr>
-          <tr><td>P4</td><td>Roopa, 38 · tailor / repair partner</td><td>Low–medium</td><td>T7, T8</td></tr>
+        <div class="tscroll"><table class="t" style="min-width:560px"><thead><tr><th>ID</th><th>Participant</th><th>Age</th><th>Digital comfort</th><th>Tasks</th></tr></thead><tbody>
+          <tr><td>P1</td><td>Working parent</td><td class="num">36</td><td>High</td><td>T1–T6</td></tr>
+          <tr><td>P2</td><td>Parent, low digital literacy</td><td class="num">45</td><td>Low</td><td>T1, T3</td></tr>
+          <tr><td>P3</td><td>Student</td><td class="num">20</td><td>Very high</td><td>T1–T3</td></tr>
+          <tr><td>P4</td><td>Tailor / repair partner</td><td class="num">38</td><td>Low–medium</td><td>T7, T8</td></tr>
         </tbody></table></div>
         <div class="tscroll"><table class="t" style="min-width:560px"><thead><tr><th>#</th><th>Scenario</th><th>Pass if</th></tr></thead><tbody>
           <tr><td>T1</td><td>Find a shirt that fits and reserve it</td><td>Right size, slot, code, under 3 min</td></tr>
@@ -1416,7 +1463,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
           <tr><td>T7</td><td>Accept a repair job, return it</td><td>Accepted, updated, sent back</td></tr>
           <tr><td>T8</td><td>Can't fix the lining for the estimate</td><td>Raises issue or re-quotes</td></tr>
         </tbody></table></div>
-        <p class="cap" style="color:var(--f-muted)">Per-task pass / fail results aren't documented in the project, so none are shown. Ananya's age is 36 in this table and 38 on her persona card.</p>
+        <p class="cap" style="color:var(--f-muted)">Participants are identified by ID and role only. Per-task pass / fail results aren't documented in the project, so none are shown.</p>
       </div>
     </details>
 
@@ -1473,7 +1520,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 </section>
 
 <!-- 12 -->
-<section class="chapter close" id="c12" data-ch="12" data-name="Impact and reflection">
+<section class="chapter close" id="c12" data-ch="12" data-part="Part 6" data-name="Impact and reflection">
   <div class="wrap">
     <div class="opener">
       <div><span class="tag">Chapter 12 · Impact, business model and reflection</span><h2>Designing for reuse means measuring what <span style="text-decoration:underline;text-decoration-color:#16362C;text-decoration-thickness:4px;text-underline-offset:8px">actually stays in use.</span></h2></div>
@@ -1511,7 +1558,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
       <div><h4>Sustainability is a service problem</h4><p>The waste wasn't caused by a missing app. It was caused by a missing owner. Designing the roles mattered more than the screens.</p></div>
       <div data-x><h4>Test both lenses separately</h4><p>A screen can pass usability and still fail the loop. Hidden “change slot” was a UX bug and a sustainability bug.</p></div>
       <div data-x><h4>Dignity is a design decision</h4><p>Inconsistent price labels made a parent feel marked as poor. Same terms for everyone became a hard rule.</p></div>
-      <div data-x><h4>Be honest about evidence</h4><p>Small sample, role-played testing and no pilot yet. I labelled anticipated value as anticipated and made no carbon claims.</p></div>
+      <div data-x><h4>Be honest about evidence</h4><p>Small sample: four interviews, four usability participants and no pilot yet. I labelled anticipated value as anticipated and made no carbon claims.</p></div>
     </div>
     <div class="road">
       <svg class="rope" viewBox="0 0 1240 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 8 Q620 46 1240 8"/></svg>
@@ -1551,7 +1598,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
   var pg=document.getElementById("prog"),now=document.getElementById("now"),secs=[].slice.call(document.querySelectorAll("[data-ch]"));
   function onScroll(){var h=document.documentElement,m=h.scrollHeight-h.clientHeight;pg.style.width=(m>0?h.scrollTop/m*100:0)+"%";
     var c=secs[0];for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top<130)c=secs[i];}
-    var label='<b>'+c.dataset.ch+'</b>'+c.dataset.name;if(now.innerHTML!==label)now.innerHTML=label;}
+    var label='<b>'+(c.dataset.part||'')+(c.dataset.part?' · ':'')+c.dataset.ch+'</b>'+c.dataset.name;if(now.innerHTML!==label)now.innerHTML=label;}
   addEventListener("scroll",onScroll,{passive:true});onScroll();
 
   // dialogs
