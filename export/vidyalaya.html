@@ -689,6 +689,50 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
 .sheet .grp{font-family:var(--ff-m);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--coral-ink);padding:16px 4px 4px;list-style:none}
 @media (max-width:640px){.part .segs{margin-left:0;width:100%}.part .pc{display:none}}
 
+
+/* before / after comparison */
+.cintro{color:var(--f-muted);font-size:var(--t-small);max-width:70ch;margin:-6px 0 22px}
+.ctabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:22px;scrollbar-width:thin}
+.ctab{flex:none;text-align:left;cursor:pointer;border:0;border-radius:12px;padding:12px 16px;background:var(--f-card);color:var(--f-ink);box-shadow:inset 0 0 0 1px var(--f-line);display:grid;gap:2px;min-height:62px}
+.ctab small{font-family:var(--ff-m);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--f-muted)}
+.ctab b{font-family:var(--ff-d);font-size:1.05rem;letter-spacing:-.01em}
+.ctab[aria-selected="true"]{background:#8FD3CC;color:#0E2B2A;box-shadow:none}
+.ctab[aria-selected="true"] small{color:#0E2B2A;opacity:.75}
+.crows{display:grid;margin-top:26px;border-top:1.5px solid var(--f-ink)}
+.crow{display:grid;grid-template-columns:76px minmax(0,1fr) minmax(0,1fr) 150px;gap:16px;padding:14px 0;border-bottom:1px solid var(--f-line);align-items:baseline;font-size:var(--t-small)}
+.crow .code{font-family:var(--ff-m);font-size:13px;color:#F5A58E}
+.crow .was{color:var(--f-muted)}
+.crow .chg{color:var(--f-ink)}
+.crow .stt{justify-self:end;text-align:right}
+.crow .hd{font-family:var(--ff-m);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--f-muted)}
+.cwhy{margin-top:8px;padding:14px 18px;border-radius:10px;background:var(--f-card);font-size:var(--t-small);max-width:820px}
+.cwhy b{color:var(--yellow)}
+.cnote{margin-top:12px;font-size:13.5px;color:var(--f-muted);max-width:820px}
+
+
+
+
+.pr2{display:grid;grid-template-columns:auto 34px auto minmax(0,1fr);gap:16px 18px;align-items:start;padding:26px 0;border-bottom:1px solid var(--f-line)}
+.pr2:first-child{border-top:1.5px solid var(--f-ink)}
+.pr2 figure{margin:0;display:grid;gap:8px}
+.pr2 .ph{width:clamp(170px,17vw,230px);aspect-ratio:402/874;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--f-line)}
+.pr2 .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.pr2 .ph.none{display:grid;place-items:center;background:transparent;border:1px dashed var(--f-line);box-shadow:none;padding:16px;text-align:center;font-size:13.5px;color:var(--f-muted)}
+.pr2 figcaption{font-family:var(--ff-m);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#F5A58E}
+.pr2 figcaption.v2{color:#8FD3CC}
+.pr2 .ar{align-self:center;font-size:26px;color:#8FD3CC;text-align:center}
+.pr2 .info{display:grid;gap:12px;min-width:0}
+.pr2 h4{font-size:var(--t-h3);color:var(--f-ink)}
+.fx{display:grid;grid-template-columns:70px minmax(0,1fr);gap:4px 12px;padding:10px 0;border-top:1px solid var(--f-line);font-size:var(--t-small)}
+.fx .code{font-family:var(--ff-m);font-size:13px;color:#F5A58E;grid-row:span 3}
+.fx .was{color:var(--f-muted)}
+.fx .was::before{content:"Was: ";color:#F5A58E;font-family:var(--ff-m);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.fx .chg{color:var(--f-ink)}
+.fx .chg::before{content:"Now: ";color:#8FD3CC;font-family:var(--ff-m);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.fx .stt{margin-top:2px}
+@media (max-width:980px){.pr2{grid-template-columns:auto 28px auto}.pr2 .info{grid-column:1/-1}}
+@media (max-width:480px){.pr2 .ph{width:calc((100vw - 32px - 28px - 36px)/2)}.pr2{gap:12px 8px}}
+
 /* reading mode */
 [data-s]{display:none!important}
 .short [data-x]{display:none!important}
@@ -1450,7 +1494,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
         <div class="tscroll"><table class="t" style="min-width:560px"><thead><tr><th>ID</th><th>Participant</th><th>Age</th><th>Digital comfort</th><th>Tasks</th></tr></thead><tbody>
           <tr><td>P1</td><td>Working parent</td><td class="num">36</td><td>High</td><td>T1–T6</td></tr>
           <tr><td>P2</td><td>Parent, low digital literacy</td><td class="num">45</td><td>Low</td><td>T1, T3</td></tr>
-          <tr><td>P3</td><td>Student</td><td class="num">20</td><td>Very high</td><td>T1–T3</td></tr>
+          <tr><td>P3</td><td>Higher-education student</td><td class="num">20</td><td>Very high</td><td>T1–T3</td></tr>
           <tr><td>P4</td><td>Tailor / repair partner</td><td class="num">38</td><td>Low–medium</td><td>T7, T8</td></tr>
         </tbody></table></div>
         <div class="tscroll"><table class="t" style="min-width:560px"><thead><tr><th>#</th><th>Scenario</th><th>Pass if</th></tr></thead><tbody>
@@ -1467,12 +1511,18 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
       </div>
     </details>
 
-    <h3 class="sub" style="margin-top:clamp(64px,8vw,104px);color:var(--f-ink)"><span data-x>V1 → V2: three redesigns</span><span data-s>V1 → V2: one of three redesigns</span></h3>
+    <h3 class="sub" style="margin-top:clamp(64px,8vw,104px);color:var(--f-ink)">Before and after: what went wrong, what changed</h3>
+    <p class="cintro">Each row pairs one screen participants tested (V1) with the same screen redesigned (V2), followed by what went wrong and what changed. Red markers on V1 are the issue codes logged during testing. F1–F8 are the eight severity-rated issues; higher codes are further issues observed on the same screens.</p>
+    <div class="ctabs" role="tablist" aria-label="Part of the service" id="ctabs"></div>
+    <div class="cpanel" id="cpanel" role="tabpanel"></div>
+    <p class="cwhy" id="cwhy"></p>
+    <h3 class="sub" data-x style="margin-top:clamp(64px,8vw,104px);color:var(--f-ink)">Then refined again in the live prototype</h3>
+    <p class="cintro" data-x>Testing the V2 designs while building surfaced three more problems. Each pair shows the V2 redesign screen next to the live prototype.</p>
     <p class="tl" data-s style="color:var(--f-muted)"><b style="color:var(--f-ink)">Eight issues</b>, two at severity 4: an unclear inspection owner and no path for parents without the app. Nine V2 changes are built in the prototype; none has been retested.</p>
-    <div class="ba">
-      <div class="ba-row rv" data-show="after">
-        <figure class="b"><div class="fs"><img class="zoom" src="vidyalaya/v1-reserve.webp" alt="V1 item detail with numbered problem markers: single-item Reserve button, fee shown as 60 rupees or 1 credit, measurements" width="1110" height="2380" loading="lazy"></div><figcaption>Before · V1 · from deck</figcaption></figure>
-        <figure class="a"><div class="fs"><img class="zoom" src="vidyalaya/P-bag.webp" alt="V2 bag screen in the live prototype: item with size dropdown and quantity, itemised service fee and total, Choose pickup slot button" width="402" height="874" loading="lazy"></div><figcaption class="after">After · V2 · live prototype</figcaption></figure>
+    <div class="ba" data-x>
+      <div class="ba-row rv" data-x data-show="after">
+        <figure class="b"><div class="fs"><img class="zoom" src="vidyalaya/v1-reserve.webp" alt="V1 item detail with numbered problem markers: single-item Reserve button, fee shown as 60 rupees or 1 credit, measurements" width="1110" height="2380" loading="lazy"></div><figcaption>V2 redesign</figcaption></figure>
+        <figure class="a"><div class="fs"><img class="zoom" src="vidyalaya/P-bag.webp" alt="V2 bag screen in the live prototype: item with size dropdown and quantity, itemised service fee and total, Choose pickup slot button" width="402" height="874" loading="lazy"></div><figcaption class="after">Live prototype</figcaption></figure>
         <div><div class="evs"><span class="ev pro">Built in prototype</span><span class="ev nr">Not retested</span></div><h3>Reserving: one item at a time → a full set in one bag</h3>
           <ol><li><div><b>Several items, one pickup</b><span data-x><span><em>Before</em>“Reserve” booked a single item</span><span><em>After</em>a bag holds shirt, trousers and sweater together</span></span></div></li>
           <li><div><b>Size and quantity in place</b><span data-x><span><em>Before</em>size only shown as text, no quantity</span><span><em>After</em>size dropdown and − / + quantity on each item</span></span></div></li>
@@ -1480,8 +1530,8 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
           <div class="batoggle" role="group" aria-label="Show before or after"><button class="chipb" type="button" data-v="before" aria-pressed="false">Before</button><button class="chipb" type="button" data-v="after" aria-pressed="true">After</button></div></div>
       </div>
       <div class="ba-row rv" data-x data-show="after">
-        <figure class="b"><div class="fs"><img class="zoom" src="vidyalaya/v1-donate.webp" alt="V1 donation form, step 2 of 3, with a single item dropdown and Submit donation button" width="1110" height="2380" loading="lazy"></div><figcaption>Before · V1 · from deck</figcaption></figure>
-        <figure class="a"><div class="fs"><img class="zoom" src="vidyalaya/P-donate2.webp" alt="V2 donation step 2 of 5 in the live prototype: a grid of item types with school shirt and blazer ticked, Next for 2 types" width="402" height="874" loading="lazy"></div><figcaption class="after">After · V2 · live prototype</figcaption></figure>
+        <figure class="b"><div class="fs"><img class="zoom" src="vidyalaya/v1-donate.webp" alt="V1 donation form, step 2 of 3, with a single item dropdown and Submit donation button" width="1110" height="2380" loading="lazy"></div><figcaption>V2 redesign</figcaption></figure>
+        <figure class="a"><div class="fs"><img class="zoom" src="vidyalaya/P-donate2.webp" alt="V2 donation step 2 of 5 in the live prototype: a grid of item types with school shirt and blazer ticked, Next for 2 types" width="402" height="874" loading="lazy"></div><figcaption class="after">Live prototype</figcaption></figure>
         <div><div class="evs"><span class="ev pro">Built in prototype</span><span class="ev nr">Not retested</span></div><h3>Donating: one item per form → choose everything at once</h3>
           <ol><li><div><b>Pick many items together</b><span data-x><span><em>Before</em>a single “Item” dropdown</span><span><em>After</em>a grid where any number of items can be ticked</span></span></div></li>
           <li><div><b>A guided next step</b><span data-x><span><em>Before</em>“Submit donation” after one item</span><span><em>After</em>“Next · 2 types” walks through each item's details</span></span></div></li>
@@ -1489,8 +1539,8 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
           <div class="batoggle" role="group" aria-label="Show before or after"><button class="chipb" type="button" data-v="before" aria-pressed="false">Before</button><button class="chipb" type="button" data-v="after" aria-pressed="true">After</button></div></div>
       </div>
       <div class="ba-row rv" data-x data-show="after">
-        <figure class="b"><div class="fs"><img class="zoom" src="vidyalaya/v1-tailor.webp" alt="V1 tailor jobs screen with a broken earnings card showing rupee total placeholder, three equal buttons and a new job card" width="1110" height="2380" loading="lazy"></div><figcaption>Before · V1 · from deck</figcaption></figure>
-        <figure class="a"><div class="fs"><img class="zoom" src="vidyalaya/T-home.webp" alt="V2 tailor My jobs in the live prototype: next pickup run first, new job RJ-402 with estimate and Accept for 40 rupees" width="402" height="874" loading="lazy"></div><figcaption class="after">After · V2 · live prototype</figcaption></figure>
+        <figure class="b"><div class="fs"><img class="zoom" src="vidyalaya/v1-tailor.webp" alt="V1 tailor jobs screen with a broken earnings card showing rupee total placeholder, three equal buttons and a new job card" width="1110" height="2380" loading="lazy"></div><figcaption>V2 redesign</figcaption></figure>
+        <figure class="a"><div class="fs"><img class="zoom" src="vidyalaya/T-home.webp" alt="V2 tailor My jobs in the live prototype: next pickup run first, new job RJ-402 with estimate and Accept for 40 rupees" width="402" height="874" loading="lazy"></div><figcaption class="after">Live prototype</figcaption></figure>
         <div><div class="evs"><span class="ev pro">Built in prototype</span><span class="ev nr">Not retested</span></div><h3>Tailor jobs: unclear money → clear price, pickup and rework</h3>
           <ol><li><div><b>Pickup run first</b><span data-x><span><em>Before</em>the earnings card showed “₹[total]” (broken)</span><span><em>After</em>the next pickup run is the first thing on screen</span></span></div></li>
           <li><div><b>Price before you accept</b><span data-x><span><em>Before</em>three equal buttons, no price shown</span><span><em>After</em>an estimate and “Accept · ₹40” on the button</span></span></div></li>
@@ -1498,7 +1548,7 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
           <div class="batoggle" role="group" aria-label="Show before or after"><button class="chipb" type="button" data-v="before" aria-pressed="false">Before</button><button class="chipb" type="button" data-v="after" aria-pressed="true">After</button></div></div>
       </div>
     </div>
-    <figure data-x style="margin-top:clamp(48px,6vw,72px)"><img class="zoom" src="vidyalaya/v2-states.webp" alt="V2 error, recovery and success states: no size waitlist, change pickup slot, collected with fit rating, report a problem" width="1600" height="758" loading="lazy" style="border-radius:12px;background:#fff"><figcaption class="cap" style="color:var(--f-muted)">V2 error, recovery and success states (from deck): waitlist when a size is out, change slot without losing the item, rate the fit after collection, report a problem routed with the inspection record.</figcaption></figure>
+    
 
     <h3 class="sub" style="margin-top:clamp(64px,8vw,104px);color:var(--f-ink)">What's built, what isn't, what's tested</h3>
     <div class="v2sum"><div><strong>9</strong>built in the prototype</div><div><strong>2</strong>designed or planned, not fully built</div><div><strong>0</strong>retested</div></div>
@@ -1735,6 +1785,47 @@ tr.ours td{background:var(--sky-soft);font-weight:600}
   panel.addEventListener("mouseleave",function(){hi(null);});
   show(0);
 
+
+  // BEFORE / AFTER COMPARISON
+  var BT='<span class="ev pro">Built in prototype</span>',DS='<span class="ev v2">Designed in V2</span>',PB='<span class="ev v2">Partly built</span>';
+  var CMP=[
+   {k:"Reuse · parent",t:"Find a uniform",why:"Unclear prices and error-looking boxes erode trust, the first barrier to choosing pre-owned over new.",p:[
+    {n:"Home",b:"v1-home",a:"r-home",f:[["F9","A reserved-item banner covers cards and prices","Shown once, as a card on Home",DS],["F10","Pink “NOT VERIFIED” AI box reads as an error","Neutral “Suggested size” tip that asks parents to check the cm measurements",BT],["F17","“Switch role” sits on the parent's home screen","Removed from the parent view",DS]]},
+    {n:"Explore",b:"v1-explore",a:"r-explore",f:[["F3 · F20","“₹60 fee”, “Free” and “₹200” unexplained; “Free” vs fee may signal need","One ₹60 handling-fee rule, the same for every family, explained at the top",BT],["F23","Category chips cut off at “Bl”","Filter chips with an edge fade so scrolling is obvious",DS]]},
+    {n:"Item detail",b:"p-item",a:"r-item",bf:true,f:[["F4 · F11","Grade shown one way here, another way elsewhere; size only as a label","One A / B / C grade with words; chest, length and shoulder in cm above the fold",BT],["F16","“Checked by the Sunrise Public School hub team”","“Washed and checked 19 Oct by Priya, Loop team”",DS]]}]},
+   {k:"Reuse · parent",t:"Reserve and collect",why:"A missed pickup leaves the item idle on a shelf, and the family buys new instead.",p:[
+    {n:"Reservation tracker",b:"v1-track",a:"r-reservation",f:[["F5","Only “Add to calendar” and Cancel on the tracker; no hold time","“Change slot” and “Cancel reservation” as buttons; “Held for you until Sat 31 Oct, 14:30”",BT],["F22","","One labelled pickup code, handed over by staff scan",DS]]},
+    {n:"Ready to collect",b:"v1-ready",a:"r-changeslot",f:[["F5","“Can't make it? Change slot” only on the Ready screen, in small text","A Change slot sheet: “Your shirt stays reserved”, with the change limit stated",BT]]},
+    {n:"Collected",b:"v1-collected",a:"r-collected",f:[["F7","After “Collected”, no way to report a stained or wrong item","“Something wrong with it?” opens Report a problem, routed with the inspection record",BT]]},
+    {n:"Report a problem",b:null,a:"r-report",f:[["F7","No V1 screen: there was no report path","Stain, fit, damage or wrong crest; the inspector sees the report with the item's record",BT]]}]},
+   {k:"Keep in use · Loop staff",t:"Inspect at the hub",why:"If the school feels the work lands on teachers, it may withdraw, and the loop loses its collection point.",p:[
+    {n:"Hub home",b:"v1-hub",a:"r-hub",f:[["F1","“Good morning, Meera”, School Coordinator: the principal reads it as her staff","A “Loop staff” badge and “Loop team · hub coordinator. School staff can view reports only.”",BT],["F15","Reports hidden under “More”","A Reports tab in the main navigation",DS]]},
+    {n:"Inspect",b:"v1-inspect",a:"r-inspect",f:[["F16","Record shows who submitted, not who inspected","“Inspector recorded: Meera Joshi, Loop team”",DS],["F12","Hub flags missing photos the donor was never asked for","“No photo from the parent. Take one now”",DS],["F4","Parent's self-grade shown as if it counts","One A / B / C grade, “the same scale parents see”",BT]]},
+    {n:"Principal summary",b:null,a:"r-principal",f:[["F15","No term report for the school","Read-only term summary: 0 hrs teacher time, pilot counts as placeholders, SMC download",DS]]}]},
+   {k:"Repair · tailor",t:"Take and finish a job",why:"Without fair, visible pay the repair partner leaves, and repairable items become waste.",p:[
+    {n:"My jobs",b:"v1-jobs",a:"r-jobs",f:[["F6","Only “View details” and “Accept”; no payment view","Can't do / New quote / Accept, plus a weekly pay card",BT],["F18","Due Fri 30 Oct, but pickup runs on Wednesdays","Due date = the next pickup run",BT],["F8","English only","EN / मराठी toggle",PB]]},
+    {n:"Repair job",b:"v1-job",a:"r-complete",f:[["F6","Estimate fixed at ₹50–80","The agreed price on the job: “₹50 · back on the Wed 4 Nov run”",BT],["F19","3–5 completion photos per item","One after-photo, plus an optional voice note in any language",DS]]}],
+    note:"The V2 pay card still showed a “₹[total]” placeholder. The live prototype replaced it with the next pickup run first and “Accept · ₹40” on the button."},
+   {k:"Pass on · parent",t:"Donate and follow the item",why:"Every item needs an end-of-life path, one of the eight circular criteria. The status now shows it.",p:[
+    {n:"Welcome",b:"p-welcome",a:"r-welcome",bf:true,f:[["F2","“Opened from WhatsApp? Continue in chat” led nowhere","“No space for an app? Continue on WhatsApp”, or the Loop desk at the Main Gate",BT],["F8","No language choice","English / हिन्दी / मराठी at the door",PB]]},
+    {n:"Donate details",b:"p-donate",a:"r-details",bf:true,f:[["F14","Four steps, item by item","Three steps; details filled in from the donor's photo",DS],["F4 · F10","Parents self-grade the item","“The Loop team sets the grade”; the AI fill-in is a neutral tip",DS]]},
+    {n:"Donation status",b:"p-journey",a:"r-status",bf:true,f:[["F21","Rejection gives a reason, not the item's next life","“Sent to textile recovery, not landfill”, with who checked it",DS],["F24","Copy overclaims (“Every item finds a second chance”)","An honest count: “1 of 2 items back in use”",DS]]}],
+    note:"V1 donation screens come from the Figma prototype; the evaluation deck did not include them."}
+  ];
+  var ctabs=document.getElementById("ctabs"),cpanel=document.getElementById("cpanel"),cwhy=document.getElementById("cwhy");
+  ctabs.innerHTML=CMP.map(function(c,i){return '<button class="ctab" role="tab" type="button" id="ct'+i+'" aria-controls="cpanel" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'"><small>'+c.k+'</small><b>'+c.t+'</b></button>';}).join("");
+  function ph(src,alt){return '<div class="ph"><img class="zoom" src="vidyalaya/cmp/'+src+'.webp" alt="'+alt+'" loading="lazy" width="402" height="874"></div>';}
+  function cshow(i){var c=CMP[i];
+    [].forEach.call(ctabs.children,function(t,x){t.setAttribute("aria-selected",x===i);t.tabIndex=x===i?0:-1;});
+    cpanel.setAttribute("aria-labelledby","ct"+i);
+    cpanel.innerHTML=c.p.map(function(p){
+      var before=p.b?'<figure>'+ph(p.b,"V1, as tested: "+p.n)+'<figcaption>V1 · as tested</figcaption></figure>':'<figure><div class="ph none">No V1 screen</div><figcaption>V1</figcaption></figure>';
+      return '<div class="pr2">'+before+'<span class="ar" aria-hidden="true">→</span><figure>'+ph(p.a,"V2 redesign: "+p.n)+'<figcaption class="v2">V2 · redesign</figcaption></figure><div class="info"><h4>'+p.n+'</h4>'+p.f.map(function(f){return '<div class="fx"><span class="code">'+f[0]+'</span>'+(f[1]?'<span class="was">'+f[1]+'</span>':'')+'<span class="chg">'+f[2]+'</span><span class="stt">'+f[3]+'</span></div>';}).join("")+'</div></div>';}).join("");
+    cwhy.innerHTML='<b>Why it matters for reuse:</b> '+c.why+(c.note?'<span class="cnote" style="display:block">'+c.note+'</span>':'');
+    [].forEach.call(cpanel.querySelectorAll("img.zoom"),function(im){im.tabIndex=0;im.setAttribute("role","button");im.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();im.click();}});});
+  }
+  [].forEach.call(ctabs.children,function(t,i){t.addEventListener("click",function(){cshow(i);});t.addEventListener("keydown",function(e){var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!d)return;var n=(i+d+CMP.length)%CMP.length;ctabs.children[n].focus();cshow(n);});});
+  cshow(0);
   // before / after toggles (phones)
   [].forEach.call(document.querySelectorAll(".ba-row"),function(row){[].forEach.call(row.querySelectorAll(".batoggle .chipb"),function(b){b.addEventListener("click",function(){row.dataset.show=b.dataset.v;[].forEach.call(row.querySelectorAll(".batoggle .chipb"),function(x){x.setAttribute("aria-pressed",x===b);});});});});
 })();
